@@ -8,6 +8,8 @@ interface InquiryData {
   email: string;
   phone: string;
   message: string;
+  sponsorship_tier?: string;
+  price?: string;
 }
 
 /**
@@ -62,6 +64,8 @@ export async function syncToGoogleSheets(data: InquiryData): Promise<void> {
             email: data.email,
             phone: data.phone,
             message: data.message,
+            sponsorship_tier: data.sponsorship_tier || '',
+            price: data.price || '',
             timestamp: new Date().toISOString(),
           },
         }),
