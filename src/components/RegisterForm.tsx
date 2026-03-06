@@ -17,8 +17,39 @@ export function RegisterForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsProcessing(true);
-    // Simulate API call to create Stripe session
-    await new Promise(r => setTimeout(r, 1500));
+
+    const form = e.currentTarget as HTMLFormElement;
+    const formData = new FormData(form);
+
+    const payload = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      entry_type: entryType === "single" ? "Single" : "Foursome",
+      handicap: formData.get("handicap") as string,
+      shirt_size: formData.get("shirt") as string,
+      additional_players: formData.get("additional_players") as string || "",
+    };
+
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = await res.json();
+      if (!result.success) {
+        alert(`Error: ${result.error || "Failed to submit registration"}`);
+        setIsProcessing(false);
+        return;
+      }
+    } catch (err) {
+      console.error("Registration error:", err);
+      alert("Oops! There was a problem submitting your registration.");
+      setIsProcessing(false);
+      return;
+    }
+
     setIsProcessing(false);
     setSubmitted(true);
   };
@@ -87,20 +118,20 @@ export function RegisterForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <Label htmlFor="name" className="text-[#C9A84C] font-bold text-sm">Full Name</Label>
-              <Input id="name" required className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" />
+              <Input id="name" name="name" required className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="email" className="text-[#C9A84C] font-bold text-sm">Email Address</Label>
-              <Input id="email" type="email" required className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" />
+              <Input id="email" name="email" type="email" required className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="phone" className="text-[#C9A84C] font-bold text-sm">Phone Number</Label>
-              <Input id="phone" type="tel" required className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" />
+              <Input id="phone" name="phone" type="tel" required className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="handicap" className="text-[#C9A84C] font-bold text-sm">Handicap</Label>
-                <Input id="handicap" placeholder="e.g. +12" className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" />
+                <Input id="handicap" name="handicap" placeholder="e.g. +12" className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="shirt" className="text-[#C9A84C] font-bold text-sm">Shirt Size</Label>
