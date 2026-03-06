@@ -17,6 +17,7 @@ export async function POST(request: Request) {
     const phone = data.phone || '';
     const message = data.message || '';
     const sponsorship_tier = data.sponsorship_tier || '';
+    const shirt_size = data.shirt_size || '';
 
     // Validate required fields
     if (!company_name || !email || !phone) {
@@ -42,6 +43,7 @@ export async function POST(request: Request) {
         phone,
         message: message || '',
         sponsorship_tier: sponsorship_tier || '',
+        shirt_size: shirt_size || '',
       })
       .select();
 
@@ -61,6 +63,7 @@ export async function POST(request: Request) {
         phone,
         message: message || '',
         sponsorship_tier: sponsorship_tier || '',
+        shirt_size: shirt_size || '',
       });
     } catch (sheetsError) {
       console.error('Google Sheets sync error:', sheetsError);

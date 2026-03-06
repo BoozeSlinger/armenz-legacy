@@ -4,6 +4,7 @@ interface InquiryData {
   phone: string;
   message: string;
   sponsorship_tier?: string;
+  shirt_size?: string;
 }
 
 export async function syncToGoogleSheets(data: InquiryData): Promise<void> {
@@ -25,6 +26,7 @@ export async function syncToGoogleSheets(data: InquiryData): Promise<void> {
         phone: data.phone,
         message: data.message,
         sponsorship_tier: data.sponsorship_tier || '',
+        shirt_size: data.shirt_size || '',
       },
     }),
     redirect: 'follow',
