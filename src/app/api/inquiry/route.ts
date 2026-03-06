@@ -10,14 +10,13 @@ export async function POST(request: Request) {
     const data = await request.json();
 
     // Map form fields to database fields
-    // Frontend sends: name, email, phone, message, sponsorship_tier, price
-    // Database expects: company_name, email, phone, message, sponsorship_tier, price
+    // Frontend sends: name, email, phone, message, sponsorship_tier
+    // Database expects: company_name, email, phone, message, sponsorship_tier
     const company_name = data.name || data.company_name || '';
     const email = data.email || '';
     const phone = data.phone || '';
     const message = data.message || '';
     const sponsorship_tier = data.sponsorship_tier || '';
-    const price = data.price || '';
 
     // Validate required fields
     if (!company_name || !email || !phone) {
@@ -43,7 +42,6 @@ export async function POST(request: Request) {
         phone,
         message: message || '',
         sponsorship_tier: sponsorship_tier || '',
-        price: price || '',
       })
       .select();
 
@@ -63,7 +61,6 @@ export async function POST(request: Request) {
         phone,
         message: message || '',
         sponsorship_tier: sponsorship_tier || '',
-        price: price || '',
       });
     } catch (sheetsError) {
       console.error('Google Sheets sync error:', sheetsError);

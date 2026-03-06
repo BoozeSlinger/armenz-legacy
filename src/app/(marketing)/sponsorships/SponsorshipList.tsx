@@ -177,7 +177,6 @@ export function SponsorshipList() {
                     phone,
                     message,
                     sponsorship_tier: selectedTier?.name,
-                    price: selectedTier?.price,
                   }),
                 })
                   .then((response) => response.json())
