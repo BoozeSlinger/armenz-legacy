@@ -47,6 +47,7 @@ const tiers: SponsorshipTier[] = [
     id: "bronze",
     name: "Belmont Stakes (BRONZE)",
     price: 2500,
+    isPremium: true,
     image: "/images/sponsors/bronze.png",
     benefits: ["1 Foursome", "Booth + logo"],
   },
