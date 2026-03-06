@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { createClient } from '@supabase/supabase-js';
 import { syncToGoogleSheets } from '@/lib/google-sheets';
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 
 export async function POST(request: Request) {
   try {
@@ -24,8 +27,15 @@ export async function POST(request: Request) {
       );
     }
 
+    if (!supabaseUrl || !supabaseServiceRoleKey) {
+       console.error('Supabase credentials missing. Ensure NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are set.');
+       return NextResponse.json({ success: false, error: 'Server misconfiguration: Database credentials missing.' }, { status: 500 });
+    }
+
+    const supabaseAdmin = createClient(supabaseUrl, supabaseServiceRoleKey);
+
     // Insert into Supabase
-    const { data: insertedData, error } = await supabase
+    const { data: insertedData, error } = await supabaseAdmin
       .from('inquiries')
       .insert({
         company_name,
