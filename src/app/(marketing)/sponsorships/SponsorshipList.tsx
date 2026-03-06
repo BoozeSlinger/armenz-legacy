@@ -58,29 +58,38 @@ export function SponsorshipList() {
               <Button onClick={() => setSelectedTier(null)} size="lg" className="mt-8 w-full bg-zinc-800 text-zinc-100 hover:bg-[#C9A84C] hover:text-[#0A0A0A] font-bold rounded-md text-sm uppercase tracking-widest py-6">Close</Button>
             </div>
           ) : (
-             <form action="https://formspree.io/f/xbjnzzop" method="POST" onSubmit={(e) => {
+             <form onSubmit={(e) => {
                e.preventDefault();
-               const form = e.currentTarget;
-               const data = new FormData(form);
-               data.append("subject", `Sponsor Inquiry: ${selectedTier?.name}`);
+               const form = e.currentTarget as HTMLFormElement;
+               const formData = new FormData(form);
+               
+               const company_name = formData.get('name') as string;
+               const email = formData.get('email') as string;
+               const phone = formData.get('phone') as string;
+               const message = formData.get('message') as string;
                
                setIsSubmitting(true);
-               fetch("https://formspree.io/f/xbjnzzop", {
-                 method: "POST",
-                 body: data,
-                 headers: { Accept: "application/json" },
-               }).then(response => {
-                 setIsSubmitting(false);
-                 if (response.ok) {
-                    setSubmitted(true);
-                 } else {
-                    alert("Oops! There was a problem submitting your inquiry.");
-                 }
-               });
+               
+               fetch('/api/inquiry', {
+                 method: 'POST',
+                 headers: { 'Content-Type': 'application/json' },
+                 body: JSON.stringify({ company_name, email, phone, message }),
+               })
+                 .then(response => response.json())
+                 .then(result => {
+                   setIsSubmitting(false);
+                   if (result.success) {
+                     setSubmitted(true);
+                   } else {
+                     alert(`Error: ${result.error || 'Failed to submit inquiry'}`);
+                   }
+                 })
+                 .catch(error => {
+                   setIsSubmitting(false);
+                   console.error('Submission error:', error);
+                   alert('Oops! There was a problem submitting your inquiry.');
+                 });
              }} className="space-y-6 py-4">
-              <Input type="hidden" name="sponsorship_tier" value={selectedTier?.name} />
-              <Input type="hidden" name="price" value={`$${selectedTier?.price.toLocaleString()}`} />
-              
               <div className="space-y-2">
                 <Label htmlFor="name" className="text-zinc-300 font-semibold text-xs tracking-wider uppercase">Company / Individual Name</Label>
                 <Input id="name" name="name" required className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-md bg-zinc-900/50 text-white p-6 text-base" />
