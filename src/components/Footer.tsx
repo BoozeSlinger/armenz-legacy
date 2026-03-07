@@ -3,11 +3,10 @@ import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="bg-black/40 backdrop-blur-xl text-[#F5F0E8] py-16 border-t border-zinc-900 relative z-20">
-      <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
-        <div className="space-y-4 md:col-span-2">
-          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
-          <Link href="/" className="inline-block relative w-24 h-24 opacity-90 hover:opacity-100 transition-opacity">
+    <footer className="bg-[#0a0a0a] text-[#F5F0E8] py-10 lg:py-12 relative z-20">
+      <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        <div className="lg:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
+          <Link href="/" className="inline-block relative w-24 h-24 mb-4 opacity-90 hover:opacity-100 transition-opacity">
             <Image 
               src="/images/hero/logo.png" 
               alt="Armen Z Legacy Logo" 
@@ -15,37 +14,43 @@ export function Footer() {
               className="object-contain drop-shadow-sm"
             />
           </Link>
-            <h3 className="font-serif text-2xl text-[#C9A84C]">Armen Z Legacy</h3>
-          </div>
-          <p className="text-sm opacity-80 leading-relaxed max-w-sm">
+          <h3 className="font-serif text-lg font-bold text-[#d4af37] mb-4">Armen Z Legacy</h3>
+          <p className="font-sans text-sm text-neutral-400 leading-relaxed max-w-sm">
             Join us on the greens to honor the legacy of Armen Z. All proceeds go towards charitable causes supporting our community. Let&apos;s make an impact together.
           </p>
         </div>
         
-        <div className="space-y-4">
-          <h4 className="font-serif text-lg text-[#C9A84C] uppercase tracking-wider">Quick Links</h4>
-          <ul className="space-y-2 opacity-80 text-sm">
-            <li><Link href="/sponsorships" className="hover:text-[#C9A84C] transition-colors">Sponsorships</Link></li>
-            <li><Link href="/register" className="hover:text-[#C9A84C] transition-colors">Register</Link></li>
-            <li><Link href="/venue" className="hover:text-[#C9A84C] transition-colors">Event Venue</Link></li>
-            <li><Link href="/contact" className="hover:text-[#C9A84C] transition-colors">Contact Us</Link></li>
+        <div className="lg:col-span-3 text-center md:text-left">
+          <h4 className="font-serif text-lg font-bold text-[#d4af37] mb-4">Quick Links</h4>
+          <ul className="space-y-3 font-sans text-sm text-neutral-400">
+            <li><Link href="/the-cause" className="hover:text-white transition-colors duration-300">The Cause</Link></li>
+            <li><Link href="/sponsorships" className="hover:text-white transition-colors duration-300">Sponsorships</Link></li>
+            <li><Link href="/tournament" className="hover:text-white transition-colors duration-300">Tournament Details</Link></li>
+            <li><Link href="/register" className="hover:text-white transition-colors duration-300">Register</Link></li>
+            <li><Link href="/donate" className="hover:text-white transition-colors duration-300">Donate</Link></li>
+            <li><Link href="/dinner" className="hover:text-white transition-colors duration-300">Dinner & Auction</Link></li>
+            <li><Link href="/contact" className="hover:text-white transition-colors duration-300">Contact Us</Link></li>
           </ul>
         </div>
 
-        <div className="space-y-4">
-          <h4 className="font-serif text-lg text-[#C9A84C] uppercase tracking-wider">Event Details</h4>
-          <ul className="space-y-2 opacity-80 text-sm">
-            <li><strong>Date:</strong> June 22, 2026</li>
-            <li><strong>Time:</strong> 7:00 AM PST</li>
-            <li><strong>Location:</strong> Morongo Golf Club</li>
-            <li><strong>Address:</strong> 36211 Champion Dr, Beaumont, CA 92223</li>
+        <div className="lg:col-span-4 text-center md:text-left">
+          <h4 className="font-serif text-lg font-bold text-[#d4af37] mb-4">Event Details</h4>
+          <ul className="space-y-3 font-sans text-sm text-neutral-400">
+            <li><strong className="font-bold text-neutral-300">Date:</strong> June 22, 2026</li>
+            <li><strong className="font-bold text-neutral-300">Time:</strong> 8:00 AM PST</li>
+            <li><strong className="font-bold text-neutral-300">Location:</strong> Morongo Golf Club</li>
+            <li><strong className="font-bold text-neutral-300">Address:</strong> 36211 Champion Dr, <br/>Beaumont, CA 92223</li>
           </ul>
         </div>
       </div>
       
-      <div className="container mx-auto px-4 md:px-8 mt-16 pt-8 border-t border-zinc-900 text-center text-xs opacity-50 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p>&copy; {new Date().getFullYear()} Armen Z Legacy. All rights reserved.</p>
-        <p>A charity golf tournament.</p>
+      <div className="container mx-auto px-4 md:px-8 mt-12 pt-6 border-t border-white/10">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-500 font-sans">
+          <p>&copy; 2026 Armen Z Legacy. A charity golf tournament.</p>
+          <p>
+            Website crafted by <a href="https://lastcall.marketing" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-[#d4af37] transition-colors duration-300">Last Call Marketing</a>
+          </p>
+        </div>
       </div>
     </footer>
   );

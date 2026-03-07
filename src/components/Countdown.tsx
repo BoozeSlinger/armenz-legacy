@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const EVENT_DATE = new Date("2026-06-22T07:00:00-07:00"); // June 22, 2026 7AM PST
+const EVENT_DATE = new Date("2026-06-22T08:00:00-07:00"); // June 22, 2026 8AM PST
 
 export function Countdown() {
   const [timeLeft, setTimeLeft] = useState({
@@ -56,7 +56,7 @@ export function Countdown() {
 function TimeUnit({ value, label }: { value: number; label: string }) {
   return (
     <div className="flex flex-col items-center min-w-[44px] sm:min-w-[50px]">
-      <div className="bg-[#0A0A0A]/60 backdrop-blur-sm border border-[#C9A84C]/20 text-[#F5F0E8] font-serif text-xl sm:text-2xl font-bold py-2 px-3 rounded-md shadow-[0_4px_10px_rgba(0,0,0,0.4)] w-full">
+      <div className="bg-[#0A0A0A]/60 backdrop-blur-sm border border-[#C9A84C]/20 text-[#F5F0E8] font-serif italic text-xl sm:text-2xl font-bold py-2 px-3 rounded-md shadow-[0_4px_10px_rgba(0,0,0,0.4)] w-full">
         {value.toString().padStart(2, '0')}
       </div>
       <span className="text-[9px] sm:text-[10px] uppercase tracking-wider mt-2 opacity-80 text-[#F5F0E8] font-semibold">

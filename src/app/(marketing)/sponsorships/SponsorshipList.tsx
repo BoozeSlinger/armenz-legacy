@@ -97,12 +97,14 @@ const tiers: SponsorshipTier[] = [
   },
 ];
 
-export function SponsorshipList() {
+export function SponsorshipList({ limit }: { limit?: number }) {
   const [selectedTier, setSelectedTier] = useState<SponsorshipTier | null>(
     null,
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  const displayTiers = limit ? tiers.slice(0, limit) : tiers;
 
   const handleClaim = (tier: SponsorshipTier) => {
     setSelectedTier(tier);
@@ -112,14 +114,14 @@ export function SponsorshipList() {
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {tiers.map((tier) => (
+        {displayTiers.map((tier) => (
           <SponsorshipCard key={tier.id} tier={tier} onClaim={handleClaim} />
         ))}
       </div>
 
       <Dialog
         open={!!selectedTier}
-        onOpenChange={(open) => !open && setSelectedTier(null)}
+        onOpenChange={(open: boolean) => !open && setSelectedTier(null)}
       >
         <DialogContent className="sm:max-w-[500px] bg-[#0A0A0A] border-zinc-800 rounded-xl p-8 backdrop-blur-3xl">
           <DialogHeader className="mb-2">
