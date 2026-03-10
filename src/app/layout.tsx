@@ -16,19 +16,19 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Armen Z Legacy on the Greens | June 22, 2026",
-  description: "Join us for the Armen Z Legacy on the Greens charity golf tournament at Morongo Golf Club at Tukwet Canyon on June 22, 2026.",
+  title: "Legacy on the Greens: The Armen Zennedjian Classic | June 22, 2026",
+  description: "Join us for Legacy on the Greens: The Armen Zennedjian Classic charity golf tournament at Morongo Golf Club at Tukwet Canyon on June 22, 2026.",
   openGraph: {
-    title: "Armen Z Legacy on the Greens",
+    title: "Legacy on the Greens: The Armen Zennedjian Classic",
     description: "Charity golf tournament at Morongo Golf Club at Tukwet Canyon on June 22, 2026.",
     url: "https://armenzlegacy.com",
-    siteName: "Armen Z Legacy",
+    siteName: "Legacy on the Greens: The Armen Zennedjian Classic",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Armen Z Legacy on the Greens",
+    title: "Legacy on the Greens: The Armen Zennedjian Classic",
     description: "Charity golf tournament at Morongo Golf Club on June 22, 2026.",
   }
 };

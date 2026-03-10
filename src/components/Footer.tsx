@@ -45,11 +45,16 @@ export function Footer() {
       </div>
       
       <div className="container mx-auto px-4 md:px-8 mt-12 pt-6 border-t border-white/10">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-500 font-sans">
-          <p>&copy; 2026 Armen Z Legacy. A charity golf tournament.</p>
-          <p>
-            Website crafted by <a href="https://lastcall.marketing" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-[#d4af37] transition-colors duration-300">Last Call Marketing</a>
+        <div className="flex flex-col text-center gap-4 text-xs text-neutral-500 font-sans">
+          <p className="max-w-2xl mx-auto mb-2">
+            Your donation is tax-deductible. This tournament is operated through the <strong className="text-neutral-400">909 Market Foundation</strong>, a 501(c)(3) charitable organization (EIN: 92-0881763).
           </p>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 w-full">
+            <p>&copy; 2026 Armen Z Legacy. A charity golf tournament.</p>
+            <p>
+              Website crafted by <a href="https://lastcall.marketing" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-[#d4af37] transition-colors duration-300">Last Call Marketing</a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

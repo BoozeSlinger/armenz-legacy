@@ -91,7 +91,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
           }}
         >
           <img
-            className="absolute inset-0 w-[120%] h-[120%] object-cover opacity-100 transition-opacity duration-600 ease-in-out"
+            className={`absolute inset-0 w-[120%] h-[120%] object-cover opacity-100 transition-all duration-[10000ms] ease-out ${current === index ? "scale-110" : "scale-100"}`}
             style={{
               opacity: current === index ? 1 : 0.5,
             }}
@@ -102,7 +102,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
             decoding="sync"
           />
           {current === index && (
-            <div className="absolute inset-0 bg-black/30 transition-all duration-1000" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/90 via-[#C9A84C]/20 to-transparent mix-blend-multiply transition-all duration-1000" />
           )}
         </div>
 

@@ -37,13 +37,13 @@ export function CauseSection() {
           className="text-neutral-400 leading-relaxed text-balance max-w-3xl mx-auto mb-16 text-lg md:text-xl font-medium space-y-6"
         >
           <p>
-            The Armen Z Legacy on the Greens honors a life lived with passion, purpose, and an unshakable belief in giving back. More than a golf tournament, this is a gathering of friends, family, and community united around something bigger than the game.
+            This inaugural memorial golf tournament honors the life and passion of Armen Zennedjian, founder of The Derby Room, whose love of horseracing and community brought people together for decades.
           </p>
           <p>
-            Armen believed that second chances change lives — and this year, that belief takes the course. All tournament proceeds directly support the <strong className="text-zinc-200">Permanently Disabled Jockeys Fund</strong> and <strong className="text-zinc-200">CARMA</strong>, providing rehabilitation, retraining, and rehoming for the athletes — both human and equine — who give everything to the sport they love.
+            Presented by the 909 Market Foundation, this event transforms that passion into purpose. Proceeds from the tournament will support the important work of <strong className="text-zinc-200">CARMA</strong>, providing rehabilitation and second careers for retired California-raced Thoroughbred horses, along with the <strong className="text-zinc-200">Permanently Disabled Jockeys Fund</strong>, which supports riders who have suffered career-ending injuries.
           </p>
           <p>
-            Every swing, every putt, and every sponsorship translates to a lifetime of impact. Join us at the beautiful Morongo Golf Club at Tukwet Canyon for a memorable day on the greens, celebrating a legacy that lives on with every round played.
+            Join us for a day of tournament play, on-course experiences, great food and drinks, and a celebration reception at The Derby Room, all while supporting the athletes who make the sport possible.
           </p>
         </motion.div>
 

@@ -39,7 +39,7 @@ export function VenueSection() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-neutral-400 font-sans leading-relaxed text-lg"
               >
-                Nestled in the hills of Beaumont, CA, Morongo Golf Club at Tukwet Canyon is one of Southern California's most celebrated golf destinations — and the proud home of the Southern California PGA.
+                Nestled in the hills of Beaumont, CA, Morongo Golf Club at Tukwet Canyon is one of Southern California's most celebrated golf destinations, and the proud home of the Southern California PGA.
               </motion.p>
               <motion.p 
                 initial={{ y: 20, opacity: 0 }}

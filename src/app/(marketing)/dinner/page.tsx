@@ -4,8 +4,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 export const metadata = {
-  title: "Dinner & Auction Tickets | Armen Z Legacy on the Greens",
-  description: "Join the post-tournament celebration. Dinner, silent auction, raffle, and awards—no golf required.",
+  title: "Dinner & Auction Tickets | Legacy on the Greens: The Armen Zennedjian Classic",
+  description: "Join the post-tournament celebration. Dinner, silent auction, raffle, and awards - no golf required.",
 };
 
 export default function DinnerPage() {
@@ -51,8 +51,8 @@ export default function DinnerPage() {
                 <li className="flex items-start gap-3">
                   <span className="text-[#C9A84C] font-bold mt-0.5">&#10003;</span>
                   <div>
-                    <p className="text-[#F5F0E8] font-bold">Catered Lunch</p>
-                    <p className="text-sm text-zinc-500">Full-service meal at the clubhouse banquet</p>
+                    <p className="text-[#F5F0E8] font-bold">Catered Dinner</p>
+                    <p className="text-sm text-zinc-500">Full-service dinner at the clubhouse banquet</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -108,7 +108,7 @@ export default function DinnerPage() {
                 </p>
                 <div className="text-center">
                   <p className="text-[#C9A84C] font-bold text-sm uppercase tracking-wider">
-                    Starts at 1:30 PM
+                    Immediately Following Play (~4:00 PM)
                   </p>
                   <p className="text-zinc-500 text-xs mt-1">
                     At the Morongo Golf Club Clubhouse

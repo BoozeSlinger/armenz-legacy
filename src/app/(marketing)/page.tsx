@@ -41,11 +41,51 @@ export default function Home() {
 
       <PricingCards />
 
-      {/* Sponsorships Section */}
+      {/* Sponsors Section */}
+      <section id="sponsors" className="py-24 md:py-32 relative z-10 bg-black/40 backdrop-blur-md border-t border-[#C9A84C]/10">
+        <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold italic text-[#F5F0E8] mb-6 drop-shadow-md">Our Generous Sponsors</h2>
+            <p className="text-lg md:text-xl font-medium leading-relaxed opacity-90 drop-shadow-sm text-[#C9A84C]">
+              We are incredibly grateful for the support of our partners who make this legacy possible.
+            </p>
+          </div>
+          
+          {/* Triple Crown Sponsor */}
+          <div className="flex justify-center mb-16">
+             <div className="bg-zinc-900/60 backdrop-blur-xl border border-[#C9A84C]/40 p-8 md:p-12 shadow-[0_0_40px_rgba(201,168,76,0.15)] relative w-full max-w-2xl text-center group hover:bg-[#C9A84C]/5 transition-all duration-500">
+              <div className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-[#C9A84C]" />
+              <div className="absolute -top-1 -right-1 w-8 h-8 border-t-2 border-r-2 border-[#C9A84C]" />
+              <div className="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-[#C9A84C]" />
+              <div className="absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 border-[#C9A84C]" />
+              
+              <p className="text-[#C9A84C] text-sm uppercase tracking-widest font-black mb-6 flex items-center justify-center gap-3">
+                <span className="w-12 h-px bg-[#C9A84C]/50" />
+                Triple Crown Sponsor
+                <span className="w-12 h-px bg-[#C9A84C]/50" />
+              </p>
+              
+              <a href="#" target="_blank" rel="noopener noreferrer" className="block relative h-32 md:h-40 w-full mb-4 md:grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+                <div className="absolute inset-0 flex items-center justify-center p-4">
+                  <img 
+                    src="/images/Morongo-Band-Of-Mission-Indians-Logo-e1665498562475.png" 
+                    alt="Morongo Band of Mission Indians Logo" 
+                    className="max-w-full max-h-full object-contain drop-shadow-lg"
+                  />
+                </div>
+              </a>
+              
+              <h3 className="text-2xl font-serif font-bold text-[#F5F0E8]">Morongo Band of Mission Indians</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sponsorship Opportunities Section */}
       <section id="sponsorships" className="py-24 md:py-32 relative z-10">
         <div className="container mx-auto px-4 md:px-8 max-w-7xl">
           <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold italic text-[#F5F0E8] mb-6 drop-shadow-md">Featured Sponsorships</h2>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold italic text-[#F5F0E8] mb-6 drop-shadow-md">Become A Sponsor</h2>
             <p className="text-lg md:text-xl font-medium leading-relaxed opacity-90 drop-shadow-sm text-[#C9A84C]">
               Partner with us to honor a legacy and make a direct impact in our community.
             </p>
@@ -94,8 +134,8 @@ export default function Home() {
                   <li className="flex gap-6">
                     <span className="text-[#d4af37] font-bold text-lg tabular-nums whitespace-nowrap pt-1">08:00 AM</span>
                     <div className="space-y-1">
-                      <p className="text-[#F5F0E8] font-bold uppercase tracking-wide text-xl">Registration & VIP Breakfast</p>
-                      <p className="text-zinc-500 text-sm text-pretty italic">Fuel up and get checked in for the day ahead.</p>
+                      <p className="text-[#F5F0E8] font-bold uppercase tracking-wide text-xl">Registration & Breakfast</p>
+                      <p className="text-zinc-500 text-sm text-pretty italic">Complimentary breakfast provided by The Derby Room.</p>
                     </div>
                   </li>
                   <li className="flex gap-6">
@@ -106,9 +146,16 @@ export default function Home() {
                     </div>
                   </li>
                   <li className="flex gap-6">
-                    <span className="text-[#d4af37] font-bold text-lg tabular-nums whitespace-nowrap pt-1">03:00 PM</span>
+                    <span className="text-[#d4af37] font-bold text-lg tabular-nums whitespace-nowrap pt-1">04:00 PM</span>
                     <div className="space-y-1">
-                      <p className="text-[#F5F0E8] font-bold uppercase tracking-wide text-xl">Dinner, Auctions & Awards</p>
+                      <p className="text-[#F5F0E8] font-bold uppercase tracking-wide text-xl">Play Concludes</p>
+                      <p className="text-zinc-500 text-sm text-pretty italic">Foursomes finish up and head to the clubhouse.</p>
+                    </div>
+                  </li>
+                  <li className="flex gap-6">
+                    <span className="text-[#d4af37] font-bold text-lg tabular-nums whitespace-nowrap pt-1 text-sm">Following</span>
+                    <div className="space-y-1">
+                      <p className="text-[#F5F0E8] font-bold uppercase tracking-wide text-xl">Dinner, Auction & Awards</p>
                       <p className="text-zinc-500 text-sm text-pretty italic">Celebration, charity auction, and winner recognition.</p>
                     </div>
                   </li>

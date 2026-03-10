@@ -126,7 +126,7 @@ export function RegisterForm() {
         {/* Legal Waiver Mock */}
         <div className="space-y-2 bg-[#111] p-4 border border-[#C9A84C]/20 text-sm overflow-y-auto max-h-32 text-zinc-400">
           <p className="font-bold mb-2 text-zinc-300">Liability Waiver</p>
-          <p className="leading-relaxed mb-4">By completing this registration, I acknowledge that participation in the Armen Z Legacy on the Greens golf tournament involves inherent risks. I hereby release and hold harmless the tournament organizers, Morongo Golf Club at Tukwet Canyon, and all sponsors from any liabilities or claims arising from my participation in this event.</p>
+          <p className="leading-relaxed mb-4">By completing this registration, I acknowledge that participation in the Legacy on the Greens: The Armen Zennedjian Classic golf tournament involves inherent risks. I hereby release and hold harmless the tournament organizers, Morongo Golf Club at Tukwet Canyon, and all sponsors from any liabilities or claims arising from my participation in this event.</p>
         </div>
 
         <div className="flex items-center gap-3">
@@ -137,6 +137,9 @@ export function RegisterForm() {
         <Button type="submit" disabled={isProcessing} size="lg" className="w-full bg-[#C9A84C] text-[#0A0A0A] hover:bg-[#F5F0E8] font-bold py-6 text-xl rounded-none transition-colors duration-200 mt-8 shadow-[0_0_20px_rgba(201,168,76,0.3)]">
           {isProcessing ? "Processing..." : `Proceed to Payment ($${price})`}
         </Button>
+        <p className="text-zinc-500 text-xs text-center mt-4 pt-4 border-t border-zinc-800/50">
+          Your donation is tax-deductible. This tournament is operated through the <strong className="text-zinc-400">909 Market Foundation</strong>, a 501(c)(3) charitable organization (EIN: 92-0881763).
+        </p>
       </form>
     </div>
   );

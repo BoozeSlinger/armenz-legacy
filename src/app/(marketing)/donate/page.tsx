@@ -5,8 +5,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
 export const metadata = {
-  title: "Donate | Armen Z Legacy on the Greens",
-  description: "Support the Armen Z Legacy with a tax-deductible donation. Every dollar counts.",
+  title: "Donate | Legacy on the Greens: The Armen Zennedjian Classic",
+  description: "Support Legacy on the Greens: The Armen Zennedjian Classic with a tax-deductible donation. Every dollar counts.",
 };
 
 const presetAmounts = [
@@ -41,7 +41,7 @@ export default function DonatePage() {
             Make a <span className="text-[#C9A84C] italic">Donation</span>
           </h1>
           <p className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            You don&apos;t have to play golf to make a difference. Every contribution—no matter the size—goes directly to supporting retired Thoroughbreds and injured jockeys.
+            You don&apos;t have to play golf to make a difference. Every contribution, no matter the size, goes directly to supporting retired Thoroughbreds and injured jockeys.
           </p>
         </div>
       </section>
@@ -135,7 +135,7 @@ export default function DonatePage() {
                 Submit Donation Inquiry
               </Button>
               <p className="text-zinc-500 text-xs text-center mt-4">
-                Our team will reach out to confirm your donation and provide payment details. All donations are tax-deductible.
+                Our team will reach out to confirm your donation and provide payment details. Your donation is tax deductible - this tournament is run through <strong className="text-zinc-400">909 Market Foundation</strong>, a 501(c)(3) charitable organization. EIN: 92-0881763.
               </p>
             </form>
           </div>

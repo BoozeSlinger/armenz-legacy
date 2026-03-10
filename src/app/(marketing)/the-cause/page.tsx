@@ -1,29 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Carousel } from "@/components/ui/carousel";
+import { ImageAutoSlider } from "@/components/ui/image-auto-slider";
 
 export const metadata = {
-  title: "The Cause | Armen Z Legacy on the Greens",
+  title: "The Cause | Legacy on the Greens: The Armen Zennedjian Classic",
   description: "Learn about Armen Zennedjian's legacy, CARMA, and the Permanently Disabled Jockeys Fund.",
 };
 
-const slideData = [
-  {
-    title: "The Legacy",
-    button: "Read More",
-    src: "/images/armen/Untitled (3).png",
-  },
-  {
-    title: "The Impact",
-    button: "Our Causes",
-    src: "/images/armen/Untitled (4).png",
-  },
-  {
-    title: "The Community",
-    button: "Join Us",
-    src: "/images/armen/Untitled (5).png",
-  },
+const sliderImages = [
+  "/images/armen/IMG_7980.PNG",
+  "/images/armen/IMG_7979.JPG",
+  "/images/armen/screenshot-1.png",
+  "/images/armen/screenshot-2.png",
+  "/images/armen/screenshot-3.png",
 ];
 
 export default function TheCausePage() {
@@ -38,7 +28,7 @@ export default function TheCausePage() {
       </div>
 
       {/* Hero Banner */}
-      <section className="relative pt-36 pb-20 overflow-hidden">
+      <section className="relative pt-36 pb-12 overflow-hidden">
         <div className="container mx-auto px-4 md:px-8 max-w-5xl text-center">
           <div className="inline-flex items-center justify-center space-x-4 mb-8">
             <div className="w-12 h-px bg-[#C9A84C]" />
@@ -52,13 +42,18 @@ export default function TheCausePage() {
             <span className="text-[#C9A84C] italic">Building a Future</span>
           </h1>
           <p className="text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed">
-            The Armen Z Legacy on the Greens was born from love, loss, and a deep commitment to the sport of horse racing and the people and animals who make it possible.
+            This inaugural memorial golf tournament honors the life and passion of Armen Zennedjian, founder of The Derby Room, whose love of horseracing and community brought people together for decades. Presented by the 909 Market Foundation, this event transforms that passion into purpose. Proceeds from the tournament will support the important work of CARMA, providing rehabilitation and second careers for retired California-raced Thoroughbred horses, along with the Permanently Disabled Jockeys Fund (PDJF), which supports riders who have suffered career-ending injuries. Join us for a day of tournament play, on-course experiences, great food and drinks, and a celebration reception at The Derby Room, all while supporting the athletes who make the sport possible.
           </p>
         </div>
       </section>
 
+      {/* Image Slider */}
+      <section className="relative z-10 w-full mb-8">
+        <ImageAutoSlider images={sliderImages} />
+      </section>
+
       {/* About Armen Section */}
-      <section className="py-20 relative z-10">
+      <section className="py-12 relative z-10">
         <div className="container mx-auto px-4 md:px-8 max-w-5xl">
           <div className="bg-zinc-900/60 backdrop-blur-xl border border-[#C9A84C]/20 p-8 md:p-12 lg:p-16 shadow-2xl relative mb-16">
             <div className="absolute -top-1 -left-1 w-10 h-10 border-t-2 border-l-2 border-[#C9A84C]" />
@@ -67,7 +62,7 @@ export default function TheCausePage() {
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#F5F0E8] mb-8">
               Remembering Armen Zennedjian
             </h2>
-            <div className="space-y-6 text-zinc-300 text-lg leading-relaxed">
+            <div className="space-y-6 text-zinc-300 text-lg leading-relaxed mb-16">
               <p>
                 Armen Zennedjian was a beloved figure in the horse racing community whose passion for the sport was matched only by his generosity and warmth. A dedicated horseman, loyal friend, and tireless advocate for the welfare of both jockeys and Thoroughbreds, Armen left an indelible mark on everyone fortunate enough to know him.
               </p>
@@ -78,16 +73,27 @@ export default function TheCausePage() {
                 This tournament is our way of keeping his spirit alive. Every swing on the course, every dollar raised, and every smile shared among friends carries forward the values Armen championed: community, compassion, and second chances.
               </p>
             </div>
-          </div>
-          
-          <div className="relative overflow-hidden w-full h-[80vmin] md:h-[90vmin] py-10 w-full">
-            <Carousel slides={slideData} />
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8 border-t border-[#C9A84C]/20">
+              <div className="text-center group">
+                <h3 className="text-xl font-serif font-bold text-[#C9A84C] mb-3 group-hover:text-[#F5F0E8] transition-colors">The Legacy</h3>
+                <p className="text-zinc-400 text-sm">Honoring a lifetime of dedication and friendship on and off the track.</p>
+              </div>
+              <div className="text-center group">
+                <h3 className="text-xl font-serif font-bold text-[#C9A84C] mb-3 group-hover:text-[#F5F0E8] transition-colors">The Impact</h3>
+                <p className="text-zinc-400 text-sm">Supporting retired Thoroughbreds and permanently disabled jockeys.</p>
+              </div>
+              <div className="text-center group">
+                <h3 className="text-xl font-serif font-bold text-[#C9A84C] mb-3 group-hover:text-[#F5F0E8] transition-colors">The Community</h3>
+                <p className="text-zinc-400 text-sm">Bringing people together for great golf, food, and a worthy cause.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* The Causes */}
-      <section className="py-20 relative z-10">
+      <section className="py-12 relative z-10">
         <div className="container mx-auto px-4 md:px-8 max-w-5xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#F5F0E8] mb-4">
@@ -149,10 +155,13 @@ export default function TheCausePage() {
             <h3 className="text-2xl font-serif font-bold text-[#F5F0E8] mb-4">
               Your Donation Is Tax-Deductible
             </h3>
-            <p className="text-zinc-300 text-lg leading-relaxed mb-6">
-              Both CARMA and the PDJF are registered 501(c)(3) tax-exempt organizations. All contributions made through the Armen Z Legacy on the Greens are tax-deductible to the fullest extent allowed by law.
+            <p className="text-zinc-300 text-lg leading-relaxed mb-4">
+              Your donation is tax deductible - we are running this tournament through our foundation <strong className="text-[#F5F0E8]">909 Market Foundation</strong>, a 501(c)(3) charitable organization.
             </p>
-            <p className="text-[#C9A84C] font-bold text-sm uppercase tracking-widest mb-8">
+            <p className="text-[#C9A84C] font-bold text-sm uppercase tracking-widest mb-2">
+              EIN: 92-0881763
+            </p>
+            <p className="text-zinc-500 text-sm mb-8">
               Please consult your tax advisor for details regarding your specific situation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

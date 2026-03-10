@@ -3,8 +3,8 @@ import { SponsorshipList } from "./SponsorshipList";
 import Image from "next/image";
 
 export const metadata = {
-  title: "Sponsorships | Armen Z Legacy",
-  description: "Explore opportunities to sponsor the Armen Z Legacy on the Greens charity golf tournament.",
+  title: "Sponsorships | Legacy on the Greens: The Armen Zennedjian Classic",
+  description: "Explore opportunities to sponsor Legacy on the Greens: The Armen Zennedjian Classic charity golf tournament.",
 };
 
 export default function SponsorshipsPage() {

@@ -3,17 +3,17 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-  title: "Tournament Details & FAQ | Armen Z Legacy on the Greens",
-  description: "Everything you need to know about the Armen Z Legacy charity golf tournament. Schedule, format, dress code, rules, and FAQ.",
+  title: "Tournament Details & FAQ | Legacy on the Greens: The Armen Zennedjian Classic",
+  description: "Everything you need to know about Legacy on the Greens: The Armen Zennedjian Classic charity golf tournament. Schedule, format, dress code, rules, and FAQ.",
 };
 
 const schedule = [
   { time: "7:30 AM", event: "Gates Open", desc: "Arrive early to check in and warm up on the driving range." },
-  { time: "8:00 AM", event: "Registration & VIP Breakfast", desc: "Check in, receive your swag bag, and enjoy a complimentary breakfast spread." },
+  { time: "8:00 AM", event: "Registration & Breakfast", desc: "Enjoy complimentary breakfast burritos and Bloody Marys provided by The Derby Room." },
   { time: "9:30 AM", event: "Opening Remarks", desc: "A brief welcome and tribute to the legacy of Armen Zennedjian." },
   { time: "10:00 AM", event: "Shotgun Start", desc: "All teams tee off simultaneously across the course." },
-  { time: "2:30 PM", event: "Play Concludes", desc: "Foursomes finish up and head to the clubhouse." },
-  { time: "3:00 PM", event: "Dinner, Auction & Awards", desc: "Enjoy a catered dinner, silent auction, raffle, and award ceremony." },
+  { time: "4:00 PM", event: "Play Concludes", desc: "Foursomes finish up and head to the clubhouse." },
+  { time: "Immediately Following", event: "Dinner, Auction, & Awards", desc: "Immediately following play." },
 ];
 
 const contests = [
@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     question: "What is the dress code?",
-    answer: "Tukwet Canyon enforces a strict dress code. Collared shirts are required for all players. No denim, cargo shorts, or athletic wear is permitted on the course. Golf-appropriate attire and soft-spike golf shoes are strongly recommended.",
+    answer: "Tukwet Canyon enforces a strict dress code. Collared shirts are required for all players. No denim, cargo shorts, or athletic wear is permitted on the course. Spikeless golf shoes are required.",
   },
   {
     question: "Do I need to bring my own clubs?",
@@ -42,10 +42,10 @@ const faqs = [
   },
   {
     question: "Is breakfast and dinner included?",
-    answer: "Yes! Every registered player receives a complimentary VIP breakfast before the round and a catered dinner during the awards ceremony. Additional beverages will be available on the course.",
+    answer: "Yes! Every registered player receives a complimentary breakfast provided by The Derby Room before the round. Lunch will be served on the course during play, while Dinner is the formal post-tournament meal.",
   },
   {
-    question: "Can I attend the lunch and auction without playing golf?",
+    question: "Can I attend the dinner and auction without playing golf?",
     answer: "Yes! We offer Dinner & Auction tickets for non-golfers who want to join the post-tournament celebration. Visit our Dinner & Auction page for details.",
   },
   {
@@ -54,7 +54,7 @@ const faqs = [
   },
   {
     question: "Are donations tax-deductible?",
-    answer: "Yes. Both CARMA and the Permanently Disabled Jockeys Fund are 501(c)(3) organizations. All contributions are tax-deductible to the fullest extent allowed by law.",
+    answer: "Yes. This tournament is run through 909 Market Foundation, a 501(c)(3) charitable organization (EIN: 92-0881763). All contributions are tax-deductible to the fullest extent allowed by law.",
   },
 ];
 
@@ -135,7 +135,7 @@ export default function TournamentPage() {
                   The Scramble is the most popular and accessible team format in charity golf. All four players tee off, the team picks the best drive, and everyone plays from that spot.
                 </p>
                 <p>
-                  This continues until the ball is holed. It&apos;s fast, it&apos;s fun, and it means every player—regardless of skill level—contributes to their team&apos;s score.
+                  This continues until the ball is holed. It&apos;s fast, it&apos;s fun, and it means every player, regardless of skill level, contributes to their team&apos;s score.
                 </p>
               </div>
             </div>
@@ -169,7 +169,7 @@ export default function TournamentPage() {
                 <p className="text-[#F5F0E8] font-bold">Collared shirts required</p>
                 <p>No denim or cargo shorts</p>
                 <p>No athletic wear</p>
-                <p>Golf-appropriate footwear</p>
+                <p>Spikeless golf shoes required</p>
                 <p className="text-zinc-500 italic text-xs mt-4">Strictly enforced by the clubhouse</p>
               </div>
             </div>
@@ -220,7 +220,7 @@ export default function TournamentPage() {
             Ready to Tee Off?
           </h2>
           <p className="text-zinc-400 text-lg mb-10 max-w-xl mx-auto">
-            Secure your spot in the Armen Z Legacy on the Greens. Every registration supports a cause worth fighting for.
+            Secure your spot in Legacy on the Greens: The Armen Zennedjian Classic. Every registration supports a cause worth fighting for.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="bg-[#C9A84C] text-[#0A0A0A] hover:bg-[#F5F0E8] font-bold px-8 py-6 rounded-none uppercase tracking-widest transition-all duration-300 shadow-[0_10px_30px_-10px_rgba(201,168,76,0.3)]">
