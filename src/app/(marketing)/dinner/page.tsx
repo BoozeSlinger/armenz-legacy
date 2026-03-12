@@ -98,8 +98,8 @@ export default function DinnerPage() {
                 <h3 className="text-2xl font-serif font-bold text-[#F5F0E8] mt-2">
                   Dinner & Auction Ticket
                 </h3>
-                <div className="text-5xl font-bold text-[#F5F0E8] mt-4">$75</div>
-                <p className="text-zinc-500 text-sm mt-2">Per person</p>
+                <div className="text-4xl font-bold text-[#F5F0E8] mt-4">$75 Dinner</div>
+                <p className="text-zinc-500 text-sm mt-2">More TBA</p>
               </div>
 
               <div className="border-t border-zinc-800/50 pt-6">

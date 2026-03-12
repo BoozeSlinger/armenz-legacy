@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 const routes = [
   { href: "/", label: "Home", id: "hero" },
   { href: "/the-cause", label: "The Cause", id: "the-cause" },
-  { href: "/sponsorships", label: "Sponsors", id: "sponsorships" },
+  { href: "/sponsorships", label: "Sponsorships", id: "sponsorships" },
   { href: "/tournament", label: "Tournament", id: "tournament" },
   { href: "/register", label: "Register", id: "register" },
   { href: "/donate", label: "Donate", id: "donate" },

@@ -16,7 +16,7 @@ export function Footer() {
           </Link>
           <h3 className="font-serif text-lg font-bold text-[#d4af37] mb-4">Armen Z Legacy</h3>
           <p className="font-sans text-sm text-neutral-400 leading-relaxed max-w-sm">
-            Join us on the greens to honor the legacy of Armen Z. All proceeds go towards charitable causes supporting our community. Let&apos;s make an impact together.
+            Join us on the greens to honor the legacy of Armen Z. All proceeds benefit CARMA and the Permanently Disabled Jockeys Fund. Let&apos;s make an impact together.
           </p>
         </div>
         

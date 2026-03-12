@@ -64,7 +64,7 @@ export function SponsorshipCard({ tier, onClaim }: { tier: SponsorshipTier; onCl
               : "bg-zinc-800 text-zinc-100 hover:bg-[#C9A84C] hover:text-[#0A0A0A]"
           }`}
         >
-          Claim Now
+          Secure Your Spot
         </Button>
       </CardFooter>
     </Card>

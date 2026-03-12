@@ -13,6 +13,8 @@ interface HeroProps {
   showCountdown?: boolean;
   compact?: boolean;
   transparentBg?: boolean;
+  showLogo?: boolean;
+  showButtons?: boolean;
 }
 
 export function Hero({ 
@@ -22,10 +24,12 @@ export function Hero({
       <span className="block text-[#F5F0E8] leading-tight">Driving for a Cause</span>
     </>
   ), 
-  subtitle = "Join us for the inaugural Armen Zennedjian Classic—where passion for the track meets purpose on the greens.",
+  subtitle = "Join us June 22nd to honor Armen's legacy and give back to the athletes — human and equine — who give everything to the sport.",
   showCountdown = true,
   compact = false,
-  transparentBg = false
+  transparentBg = false,
+  showLogo = true,
+  showButtons = true
 }: HeroProps) {
   return (
     <section className={cn(
@@ -52,21 +56,23 @@ export function Hero({
       <div className={cn("container relative px-4 md:px-8 flex flex-col items-center text-center", compact ? "mt-0" : "mt-2")}>
         
         {/* Enormously enlarged logo with transparent PNG */}
-        <motion.div 
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          whileHover={{ scale: 1.05, rotate: -1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-72 h-72 sm:w-96 sm:h-96 md:w-md md:h-112 relative mb-2 drop-shadow-2xl"
-        >
-          <Image 
-            src="/images/hero/logo.png" 
-            alt="Armen Z Legacy Logo" 
-            fill
-            className="object-contain"
-            priority
-          />
-        </motion.div>
+        {showLogo && (
+          <motion.div 
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            whileHover={{ scale: 1.05, rotate: -1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="w-72 h-72 sm:w-96 sm:h-96 md:w-md md:h-112 relative mb-2 drop-shadow-2xl"
+          >
+            <Image 
+              src="/images/hero/logo.png" 
+              alt="Armen Z Legacy Logo" 
+              fill
+              className="object-contain"
+              priority
+            />
+          </motion.div>
+        )}
 
         <motion.h1 
           initial={{ y: 20, opacity: 0 }}
@@ -97,23 +103,25 @@ export function Hero({
           </motion.div>
         )}
         
-        <motion.div 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-8 w-full max-w-sm mx-auto sm:max-w-none justify-center"
-        >
-          <Button asChild size="lg" className="group relative overflow-hidden bg-[#C9A84C] text-[#0A0A0A] hover:bg-[#F5F0E8] font-bold px-8 py-6 rounded-none shadow-[0_4px_20px_0_rgba(201,168,76,0.3)] hover:shadow-[0_8px_30px_rgba(201,168,76,0.4)] transition-all duration-300">
-            <Link href="/register">
-              <span className="relative z-10 tracking-wide text-sm sm:text-base uppercase">Secure Your Spot</span>
-            </Link>
-          </Button>
-          <Button asChild size="lg" variant="outline" className="group relative border-2 border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#0A0A0A] font-bold px-8 py-6 rounded-none bg-transparent backdrop-blur-sm transition-all duration-300">
-            <Link href="/sponsorships">
-              <span className="relative z-10 tracking-wide text-sm sm:text-base uppercase">Sponsor Now</span>
-            </Link>
-          </Button>
-        </motion.div>
+        {showButtons && (
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-8 w-full max-w-sm mx-auto sm:max-w-none justify-center"
+          >
+            <Button asChild size="lg" className="group relative overflow-hidden bg-[#C9A84C] text-[#0A0A0A] hover:bg-[#F5F0E8] font-bold px-8 py-6 rounded-none shadow-[0_4px_20px_0_rgba(201,168,76,0.3)] hover:shadow-[0_8px_30px_rgba(201,168,76,0.4)] transition-all duration-300">
+              <Link href="/register">
+                <span className="relative z-10 tracking-wide text-sm sm:text-base uppercase">Secure Your Spot</span>
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="group relative border-2 border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#0A0A0A] font-bold px-8 py-6 rounded-none bg-transparent backdrop-blur-sm transition-all duration-300">
+              <Link href="/sponsorships">
+                <span className="relative z-10 tracking-wide text-sm sm:text-base uppercase">Sponsor Now</span>
+              </Link>
+            </Button>
+          </motion.div>
+        )}
       </div>
     </section>
   );

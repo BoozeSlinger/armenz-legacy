@@ -29,9 +29,11 @@ const tiers: SponsorshipTier[] = [
     isPremium: true,
     image: "/images/sponsors/diamond.png",
     benefits: [
-      "4 Foursomes",
-      "VIP Diamond Room booth",
-      "Premier logo placement",
+      "4 full foursomes (16 player entries)",
+      "Exclusive VIP Diamond Room booth with branded activation space",
+      "Premier logo placement on all event materials, shirts, and course signage",
+      "Named recognition in all press and social media coverage",
+      "Personal acknowledgment from the podium during awards dinner",
     ],
   },
   {
@@ -40,7 +42,12 @@ const tiers: SponsorshipTier[] = [
     price: 7500,
     isPremium: true,
     image: "/images/sponsors/gold.png",
-    benefits: ["3 Foursomes", "Premium booth + materials"],
+    benefits: [
+      "3 full foursomes (12 player entries)",
+      "Premium booth and activation space on the course",
+      "Prominent logo placement on event materials and signage",
+      "Social media recognition to our 10,000+ followers",
+    ],
   },
   {
     id: "silver",
@@ -48,7 +55,11 @@ const tiers: SponsorshipTier[] = [
     price: 5000,
     isPremium: true,
     image: "/images/sponsors/silver.png",
-    benefits: ["2 Foursomes", "Booth + logo placement"],
+    benefits: [
+      "2 full foursomes (8 player entries)",
+      "Standard booth space on the course",
+      "Logo placement on selected event materials and signage",
+    ],
   },
   {
     id: "bronze",
@@ -56,7 +67,11 @@ const tiers: SponsorshipTier[] = [
     price: 2500,
     isPremium: true,
     image: "/images/sponsors/bronze.png",
-    benefits: ["1 Foursome", "Booth + logo"],
+    benefits: [
+      "1 full foursome (4 player entries)",
+      "Designated booth space on the course",
+      "Logo placement in the event program",
+    ],
   },
   {
     id: "shirt",
@@ -64,7 +79,11 @@ const tiers: SponsorshipTier[] = [
     price: 3500,
     isPremium: true,
     image: "/images/sponsors/shirt.png",
-    benefits: ["Logo on ALL player shirts", "Premium brand visibility"],
+    benefits: [
+      "Logo prominently featured on ALL player shirts",
+      "Premium brand visibility throughout the entire event",
+      "Logo in the event program and digital materials",
+    ],
   },
   {
     id: "hat",
@@ -72,35 +91,55 @@ const tiers: SponsorshipTier[] = [
     price: 3500,
     isPremium: true,
     image: "/images/sponsors/hat.png",
-    benefits: ["Logo on ALL player hats", "Premium brand visibility"],
+    benefits: [
+      "Logo prominently featured on ALL player hats",
+      "Premium brand visibility throughout the entire event",
+      "Logo in the event program and digital materials",
+    ],
   },
   {
     id: "ball",
     name: "Golf Ball Sponsor",
     price: 2500,
     image: "/images/sponsors/ball.png",
-    benefits: ["Logo on ALL golf balls", "Given to every player"],
+    benefits: [
+      "Logo custom-printed on ALL tournament golf balls",
+      "Premium sleeve given to every single player",
+      "Listing in the event program",
+    ],
   },
   {
     id: "towel",
     name: "Towel Sponsor",
     price: 2500,
     image: "/images/sponsors/towel.png",
-    benefits: ["Logo on ALL towels", "Given to every player"],
+    benefits: [
+      "Logo custom-embroidered on ALL tournament towels",
+      "Premium towel given to every single player",
+      "Listing in the event program",
+    ],
   },
   {
     id: "hole",
     name: "Hole Sponsor",
     price: 500,
     image: "/images/sponsors/hole.png",
-    benefits: ["Promo booth", "VIP breakfast"],
+    benefits: [
+      "Branded signage at a designated hole on the course",
+      "VIP breakfast for your representative",
+      "Logo in the event program and digital materials",
+    ],
   },
   {
     id: "tee",
     name: "Tee Sponsor",
     price: 300,
     image: "/images/sponsors/tee.png",
-    benefits: ["Tee sign", "VIP breakfast"],
+    benefits: [
+      "Branded signage at a designated tee box",
+      "VIP breakfast for your representative",
+      "Listing in the event program",
+    ],
   },
 ];
 

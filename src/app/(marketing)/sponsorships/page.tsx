@@ -25,11 +25,13 @@ export default function SponsorshipsPage() {
 
       <div className="relative z-10 flex flex-col">
         <Hero 
-          title="SPONSORSHIP OPPORTUNITIES" 
+          title={<span className="text-[#F5F0E8] drop-shadow-[0_4px_4px_rgba(0,0,0,1)]">SPONSORSHIP OPPORTUNITIES</span>} 
           subtitle="Partner with us to honor a legacy and make a direct impact in our community. Explore our 10 unique sponsorship tiers below."
           showCountdown={false} 
           transparentBg={true}
           compact={true}
+          showLogo={false}
+          showButtons={false}
         />
         <section className="py-24 text-zinc-300">
           <div className="container mx-auto px-4 md:px-8 max-w-7xl">
