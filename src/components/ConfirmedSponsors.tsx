@@ -16,7 +16,7 @@ const confirmedSponsors: Sponsor[] = [
     name: "Morongo Band of Mission Indians",
     tier: "Triple Crown",
     url: "https://www.morongonation.org",
-    logo: "/images/morongologo.png",
+    logo: "/images/Morongologo.png",
   },
 ];
 
