@@ -68,7 +68,7 @@ export default function Home() {
               <a href="#" target="_blank" rel="noopener noreferrer" className="block relative h-32 md:h-40 w-full mb-4 md:grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
                 <div className="absolute inset-0 flex items-center justify-center p-4">
                   <img 
-                    src="/images/Morongo-Band-Of-Mission-Indians-Logo-e1665498562475.png" 
+                    src="/images/morongologo.png" 
                     alt="Morongo Band of Mission Indians Logo" 
                     className="max-w-full max-h-full object-contain drop-shadow-lg"
                   />

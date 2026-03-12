@@ -93,7 +93,7 @@ export function VenueSection() {
               className="relative w-full h-[300px] sm:h-[400px] overflow-hidden rounded-2xl border border-white/5 shadow-2xl group"
             >
               <Image
-                src="/images/venue/tukwet-logo.png"
+                src="/images/Tukwet.jpg"
                 alt="Tukwet Canyon"
                 fill
                 className="object-cover transition-all duration-700 group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(212,175,55,0.3)] bg-zinc-900"

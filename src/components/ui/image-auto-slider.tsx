@@ -57,13 +57,13 @@ export const ImageAutoSlider = ({ images }: { images: string[] }) => {
               {duplicatedImages.map((image, index) => (
                 <div
                   key={index}
-                  className="image-item flex-shrink-0 w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-xl overflow-hidden shadow-2xl border border-[#C9A84C]/20"
+                  className="image-item flex-shrink-0 w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-xl overflow-hidden shadow-2xl border border-[#C9A84C]/20 flex items-center justify-center bg-zinc-900/50"
                 >
                   <img
                     src={image}
                     alt={`Gallery image ${index}`}
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}

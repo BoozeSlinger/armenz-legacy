@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 interface HeroProps {
-  title?: string;
+  title?: React.ReactNode;
   subtitle?: string;
   showCountdown?: boolean;
   compact?: boolean;
@@ -16,8 +16,13 @@ interface HeroProps {
 }
 
 export function Hero({ 
-  title = "SAVE THE DATE!", 
-  subtitle = "JUNE 22, 2026\nMorongo Golf Club at Tukwet Canyon\nBeaumont, CA",
+  title = (
+    <>
+      <span className="block text-[#C9A84C] mb-2 leading-tight">Honoring a Legacy</span>
+      <span className="block text-[#F5F0E8] leading-tight">Driving for a Cause</span>
+    </>
+  ), 
+  subtitle = "Join us for the inaugural Armen Zennedjian Classic—where passion for the track meets purpose on the greens.",
   showCountdown = true,
   compact = false,
   transparentBg = false
@@ -67,7 +72,7 @@ export function Hero({
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-2xl sm:text-4xl md:text-5xl font-serif font-bold text-[#F5F0E8] tracking-widest mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] max-w-4xl"
+          className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold italic tracking-[0.15em] mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] max-w-4xl"
         >
           {title}
         </motion.h1>
@@ -100,7 +105,7 @@ export function Hero({
         >
           <Button asChild size="lg" className="group relative overflow-hidden bg-[#C9A84C] text-[#0A0A0A] hover:bg-[#F5F0E8] font-bold px-8 py-6 rounded-none shadow-[0_4px_20px_0_rgba(201,168,76,0.3)] hover:shadow-[0_8px_30px_rgba(201,168,76,0.4)] transition-all duration-300">
             <Link href="/register">
-              <span className="relative z-10 tracking-wide text-sm sm:text-base uppercase">Register Now</span>
+              <span className="relative z-10 tracking-wide text-sm sm:text-base uppercase">Secure Your Spot</span>
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="group relative border-2 border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#0A0A0A] font-bold px-8 py-6 rounded-none bg-transparent backdrop-blur-sm transition-all duration-300">
