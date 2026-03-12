@@ -30,7 +30,7 @@ export function PricingCards() {
             className="group relative rounded-none overflow-hidden border border-[#C9A84C]/40"
           >
             <div className="relative bg-zinc-800/30 backdrop-blur-xl p-8 flex flex-col h-full transition-all duration-300 group-hover:bg-zinc-800/50">
-              <div className="flex flex-col items-center flex-grow">
+              <div className="flex flex-col items-center grow">
                 <span className="text-[#C9A84C] text-sm uppercase tracking-widest font-bold mb-2">
                 Individual
               </span>
@@ -63,7 +63,7 @@ export function PricingCards() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
             whileHover={{ y: -4 }}
-            className="group relative rounded-none overflow-hidden border-2 border-[#C9A84C] z-10"
+            className="group relative rounded-none border-2 border-[#C9A84C] z-10"
           >
             {/* Most Popular badge */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#C9A84C] text-[#0A0A0A] text-[10px] sm:text-xs font-black px-4 py-1 uppercase tracking-wider z-20 whitespace-nowrap">
@@ -71,7 +71,7 @@ export function PricingCards() {
             </div>
 
             <div className="relative bg-zinc-800/30 backdrop-blur-xl p-8 flex flex-col h-full transition-all duration-300 group-hover:bg-zinc-800/50 shadow-[0_0_40px_rgba(201,168,76,0.08)]">
-              <div className="flex flex-col items-center flex-grow">
+              <div className="flex flex-col items-center grow">
                 <span className="text-[#C9A84C] text-sm uppercase tracking-widest font-bold mb-2">
                 Team
               </span>
@@ -79,7 +79,7 @@ export function PricingCards() {
                 Foursome
               </h3>
                 <div className="text-4xl font-bold text-[#F5F0E8] mb-8">$600</div>
-                <ul className="text-zinc-200 text-sm font-semibold space-y-3 mb-8 text-left w-full flex-grow">
+                <ul className="text-zinc-200 text-sm font-semibold space-y-3 mb-8 text-left w-full grow">
                   <li className="flex items-center gap-3">
                     <span className="text-[#C9A84C] shrink-0">&#10003;</span>
                     <span>Full Foursome Entry (4 Players)</span>
@@ -113,7 +113,7 @@ export function PricingCards() {
             <Link href="/register">
               <span className="relative z-10">Secure Your Spot</span>
               {/* Animated shine sweep */}
-              <span className="absolute inset-0 z-0 animate-shine bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:250%_100%]" />
+              <span className="absolute inset-0 z-0 animate-shine bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-size-[250%_100%]" />
             </Link>
           </Button>
         </motion.div>
