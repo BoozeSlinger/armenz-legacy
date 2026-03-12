@@ -39,7 +39,7 @@ export function VenueSection() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-neutral-400 font-sans leading-relaxed text-lg"
               >
-                Nestled in the hills of Beaumont, CA, Morongo Golf Club at Tukwet Canyon is one of Southern California's most celebrated golf destinations, and the proud home of the Southern California PGA.
+                Nestled in the hills of Beaumont, CA, Morongo Golf Club at Tukwet Canyon is one of Southern California&apos;s most celebrated golf destinations, and the proud home of the Southern California PGA.
               </motion.p>
               <motion.p 
                 initial={{ y: 20, opacity: 0 }}
@@ -48,7 +48,7 @@ export function VenueSection() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-neutral-400 font-sans leading-relaxed text-lg"
               >
-                The 36-hole facility features two championship courses designed by Lee Schmidt and Brian Curley, both stretching over 7,300 yards with stunning mountain views. Whether you're navigating the tight fairways and steep bunkers of The Champions Course or taking on the dramatic elevation changes of The Links-style Legends Course, every hole delivers a memorable round worthy of the day's purpose.
+                The 36-hole facility features two championship courses designed by Lee Schmidt and Brian Curley, both stretching over 7,300 yards with stunning mountain views. Whether you&apos;re navigating the tight fairways and steep bunkers of The Champions Course or taking on the dramatic elevation changes of The Links-style Legends Course, every hole delivers a memorable round worthy of the day&apos;s purpose.
               </motion.p>
             </div>
             

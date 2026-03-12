@@ -9,6 +9,13 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -103,12 +110,14 @@ export function SponsorshipList({ limit }: { limit?: number }) {
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [shirtSize, setShirtSize] = useState("");
 
   const displayTiers = limit ? tiers.slice(0, limit) : tiers;
 
   const handleClaim = (tier: SponsorshipTier) => {
     setSelectedTier(tier);
     setSubmitted(false);
+    setShirtSize("");
   };
 
   return (
@@ -180,6 +189,7 @@ export function SponsorshipList({ limit }: { limit?: number }) {
                     phone,
                     message,
                     sponsorship_tier: selectedTier?.name,
+                    shirt_size: shirtSize || undefined,
                   }),
                 })
                   .then((response) => response.json())
@@ -245,6 +255,27 @@ export function SponsorshipList({ limit }: { limit?: number }) {
                   className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-md bg-zinc-900/50 text-white p-6 text-base"
                 />
               </div>
+
+              <div className="space-y-2">
+                  <Label
+                    htmlFor="shirt_size"
+                    className="text-zinc-300 font-semibold text-xs tracking-wider uppercase"
+                  >
+                    Shirt Size
+                  </Label>
+                  <Select onValueChange={setShirtSize} value={shirtSize} required>
+                    <SelectTrigger className="border-zinc-800 focus:ring-[#C9A84C] focus:ring-offset-0 rounded-md bg-zinc-900/50 text-white p-6 text-base h-auto">
+                      <SelectValue placeholder="Select shirt size" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-zinc-900 border-zinc-800 text-white">
+                      <SelectItem value="S">Small (S)</SelectItem>
+                      <SelectItem value="M">Medium (M)</SelectItem>
+                      <SelectItem value="L">Large (L)</SelectItem>
+                      <SelectItem value="XL">Extra Large (XL)</SelectItem>
+                      <SelectItem value="XXL">2XL</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               <div className="space-y-2">
                 <Label
                   htmlFor="message"
