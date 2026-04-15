@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { EventbriteWidget } from "@/components/EventbriteWidget";
 
 export const metadata = {
   title: "Dinner & Auction Tickets | Legacy on the Greens: The Armen Zennedjian Classic",
@@ -128,45 +127,13 @@ export default function DinnerPage() {
               Reserve Your Seat
             </h2>
             <p className="text-zinc-400 text-center mb-10">
-              Fill out the form below to secure your dinner and auction ticket.
+              Complete your ticket purchase below to secure your dinner and auction seat.
             </p>
 
-            <form action="https://formspree.io/f/xbjnzzop" method="POST" className="space-y-6">
-              <input type="hidden" name="_cc" value="derbyroomcelebrates@gmail.com" />
-              <input type="hidden" name="subject" value="Dinner & Auction Ticket Request: Armen Z Legacy" />
-              <input type="hidden" name="form_type" value="dinner_ticket" />
-              <input type="hidden" name="ticket_price" value="$75" />
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="firstName" className="text-zinc-300 font-bold text-sm">First Name</Label>
-                  <Input id="firstName" name="firstName" required className="border-zinc-800 bg-black/50 text-white focus-visible:ring-[#C9A84C] h-14 rounded-none" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="lastName" className="text-zinc-300 font-bold text-sm">Last Name</Label>
-                  <Input id="lastName" name="lastName" required className="border-zinc-800 bg-black/50 text-white focus-visible:ring-[#C9A84C] h-14 rounded-none" />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-zinc-300 font-bold text-sm">Email Address</Label>
-                <Input id="email" name="email" type="email" required className="border-zinc-800 bg-black/50 text-white focus-visible:ring-[#C9A84C] h-14 rounded-none" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="guests" className="text-zinc-300 font-bold text-sm">Number of Tickets</Label>
-                <Input id="guests" name="guests" type="number" min="1" max="10" defaultValue="1" className="border-zinc-800 bg-black/50 text-white focus-visible:ring-[#C9A84C] h-14 rounded-none" />
-              </div>
-
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full bg-[#C9A84C] text-[#0A0A0A] hover:bg-[#F5F0E8] font-bold py-8 text-lg uppercase tracking-widest rounded-none transition-all duration-300 mt-4 shadow-[0_10px_30px_-10px_rgba(201,168,76,0.3)]"
-              >
-                Reserve My Seat
-              </Button>
-              <p className="text-zinc-500 text-xs text-center mt-4">
-                Our team will confirm your reservation and provide payment details.
-              </p>
-            </form>
+            <EventbriteWidget 
+              eventId="1983383494423"
+              containerId="eventbrite-widget-container-1983383494423-dinner"
+            />
           </div>
         </div>
       </section>

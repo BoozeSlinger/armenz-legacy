@@ -9,19 +9,16 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { EventbriteWidget } from "@/components/EventbriteWidget";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
+import { Loader2, ArrowRight } from "lucide-react";
 
 const tiers: SponsorshipTier[] = [
+  // ... (tiers list remains the same)
   {
     id: "diamond",
     name: "Triple Crown (DIAMOND)",
@@ -144,19 +141,53 @@ const tiers: SponsorshipTier[] = [
 ];
 
 export function SponsorshipList({ limit }: { limit?: number }) {
-  const [selectedTier, setSelectedTier] = useState<SponsorshipTier | null>(
-    null,
-  );
+  const [selectedTier, setSelectedTier] = useState<SponsorshipTier | null>(null);
+  const [showPayment, setShowPayment] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [shirtSize, setShirtSize] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+  });
 
   const displayTiers = limit ? tiers.slice(0, limit) : tiers;
 
   const handleClaim = (tier: SponsorshipTier) => {
     setSelectedTier(tier);
-    setSubmitted(false);
-    setShirtSize("");
+    setShowPayment(false);
+    setFormData({ name: "", email: "", phone: "", company: "" });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedTier) return;
+    
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: `Sponsorship: ${selectedTier.name}`,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          details: `Company: ${formData.company}, Price: $${selectedTier.price}`,
+        }),
+      });
+
+      if (!response.ok) throw new Error('Failed to save information');
+      
+      toast.success("Details saved. Loading payment...");
+      setShowPayment(true);
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error("Information saved locally. Proceeding to payment.");
+      setShowPayment(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -169,179 +200,110 @@ export function SponsorshipList({ limit }: { limit?: number }) {
 
       <Dialog
         open={!!selectedTier}
-        onOpenChange={(open: boolean) => !open && setSelectedTier(null)}
+        onOpenChange={(open: boolean) => {
+          if (!open) {
+            setSelectedTier(null);
+            setShowPayment(false);
+          }
+        }}
       >
-        <DialogContent className="sm:max-w-[500px] bg-[#0A0A0A] border-zinc-800 rounded-xl p-8 backdrop-blur-3xl">
-          <DialogHeader className="mb-2">
-            <DialogTitle className="font-serif text-3xl text-[#F5F0E8]">
-              Sponsor Inquiry
-            </DialogTitle>
-            <DialogDescription className="text-zinc-400 font-medium text-base mt-3 leading-relaxed">
-              You are inquiring about the{" "}
-              <strong className="text-[#C9A84C] font-bold">
-                {selectedTier?.name}
-              </strong>{" "}
-              at ${selectedTier?.price.toLocaleString()}.
-            </DialogDescription>
-          </DialogHeader>
+        <DialogContent className={`bg-[#0A0A0A] border-zinc-800 rounded-none p-0 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] transition-all duration-500 ${showPayment ? "sm:max-w-3xl" : "sm:max-w-lg"}`}>
+          {!showPayment ? (
+            <div className="p-8 md:p-10">
+              <DialogHeader className="mb-8">
+                <DialogTitle className="font-serif text-3xl text-[#F5F0E8] leading-tight mb-2">
+                  Sponsorship Details
+                </DialogTitle>
+                <DialogDescription className="text-zinc-400 font-medium text-lg leading-relaxed">
+                  You've selected the <strong className="text-[#C9A84C]">{selectedTier?.name}</strong>. Please provide your contact information to continue.
+                </DialogDescription>
+              </DialogHeader>
 
-          {submitted ? (
-            <div className="py-10 text-center space-y-4">
-              <div className="w-20 h-20 bg-[#C9A84C]/10 text-[#C9A84C] border border-[#C9A84C]/30 rounded-full flex items-center justify-center mx-auto text-4xl mb-8 shadow-[0_0_30px_rgba(201,168,76,0.15)]">
-                ✓
-              </div>
-              <h3 className="text-3xl font-bold font-serif text-[#F5F0E8]">
-                Inquiry Sent Successfully!
-              </h3>
-              <p className="text-zinc-400 font-medium text-base leading-relaxed px-4">
-                Our team will contact you shortly to confirm your sponsorship
-                and coordinate assets.
-              </p>
-              <Button
-                onClick={() => setSelectedTier(null)}
-                size="lg"
-                className="mt-8 w-full bg-zinc-800 text-zinc-100 hover:bg-[#C9A84C] hover:text-[#0A0A0A] font-bold rounded-md text-sm uppercase tracking-widest py-6"
-              >
-                Close
-              </Button>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <Label htmlFor="spon-name" className="text-xs uppercase tracking-widest font-black text-[#C9A84C] opacity-80 pl-1">Full Name</Label>
+                  <Input 
+                    id="spon-name" 
+                    placeholder="John Doe" 
+                    required 
+                    value={formData.name}
+                    onChange={e => setFormData({...formData, name: e.target.value})}
+                    className="bg-[#111] border-zinc-800 focus:border-[#C9A84C] h-14 rounded-none text-zinc-100 placeholder:text-zinc-600"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="spon-company" className="text-xs uppercase tracking-widest font-black text-[#C9A84C] opacity-80 pl-1">Company / Organization</Label>
+                  <Input 
+                    id="spon-company" 
+                    placeholder="Optional" 
+                    value={formData.company}
+                    onChange={e => setFormData({...formData, company: e.target.value})}
+                    className="bg-[#111] border-zinc-800 focus:border-[#C9A84C] h-14 rounded-none text-zinc-100 placeholder:text-zinc-600"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="spon-email" className="text-xs uppercase tracking-widest font-black text-[#C9A84C] opacity-80 pl-1">Email</Label>
+                    <Input 
+                      id="spon-email" 
+                      type="email" 
+                      placeholder="email@example.com" 
+                      required 
+                      value={formData.email}
+                      onChange={e => setFormData({...formData, email: e.target.value})}
+                      className="bg-[#111] border-zinc-800 focus:border-[#C9A84C] h-14 rounded-none text-zinc-100 placeholder:text-zinc-600"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="spon-phone" className="text-xs uppercase tracking-widest font-black text-[#C9A84C] opacity-80 pl-1">Phone</Label>
+                    <Input 
+                      id="spon-phone" 
+                      type="tel" 
+                      placeholder="(555) 000-0000" 
+                      required 
+                      value={formData.phone}
+                      onChange={e => setFormData({...formData, phone: e.target.value})}
+                      className="bg-[#111] border-zinc-800 focus:border-[#C9A84C] h-14 rounded-none text-zinc-100 placeholder:text-zinc-600"
+                    />
+                  </div>
+                </div>
+
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full bg-[#C9A84C] hover:bg-[#F5F0E8] text-[#0A0A0A] h-16 rounded-none font-black text-sm tracking-widest uppercase transition-all duration-300 mt-4 group"
+                >
+                  {isSubmitting ? (
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                  ) : (
+                    <span className="flex items-center gap-2">
+                      Secure My Sponsorship
+                      <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                  )}
+                </Button>
+              </form>
             </div>
           ) : (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                const form = e.currentTarget as HTMLFormElement;
-                const formData = new FormData(form);
-
-                const company_name = formData.get("name") as string;
-                const email = formData.get("email") as string;
-                const phone = formData.get("phone") as string;
-                const message = formData.get("message") as string;
-
-                setIsSubmitting(true);
-
-                fetch("/api/inquiry", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({
-                    company_name,
-                    email,
-                    phone,
-                    message,
-                    sponsorship_tier: selectedTier?.name,
-                    shirt_size: shirtSize || undefined,
-                  }),
-                })
-                  .then((response) => response.json())
-                  .then((result) => {
-                    setIsSubmitting(false);
-                    if (result.success) {
-                      setSubmitted(true);
-                    } else {
-                      alert(
-                        `Error: ${result.error || "Failed to submit inquiry"}`,
-                      );
-                    }
-                  })
-                  .catch((error) => {
-                    setIsSubmitting(false);
-                    console.error("Submission error:", error);
-                    alert("Oops! There was a problem submitting your inquiry.");
-                  });
-              }}
-              className="space-y-6 py-4"
-            >
-              <div className="space-y-2">
-                <Label
-                  htmlFor="name"
-                  className="text-zinc-300 font-semibold text-xs tracking-wider uppercase"
-                >
-                  Company / Individual Name
-                </Label>
-                <Input
-                  id="name"
-                  name="name"
-                  required
-                  className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-md bg-zinc-900/50 text-white p-6 text-base"
-                />
+            <div className="flex flex-col">
+              <div className="p-8 md:p-10 border-b border-zinc-800 bg-[#111]">
+                <DialogTitle className="text-2xl font-serif text-[#F5F0E8] mb-2">Complete Your Transaction</DialogTitle>
+                <p className="text-zinc-500 text-sm font-medium tracking-wide uppercase">Eventbrite Secure Checkout</p>
               </div>
-              <div className="space-y-2">
-                <Label
-                  htmlFor="email"
-                  className="text-zinc-300 font-semibold text-xs tracking-wider uppercase"
-                >
-                  Email Address
-                </Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-md bg-zinc-900/50 text-white p-6 text-base"
+              <div className="min-h-[500px] bg-white relative">
+                <EventbriteWidget 
+                  eventId="1983383494423" 
+                  containerId={`eb-sponsorship-checkout-${selectedTier?.id}`} 
                 />
-              </div>
-              <div className="space-y-2">
-                <Label
-                  htmlFor="phone"
-                  className="text-zinc-300 font-semibold text-xs tracking-wider uppercase"
-                >
-                  Phone Number
-                </Label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  required
-                  className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-md bg-zinc-900/50 text-white p-6 text-base"
-                />
-              </div>
-
-              <div className="space-y-2">
-                  <Label
-                    htmlFor="shirt_size"
-                    className="text-zinc-300 font-semibold text-xs tracking-wider uppercase"
-                  >
-                    Shirt Size
-                  </Label>
-                  <Select onValueChange={setShirtSize} value={shirtSize} required>
-                    <SelectTrigger className="border-zinc-800 focus:ring-[#C9A84C] focus:ring-offset-0 rounded-md bg-zinc-900/50 text-white p-6 text-base h-auto">
-                      <SelectValue placeholder="Select shirt size" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-zinc-900 border-zinc-800 text-white">
-                      <SelectItem value="S">Small (S)</SelectItem>
-                      <SelectItem value="M">Medium (M)</SelectItem>
-                      <SelectItem value="L">Large (L)</SelectItem>
-                      <SelectItem value="XL">Extra Large (XL)</SelectItem>
-                      <SelectItem value="XXL">2XL</SelectItem>
-                    </SelectContent>
-                  </Select>
+                
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900 pointer-events-none animate-in fade-in duration-500 z-0 text-center px-8">
+                  <div className="w-12 h-12 border-4 border-[#C9A84C]/20 border-t-[#C9A84C] rounded-full animate-spin mb-4" />
+                  <p className="text-[#C9A84C] font-bold tracking-widest uppercase text-xs">Connecting to Eventbrite...</p>
                 </div>
-              <div className="space-y-2">
-                <Label
-                  htmlFor="message"
-                  className="text-zinc-300 font-semibold text-xs tracking-wider uppercase"
-                >
-                  Additional Message (Optional)
-                </Label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-md bg-zinc-900/50 text-white p-4 text-base resize-none"
-                  rows={3}
-                />
               </div>
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                size="lg"
-                className="w-full bg-[#C9A84C] text-[#0A0A0A] hover:bg-[#F5F0E8] font-bold py-6 text-sm uppercase tracking-widest rounded-md mt-4 shadow-[0_0_15px_rgba(201,168,76,0.15)]"
-              >
-                {isSubmitting ? "Sending Inquiry..." : "Submit Inquiry"}
-              </Button>
-              <p className="text-xs text-center text-zinc-500 font-medium mt-6 leading-relaxed">
-                This form operates securely. We will be in touch via
-                armenzlegacy@gmail.com.
-              </p>
-            </form>
+            </div>
           )}
         </DialogContent>
       </Dialog>

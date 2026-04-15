@@ -1,20 +1,9 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { EventbriteWidget } from "@/components/EventbriteWidget";
 
 export const metadata = {
   title: "Donate | Legacy on the Greens: The Armen Zennedjian Classic",
   description: "Support Legacy on the Greens: The Armen Zennedjian Classic with a tax-deductible donation. Every dollar counts.",
 };
-
-const presetAmounts = [
-  { value: "50", label: "$50", description: "Friend of the Cause" },
-  { value: "100", label: "$100", description: "Champion Supporter" },
-  { value: "250", label: "$250", description: "Legacy Builder" },
-  { value: "500", label: "$500", description: "Patron of the Sport" },
-];
 
 export default function DonatePage() {
   return (
@@ -53,91 +42,23 @@ export default function DonatePage() {
             <div className="absolute -top-1 -left-1 w-10 h-10 border-t-2 border-l-2 border-[#C9A84C]" />
             <div className="absolute -bottom-1 -right-1 w-10 h-10 border-b-2 border-r-2 border-[#C9A84C]" />
 
-            <h2 className="text-2xl md:text-3xl font-serif font-bold text-[#F5F0E8] mb-2 text-center">
-              Choose Your Impact
-            </h2>
-            <p className="text-zinc-400 text-center mb-10">
-              Select a preset amount or enter a custom donation.
-            </p>
-
-            {/* Preset Tiers */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-              {presetAmounts.map((tier) => (
-                <button
-                  key={tier.value}
-                  className="group border border-[#C9A84C]/40 bg-zinc-800/30 backdrop-blur-sm p-4 text-center hover:border-[#C9A84C] hover:bg-[#C9A84C]/10 transition-all duration-300 cursor-pointer"
-                >
-                  <div className="text-2xl font-bold text-[#F5F0E8] group-hover:text-[#C9A84C] transition-colors">
-                    {tier.label}
-                  </div>
-                  <div className="text-xs text-zinc-500 mt-1 uppercase tracking-wider">
-                    {tier.description}
-                  </div>
-                </button>
-              ))}
-            </div>
-
-            {/* Custom Amount */}
-            <div className="mb-10">
-              <Label htmlFor="customAmount" className="text-zinc-300 font-bold text-sm mb-2 block">
-                Custom Amount
-              </Label>
-              <div className="relative">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#C9A84C] font-bold text-lg">$</span>
-                <Input
-                  id="customAmount"
-                  name="customAmount"
-                  type="number"
-                  placeholder="Enter amount"
-                  className="border-zinc-800 bg-black/50 text-white focus-visible:ring-[#C9A84C] h-14 rounded-none pl-8 text-lg"
-                />
-              </div>
-            </div>
-
-            <div className="w-full h-px bg-zinc-800 my-8" />
-
-            {/* Donor Info */}
-            <form action="https://formspree.io/f/xbjnzzop" method="POST" className="space-y-6">
-              <input type="hidden" name="_cc" value="derbyroomcelebrates@gmail.com" />
-              <input type="hidden" name="subject" value="New Donation Inquiry: Armen Z Legacy" />
-              <input type="hidden" name="form_type" value="donation" />
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="firstName" className="text-zinc-300 font-bold text-sm">First Name</Label>
-                  <Input id="firstName" name="firstName" required className="border-zinc-800 bg-black/50 text-white focus-visible:ring-[#C9A84C] h-14 rounded-none" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="lastName" className="text-zinc-300 font-bold text-sm">Last Name</Label>
-                  <Input id="lastName" name="lastName" required className="border-zinc-800 bg-black/50 text-white focus-visible:ring-[#C9A84C] h-14 rounded-none" />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-zinc-300 font-bold text-sm">Email Address</Label>
-                <Input id="email" name="email" type="email" required className="border-zinc-800 bg-black/50 text-white focus-visible:ring-[#C9A84C] h-14 rounded-none" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="message" className="text-zinc-300 font-bold text-sm">
-                  Message <span className="text-zinc-500 font-normal">(Optional)</span>
-                </Label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  placeholder="Share a memory of Armen, or tell us why you're donating..."
-                  className="border-zinc-800 bg-black/50 text-white focus-visible:ring-[#C9A84C] p-4 rounded-none min-h-[100px]"
-                />
-              </div>
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full bg-[#C9A84C] text-[#0A0A0A] hover:bg-[#F5F0E8] font-bold py-8 text-lg uppercase tracking-widest rounded-none transition-all duration-300 mt-4 shadow-[0_10px_30px_-10px_rgba(201,168,76,0.3)]"
-              >
-                Submit Donation Inquiry
-              </Button>
-              <p className="text-zinc-500 text-xs text-center mt-4">
-                Our team will reach out to confirm your donation and provide payment details. Your donation is tax deductible - this tournament is run through <strong className="text-zinc-400">909 Market Foundation</strong>, a 501(c)(3) charitable organization. EIN: 92-0881763.
+            <div className="space-y-6">
+              <h2 className="text-2xl md:text-3xl font-serif font-bold text-[#F5F0E8] mb-2 text-center">
+                Complete Your Donation
+              </h2>
+              <p className="text-zinc-400 text-center mb-10">
+                Please use the secure Eventbrite checkout below to complete your contribution.
               </p>
-            </form>
+              
+              <EventbriteWidget 
+                eventId="1983383494423"
+                containerId="eventbrite-widget-container-1983383494423-donate"
+              />
+              
+              <p className="text-zinc-500 text-xs text-center mt-8">
+                Your donation is tax deductible - this tournament is run through <strong className="text-zinc-400">909 Market Foundation</strong>, a 501(c)(3) charitable organization. EIN: 92-0881763.
+              </p>
+            </div>
           </div>
         </div>
       </section>

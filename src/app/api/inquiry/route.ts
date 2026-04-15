@@ -10,13 +10,12 @@ export async function POST(request: Request) {
     const data = await request.json();
 
     // Map form fields to database fields
-    // Frontend sends: name, email, phone, message, sponsorship_tier
-    // Database expects: company_name, email, phone, message, sponsorship_tier
+    // Handles both the legacy contact form and the new registration/sponsorship forms
     const company_name = data.name || data.company_name || '';
     const email = data.email || '';
     const phone = data.phone || '';
-    const message = data.message || '';
-    const sponsorship_tier = data.sponsorship_tier || '';
+    const message = data.details || data.message || '';
+    const sponsorship_tier = data.type || data.sponsorship_tier || '';
     const shirt_size = data.shirt_size || '';
 
     // Validate required fields
