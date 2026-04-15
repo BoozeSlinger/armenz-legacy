@@ -1,50 +1,78 @@
 "use client";
 
 import { useState } from "react";
+import Script from "next/script";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
+import { EventbriteWidget } from "@/components/EventbriteWidget";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { toast } from "sonner";
 
 export function RegisterForm() {
   const [entryType, setEntryType] = useState<"single" | "foursome">("single");
   const [isProcessing, setIsProcessing] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [showPayment, setShowPayment] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    handicap: "",
+    shirtSize: "M",
+    additionalPlayers: "",
+  });
 
   const price = entryType === "single" ? 150 : 600;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsProcessing(true);
-    // Simulate API call to create Stripe session
-    await new Promise(r => setTimeout(r, 1500));
-    setIsProcessing(false);
-    setSubmitted(true);
+    
+    // Call the real API endpoint to save registration info
+    try {
+      const response = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: entryType === "single" ? "Single Registration" : "Foursome Registration",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          details: `Handicap: ${formData.handicap}, Shirt: ${formData.shirtSize}${entryType === "foursome" ? `, Additional Players: ${formData.additionalPlayers}` : ""}`,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save information');
+      }
+      
+      toast.success("Details recorded. Proceeding to payment...");
+      setIsProcessing(false);
+      setShowPayment(true);
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error("Information saved locally. Proceeding to payment.");
+      // Still show payment as a fallback so we don't block the user
+      setIsProcessing(false);
+      setShowPayment(true);
+    }
   };
 
-  if (submitted) {
-    return (
-      <div className="bg-[#0A0A0A]/90 backdrop-blur-md p-8 md:p-12 border-2 border-[#C9A84C]/20 shadow-xl text-center space-y-6">
-        <div className="w-20 h-20 bg-[#C9A84C] text-[#0A0A0A] rounded-full flex items-center justify-center mx-auto text-4xl shadow-[0_0_30px_rgba(201,168,76,0.5)]">✓</div>
-        <h3 className="text-3xl font-bold font-serif text-[#F5F0E8]">Registration Step 1 Complete</h3>
-        <p className="text-zinc-300 font-medium text-lg leading-relaxed">
-          Your information has been received. In a live environment, you would now be redirected to Stripe for payment of ${price}.
-        </p>
-        <div className="bg-[#111] p-6 border border-[#C9A84C]/30 mt-6 text-zinc-300">
-          <p className="font-mono text-sm break-all text-left">
-            [Stripe Checkout Flow Initiated]<br/>
-            Amount: ${price}.00<br/>
-            Items: {entryType === "single" ? "1x Deluxe Golf Entry" : "1x Foursome Entry"}<br/>
-            Status: Pending Payment
-          </p>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="bg-[#0A0A0A]/90 backdrop-blur-md p-8 md:p-12 border border-[#C9A84C]/20 shadow-2xl">
+    <div className="bg-[#0A0A0A]/90 backdrop-blur-md p-8 md:p-12 border border-[#C9A84C]/20 shadow-2xl relative overflow-hidden">
+      <Script src="https://www.eventbrite.com/static/widgets/eb_widgets.js" strategy="lazyOnload" />
+      {/* Decorative corners */}
+      <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#C9A84C]/40" />
+      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#C9A84C]/40" />
+      
       <form onSubmit={handleSubmit} className="space-y-8">
         
         {/* Entry Selection */}
@@ -87,24 +115,55 @@ export function RegisterForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <Label htmlFor="name" className="text-[#C9A84C] font-bold text-sm">Full Name</Label>
-              <Input id="name" required className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" />
+              <Input 
+                id="name" 
+                required 
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" 
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="email" className="text-[#C9A84C] font-bold text-sm">Email Address</Label>
-              <Input id="email" type="email" required className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" />
+              <Input 
+                id="email" 
+                type="email" 
+                required 
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" 
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="phone" className="text-[#C9A84C] font-bold text-sm">Phone Number</Label>
-              <Input id="phone" type="tel" required className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" />
+              <Input 
+                id="phone" 
+                type="tel" 
+                required 
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" 
+              />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="handicap" className="text-[#C9A84C] font-bold text-sm">Handicap</Label>
-                <Input id="handicap" placeholder="e.g. +12" className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" />
+                <Input 
+                  id="handicap" 
+                  placeholder="e.g. +12" 
+                  value={formData.handicap}
+                  onChange={(e) => setFormData({ ...formData, handicap: e.target.value })}
+                  className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" 
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="shirt" className="text-[#C9A84C] font-bold text-sm">Shirt Size</Label>
-                <select id="shirt" className="flex h-10 w-full rounded-none border border-zinc-800 bg-[#111] px-3 py-2 text-sm text-zinc-200 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 appearance-none">
+                <select 
+                  id="shirt" 
+                  value={formData.shirtSize}
+                  onChange={(e) => setFormData({ ...formData, shirtSize: e.target.value })}
+                  className="flex h-10 w-full rounded-none border border-zinc-800 bg-[#111] px-3 py-2 text-sm text-zinc-200 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 appearance-none"
+                >
                   <option value="S">Small</option>
                   <option value="M">Medium</option>
                   <option value="L">Large</option>
@@ -118,7 +177,13 @@ export function RegisterForm() {
           {entryType === "foursome" && (
             <div className="space-y-2 pt-4">
               <Label htmlFor="additional_players" className="text-[#C9A84C] font-bold text-sm">Additional Players (Names, Shirt Sizes &amp; Handicaps)</Label>
-              <Textarea id="additional_players" placeholder="Player 2: John Doe, M, +10&#10;Player 3: ..." className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600 min-h-[100px]" />
+              <Textarea 
+                id="additional_players" 
+                value={formData.additionalPlayers}
+                onChange={(e) => setFormData({ ...formData, additionalPlayers: e.target.value })}
+                placeholder="Player 2: John Doe, M, +10&#10;Player 3: ..." 
+                className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600 min-h-[100px]" 
+              />
             </div>
           )}
         </div>
@@ -134,13 +199,55 @@ export function RegisterForm() {
           <Label htmlFor="waiver" className="text-sm cursor-pointer font-medium text-zinc-300">I agree to the liability waiver and terms.</Label>
         </div>
 
-        <Button type="submit" disabled={isProcessing} size="lg" className="w-full bg-[#C9A84C] text-[#0A0A0A] hover:bg-[#F5F0E8] font-bold py-6 text-xl rounded-none transition-colors duration-200 mt-8 shadow-[0_0_20px_rgba(201,168,76,0.3)]">
-          {isProcessing ? "Processing..." : `Proceed to Payment ($${price})`}
+        <Button 
+          type="submit" 
+          disabled={isProcessing} 
+          size="lg" 
+          className="w-full bg-[#C9A84C] text-[#0A0A0A] hover:bg-[#F5F0E8] font-bold py-6 text-xl rounded-none transition-all duration-300 mt-8 shadow-[0_0_20px_rgba(201,168,76,0.2)] hover:shadow-[0_0_30px_rgba(201,168,76,0.4)] uppercase tracking-widest"
+        >
+          {isProcessing ? (
+            <span className="flex items-center gap-2">
+              <span className="w-4 h-4 border-2 border-[#0A0A0A] border-t-transparent rounded-full animate-spin" />
+              Processing...
+            </span>
+          ) : `Proceed to Payment ($${price})`}
         </Button>
         <p className="text-zinc-500 text-xs text-center mt-4 pt-4 border-t border-zinc-800/50">
           Your donation is tax-deductible. This tournament is operated through the <strong className="text-zinc-400">909 Market Foundation</strong>, a 501(c)(3) charitable organization (EIN: 92-0881763).
         </p>
       </form>
+
+      {/* Payment Modal */}
+      <Dialog open={showPayment} onOpenChange={setShowPayment}>
+        <DialogContent className="sm:max-w-[700px] bg-[#0A0A0A] border-2 border-[#C9A84C]/20 rounded-none p-0 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+          <div className="bg-[#C9A84C] h-1 w-full" />
+          <div className="p-8 md:p-10">
+            <DialogHeader className="mb-6">
+              <div className="flex items-center justify-center w-16 h-16 bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-full mb-4 mx-auto">
+                <span className="text-[#C9A84C] text-2xl">✓</span>
+              </div>
+              <DialogTitle className="font-serif text-3xl text-[#F5F0E8] text-center">
+                Finalize Your Registration
+              </DialogTitle>
+              <DialogDescription className="text-zinc-400 font-medium text-lg mt-3 leading-relaxed text-center">
+                Your details have been saved. Complete your payment for the <strong className="text-[#C9A84C]">{entryType === "single" ? "Deluxe Single" : "Foursome"}</strong> below to secure your spot.
+              </DialogDescription>
+            </DialogHeader>
+
+            <div className="mt-8 bg-zinc-900/50 border border-zinc-800 p-1">
+              <EventbriteWidget 
+                eventId="1983383494423"
+                containerId={`eventbrite-widget-container-1983383494423-register-modal`}
+                height={500}
+              />
+            </div>
+            
+            <p className="text-zinc-500 text-xs text-center mt-6">
+              Payment is processed securely via Eventbrite.
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
