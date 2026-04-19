@@ -35,34 +35,35 @@ export function RegisterForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsProcessing(true);
-    
-    // Call the real API endpoint to save registration info
+
     try {
-      const response = await fetch('/api/inquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          type: entryType === "single" ? "Single Registration" : "Foursome Registration",
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
-          details: `Handicap: ${formData.handicap}, Shirt: ${formData.shirtSize}${entryType === "foursome" ? `, Additional Players: ${formData.additionalPlayers}` : ""}`,
+          entry_type: entryType,
+          handicap: formData.handicap,
+          shirt_size: formData.shirtSize,
+          additional_players: entryType === "foursome" ? formData.additionalPlayers : "",
         }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to save information');
+      const json = await res.json();
+
+      if (!res.ok || !json.success) {
+        throw new Error(json.error || "Failed to save registration.");
       }
-      
+
       toast.success("Details recorded. Proceeding to payment...");
-      setIsProcessing(false);
       setShowPayment(true);
-    } catch (error) {
-      console.error("Submission error:", error);
-      toast.error("Information saved locally. Proceeding to payment.");
-      // Still show payment as a fallback so we don't block the user
+    } catch (err) {
+      console.error("Submission error:", err);
+      toast.error(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
       setIsProcessing(false);
-      setShowPayment(true);
     }
   };
 
@@ -72,14 +73,14 @@ export function RegisterForm() {
       {/* Decorative corners */}
       <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#C9A84C]/40" />
       <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#C9A84C]/40" />
-      
+
       <form onSubmit={handleSubmit} className="space-y-8">
-        
+
         {/* Entry Selection */}
         <div className="space-y-4">
           <h3 className="text-xl font-serif font-bold text-[#F5F0E8] border-b border-[#C9A84C]/20 pb-2">Select Entry Type</h3>
-          <RadioGroup 
-            value={entryType} 
+          <RadioGroup
+            value={entryType}
             onValueChange={(val) => setEntryType(val as "single" | "foursome")}
             className="grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
@@ -111,55 +112,55 @@ export function RegisterForm() {
         {/* Player Information */}
         <div className="space-y-4 pt-4">
           <h3 className="text-xl font-serif font-bold text-[#F5F0E8] border-b border-[#C9A84C]/20 pb-2">Primary Player Info</h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <Label htmlFor="name" className="text-[#C9A84C] font-bold text-sm">Full Name</Label>
-              <Input 
-                id="name" 
-                required 
+              <Input
+                id="name"
+                required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" 
+                className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600"
               />
             </div>
             <div className="space-y-2">
               <Label htmlFor="email" className="text-[#C9A84C] font-bold text-sm">Email Address</Label>
-              <Input 
-                id="email" 
-                type="email" 
-                required 
+              <Input
+                id="email"
+                type="email"
+                required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" 
+                className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600"
               />
             </div>
             <div className="space-y-2">
               <Label htmlFor="phone" className="text-[#C9A84C] font-bold text-sm">Phone Number</Label>
-              <Input 
-                id="phone" 
-                type="tel" 
-                required 
+              <Input
+                id="phone"
+                type="tel"
+                required
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" 
+                className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600"
               />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="handicap" className="text-[#C9A84C] font-bold text-sm">Handicap</Label>
-                <Input 
-                  id="handicap" 
-                  placeholder="e.g. +12" 
+                <Input
+                  id="handicap"
+                  placeholder="e.g. +12"
                   value={formData.handicap}
                   onChange={(e) => setFormData({ ...formData, handicap: e.target.value })}
-                  className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600" 
+                  className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600"
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="shirt" className="text-[#C9A84C] font-bold text-sm">Shirt Size</Label>
-                <select 
-                  id="shirt" 
+                <select
+                  id="shirt"
                   value={formData.shirtSize}
                   onChange={(e) => setFormData({ ...formData, shirtSize: e.target.value })}
                   className="flex h-10 w-full rounded-none border border-zinc-800 bg-[#111] px-3 py-2 text-sm text-zinc-200 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 appearance-none"
@@ -173,22 +174,22 @@ export function RegisterForm() {
               </div>
             </div>
           </div>
-          
+
           {entryType === "foursome" && (
             <div className="space-y-2 pt-4">
               <Label htmlFor="additional_players" className="text-[#C9A84C] font-bold text-sm">Additional Players (Names, Shirt Sizes &amp; Handicaps)</Label>
-              <Textarea 
-                id="additional_players" 
+              <Textarea
+                id="additional_players"
                 value={formData.additionalPlayers}
                 onChange={(e) => setFormData({ ...formData, additionalPlayers: e.target.value })}
-                placeholder="Player 2: John Doe, M, +10&#10;Player 3: ..." 
-                className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600 min-h-[100px]" 
+                placeholder="Player 2: John Doe, M, +10&#10;Player 3: ..."
+                className="border-zinc-800 focus-visible:ring-[#C9A84C] rounded-none bg-[#111] text-zinc-200 placeholder:text-zinc-600 min-h-[100px]"
               />
             </div>
           )}
         </div>
 
-        {/* Legal Waiver Mock */}
+        {/* Legal Waiver */}
         <div className="space-y-2 bg-[#111] p-4 border border-[#C9A84C]/20 text-sm overflow-y-auto max-h-32 text-zinc-400">
           <p className="font-bold mb-2 text-zinc-300">Liability Waiver</p>
           <p className="leading-relaxed mb-4">By completing this registration, I acknowledge that participation in the Legacy on the Greens: The Armen Zennedjian Classic golf tournament involves inherent risks. I hereby release and hold harmless the tournament organizers, Morongo Golf Club at Tukwet Canyon, and all sponsors from any liabilities or claims arising from my participation in this event.</p>
@@ -199,10 +200,10 @@ export function RegisterForm() {
           <Label htmlFor="waiver" className="text-sm cursor-pointer font-medium text-zinc-300">I agree to the liability waiver and terms.</Label>
         </div>
 
-        <Button 
-          type="submit" 
-          disabled={isProcessing} 
-          size="lg" 
+        <Button
+          type="submit"
+          disabled={isProcessing}
+          size="lg"
           className="w-full bg-[#C9A84C] text-[#0A0A0A] hover:bg-[#F5F0E8] font-bold py-6 text-xl rounded-none transition-all duration-300 mt-8 shadow-[0_0_20px_rgba(201,168,76,0.2)] hover:shadow-[0_0_30px_rgba(201,168,76,0.4)] uppercase tracking-widest"
         >
           {isProcessing ? (
@@ -235,13 +236,13 @@ export function RegisterForm() {
             </DialogHeader>
 
             <div className="mt-8 bg-zinc-900/50 border border-zinc-800 p-1">
-              <EventbriteWidget 
+              <EventbriteWidget
                 eventId="1983383494423"
-                containerId={`eventbrite-widget-container-1983383494423-register-modal`}
+                containerId="eventbrite-widget-container-1983383494423-register-modal"
                 height={500}
               />
             </div>
-            
+
             <p className="text-zinc-500 text-xs text-center mt-6">
               Payment is processed securely via Eventbrite.
             </p>
