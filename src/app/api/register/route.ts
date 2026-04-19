@@ -4,7 +4,6 @@ import { Resend } from 'resend';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 const NOTIFICATION_EMAILS = ['events@thederbyroom.com', '909openmarket@gmail.com'];
 
@@ -74,8 +73,9 @@ export async function POST(request: Request) {
     }).catch((err) => console.error('Sheets sync error:', err));
 
     // Email notification (non-blocking)
+    const resendKey = process.env.RESEND_API_KEY;
     const entryLabel = entry_type === 'foursome' ? 'Foursome ($600)' : 'Deluxe Single ($150)';
-    resend.emails.send({
+    if (resendKey) new Resend(resendKey).emails.send({
       from: 'Armenz Legacy <onboarding@resend.dev>',
       to: NOTIFICATION_EMAILS,
       subject: `New Golf Registration — ${entryLabel}`,
@@ -92,7 +92,7 @@ export async function POST(request: Request) {
         </table>
         <p style="color:#888;font-size:12px;margin-top:16px">Submitted ${new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })} PT</p>
       `,
-    }).catch((err: unknown) => console.error('Email send error:', err));
+    })?.catch((err: unknown) => console.error('Email send error:', err));
 
     return NextResponse.json({ success: true, data: inserted });
   } catch (err) {
