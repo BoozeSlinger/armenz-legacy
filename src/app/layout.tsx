@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://armenzlegacy.com"),
+  metadataBase: new URL("https://www.armenzlegacy.com"),
   title: {
     default: "Armenz Legacy Charity Golf Tournament | Beaumont, CA | June 22, 2026",
     template: "%s | Armenz Legacy Charity Golf Tournament",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "Armenz Legacy Charity Golf Tournament | Beaumont, CA | June 22, 2026",
     description:
       "Inaugural charity golf scramble at Morongo Golf Club at Tukwet Canyon in Beaumont, CA. Benefiting CARMA and the Permanently Disabled Jockeys Fund. Register or sponsor today.",
-    url: "https://armenzlegacy.com",
+    url: "https://www.armenzlegacy.com",
     siteName: "Armenz Legacy Charity Golf Tournament",
     locale: "en_US",
     type: "website",
@@ -82,8 +82,8 @@ const eventJsonLd = {
   eventStatus: "https://schema.org/EventScheduled",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   sport: "Golf",
-  url: "https://armenzlegacy.com",
-  image: "https://armenzlegacy.com/images/hero/logo.png",
+  url: "https://www.armenzlegacy.com",
+  image: "https://www.armenzlegacy.com/images/hero/logo.png",
   location: {
     "@type": "Place",
     name: "Morongo Golf Club at Tukwet Canyon",
@@ -99,11 +99,11 @@ const eventJsonLd = {
   organizer: {
     "@type": "Organization",
     name: "Armenz Legacy",
-    url: "https://armenzlegacy.com",
+    url: "https://www.armenzlegacy.com",
   },
   offers: {
     "@type": "Offer",
-    url: "https://armenzlegacy.com/register",
+    url: "https://www.armenzlegacy.com/register",
     availability: "https://schema.org/InStock",
     priceCurrency: "USD",
   },

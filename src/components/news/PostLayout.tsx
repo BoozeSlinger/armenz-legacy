@@ -25,12 +25,12 @@ export function PostLayout({ post, children }: { post: NewsPost; children: React
       name: "Armenz Legacy Charity Golf Tournament",
       logo: {
         "@type": "ImageObject",
-        url: "https://armenzlegacy.com/images/hero/logo.png",
+        url: "https://www.armenzlegacy.com/images/hero/logo.png",
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://armenzlegacy.com/news/${post.slug}`,
+      "@id": `https://www.armenzlegacy.com/news/${post.slug}`,
     },
     keywords: post.keywords.join(", "),
   };
