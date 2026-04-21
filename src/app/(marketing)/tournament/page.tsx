@@ -3,8 +3,16 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-  title: "Tournament Details & FAQ | Legacy on the Greens: The Armen Zennedjian Classic",
-  description: "Everything you need to know about Legacy on the Greens: The Armen Zennedjian Classic charity golf tournament. Schedule, format, dress code, rules, and FAQ.",
+  title: "Tournament Details & FAQ — Beaumont CA Charity Golf Scramble",
+  description:
+    "4-person scramble format, schedule, dress code, rules & FAQ for the Armenz Legacy charity golf tournament at Morongo Golf Club in Beaumont, CA — June 22, 2026.",
+  keywords: [
+    "Southern California golf scrambles",
+    "Beaumont CA golf tournaments",
+    "4-person scramble Inland Empire",
+    "Morongo Golf Club events",
+  ],
+  alternates: { canonical: "/tournament" },
 };
 
 const schedule = [

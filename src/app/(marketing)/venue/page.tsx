@@ -1,8 +1,16 @@
 import { Hero } from "@/components/Hero";
 
 export const metadata = {
-  title: "Event Venue | Armen Z Legacy",
-  description: "Location details for the Armen Z Legacy charity golf tournament at Morongo Golf Club at Tukwet Canyon.",
+  title: "Venue — Morongo Golf Club at Tukwet Canyon, Beaumont CA",
+  description:
+    "Tournament venue: Morongo Golf Club at Tukwet Canyon in Beaumont, CA. Premier Inland Empire golf course hosting Southern California charity golf scrambles. Directions, course details & more.",
+  keywords: [
+    "Morongo Golf Club events",
+    "Tukwet Canyon golf course",
+    "Beaumont CA golf tournaments",
+    "Inland Empire golf venues",
+  ],
+  alternates: { canonical: "/venue" },
 };
 
 export default function VenuePage() {

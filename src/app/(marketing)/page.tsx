@@ -34,7 +34,13 @@ export default function Home() {
         <div className="absolute inset-0 bg-[#0A0A0A]/70 backdrop-blur-[2px]" />
       </div>
       <div id="hero">
-        <Hero transparentBg={true} />
+        <h1 className="sr-only">
+          Armenz Legacy Charity Golf Tournament in Beaumont, CA — Morongo Golf Club at Tukwet Canyon, June 22, 2026
+        </h1>
+        <Hero
+          transparentBg={true}
+          subtitle="A charity golf scramble at Morongo Golf Club at Tukwet Canyon in Beaumont, CA — June 22, 2026. Benefiting CARMA's retired racehorses and the Permanently Disabled Jockeys Fund."
+        />
       </div>
 
       <CauseSection />
@@ -65,11 +71,11 @@ export default function Home() {
                 <span className="w-12 h-px bg-[#C9A84C]/50" />
               </p>
               
-              <a href="#" target="_blank" rel="noopener noreferrer" className="block relative h-32 md:h-40 w-full mb-4 md:grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+              <a href="https://tukwetcanyon.com/" target="_blank" rel="noopener noreferrer" className="block relative h-32 md:h-40 w-full mb-4 md:grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
                 <div className="absolute inset-0 flex items-center justify-center p-4">
-                  <img 
-                    src="/images/Morongologo.png" 
-                    alt="Morongo Band of Mission Indians Logo" 
+                  <img
+                    src="/images/Morongologo.png"
+                    alt="Armenz Legacy Charity Golf Tournament Triple Crown Sponsor — Morongo Band of Mission Indians"
                     className="max-w-full max-h-full object-contain drop-shadow-lg"
                   />
                 </div>

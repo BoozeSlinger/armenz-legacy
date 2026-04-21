@@ -3,8 +3,16 @@ import { RegisterForm } from "@/components/RegisterForm";
 import Image from "next/image";
 
 export const metadata = {
-  title: "Player Registration | Armen Z Legacy",
-  description: "Register to play in the Armen Z Legacy charity golf tournament at Morongo Golf Club at Tukwet Canyon.",
+  title: "Register — Beaumont CA Charity Golf Scramble at Morongo Golf Club",
+  description:
+    "Register your foursome for the Armenz Legacy charity golf scramble at Morongo Golf Club at Tukwet Canyon in Beaumont, CA. Inland Empire charity golf — June 22, 2026.",
+  keywords: [
+    "Beaumont CA golf tournaments",
+    "Morongo Golf Club events",
+    "Southern California golf scrambles",
+    "Inland Empire charity golf",
+  ],
+  alternates: { canonical: "/register" },
 };
 
 export default function RegisterPage() {

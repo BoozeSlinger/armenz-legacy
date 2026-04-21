@@ -3,8 +3,15 @@ import { Button } from "@/components/ui/button";
 import { EventbriteWidget } from "@/components/EventbriteWidget";
 
 export const metadata = {
-  title: "Dinner & Auction Tickets | Legacy on the Greens: The Armen Zennedjian Classic",
-  description: "Join the post-tournament celebration. Dinner, silent auction, raffle, and awards - no golf required.",
+  title: "Dinner & Charity Auction Tickets — Beaumont CA, June 22, 2026",
+  description:
+    "Post-tournament dinner, charity auction, raffle & awards at Morongo Golf Club in Beaumont, CA. Inland Empire charity event tickets — no golf required.",
+  keywords: [
+    "Inland Empire charity event",
+    "Charity auction Beaumont CA",
+    "Morongo Golf Club events",
+  ],
+  alternates: { canonical: "/dinner" },
 };
 
 export default function DinnerPage() {

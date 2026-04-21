@@ -15,6 +15,7 @@ const routes = [
   { href: "/tournament", label: "Tournament", id: "tournament" },
   { href: "/register", label: "Register", id: "register" },
   { href: "/donate", label: "Donate", id: "donate" },
+  { href: "/news", label: "News", id: "news" },
 ];
 
 export function Navbar() {

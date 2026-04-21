@@ -1,8 +1,15 @@
 import { EventbriteWidget } from "@/components/EventbriteWidget";
 
 export const metadata = {
-  title: "Donate | Legacy on the Greens: The Armen Zennedjian Classic",
-  description: "Support Legacy on the Greens: The Armen Zennedjian Classic with a tax-deductible donation. Every dollar counts.",
+  title: "Donate — Horse Racing Charity Events California (CARMA & PDJF)",
+  description:
+    "Make a tax-deductible donation supporting CARMA's retired racehorses and the Permanently Disabled Jockeys Fund. Every dollar honors Armen Zennedjian's legacy.",
+  keywords: [
+    "Horse racing charity events California",
+    "CARMA charity events",
+    "Permanently Disabled Jockeys Fund donation",
+  ],
+  alternates: { canonical: "/donate" },
 };
 
 export default function DonatePage() {

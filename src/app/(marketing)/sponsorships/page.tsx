@@ -3,8 +3,16 @@ import { SponsorshipList } from "./SponsorshipList";
 import Image from "next/image";
 
 export const metadata = {
-  title: "Sponsorships | Legacy on the Greens: The Armen Zennedjian Classic",
-  description: "Explore opportunities to sponsor Legacy on the Greens: The Armen Zennedjian Classic charity golf tournament.",
+  title: "Corporate Sponsorship Opportunities — Beaumont, CA Charity Golf Tournament",
+  description:
+    "Golf tournament sponsor packages in Beaumont, CA & the Inland Empire. Tax-deductible charity event sponsorships supporting CARMA & PDJF at Morongo Golf Club. View sponsorship tiers.",
+  keywords: [
+    "Corporate sponsorship opportunities Beaumont CA",
+    "Charity event sponsorships Inland Empire",
+    "Golf tournament sponsor packages California",
+    "Morongo Golf Club sponsorship",
+  ],
+  alternates: { canonical: "/sponsorships" },
 };
 
 export default function SponsorshipsPage() {

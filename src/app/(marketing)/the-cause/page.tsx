@@ -4,8 +4,17 @@ import { Button } from "@/components/ui/button";
 import { ImageAutoSlider } from "@/components/ui/image-auto-slider";
 
 export const metadata = {
-  title: "The Cause | Legacy on the Greens: The Armen Zennedjian Classic",
-  description: "Learn about Armen Zennedjian's legacy, CARMA, and the Permanently Disabled Jockeys Fund.",
+  title: "Our Cause — Horse Racing Charity Events California (CARMA & PDJF)",
+  description:
+    "Honoring Armen Zennedjian by supporting CARMA's retired racehorses and the Permanently Disabled Jockeys Fund. Learn about California horse racing charity events benefiting equine and jockey welfare.",
+  keywords: [
+    "Horse racing charity events California",
+    "CARMA charity events",
+    "Equestrian charity golf tournament",
+    "Permanently Disabled Jockeys Fund",
+    "Armen Zennedjian legacy",
+  ],
+  alternates: { canonical: "/the-cause" },
 };
 
 const sliderImages = [

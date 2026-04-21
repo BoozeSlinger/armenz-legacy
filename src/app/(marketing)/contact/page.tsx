@@ -5,8 +5,10 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
 export const metadata = {
-  title: "Contact Us | Armen Z Legacy",
-  description: "Get in touch with the Armen Z Legacy tournament organizers.",
+  title: "Contact — Armenz Legacy Charity Golf Tournament, Beaumont CA",
+  description:
+    "Questions about the Armenz Legacy charity golf tournament in Beaumont, CA? Contact us about player registration, sponsorship packages, or supporting CARMA & PDJF.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
