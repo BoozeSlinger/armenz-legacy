@@ -22,7 +22,7 @@ export default function RegisterPage() {
       <div className="fixed inset-0 z-[-1] pointer-events-none">
         <Image 
           src="/images/page-bg/register.png" 
-          alt="Registration Background" 
+          alt="Tournament Registration Background - Morongo Golf Club at Tukwet Canyon" 
           fill 
           className="object-cover" 
           priority 
@@ -33,7 +33,7 @@ export default function RegisterPage() {
 
       <div className="relative z-10 flex flex-col">
         <Hero 
-          title="PLAYER REGISTRATION" 
+          title="TOURNAMENT REGISTRATION — BEAUMONT, CA" 
           subtitle="Secure your spot on the greens." 
           showCountdown={false} 
           transparentBg={true}

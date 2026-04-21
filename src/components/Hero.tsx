@@ -66,7 +66,7 @@ export function Hero({
           >
             <Image 
               src="/images/hero/logo.png" 
-              alt="Armen Z Legacy Logo" 
+              alt="Armen Z Legacy Memorial Golf Tournament Logo — Beaumont CA" 
               fill
               className="object-contain"
               priority

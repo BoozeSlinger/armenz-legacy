@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { EventbriteWidget } from "@/components/EventbriteWidget";
+import Image from "next/image";
+
 
 export const metadata = {
   title: "Dinner & Charity Auction Tickets — Beaumont CA, June 22, 2026",
@@ -18,10 +20,14 @@ export default function DinnerPage() {
   return (
     <div className="relative min-h-screen">
       {/* Fixed Background */}
-      <div
-        className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/page-bg/home-parallax.png')" }}
-      >
+      <div className="fixed inset-0 z-[-1] pointer-events-none">
+        <Image 
+          src="/images/page-bg/home-parallax.png" 
+          alt="Dinner & Charity Auction Background - Beaumont Golf Event" 
+          fill 
+          className="object-cover" 
+          priority 
+        />
         <div className="absolute inset-0 bg-[#0A0A0A]/80 backdrop-blur-[2px]" />
       </div>
 
@@ -36,7 +42,7 @@ export default function DinnerPage() {
             <div className="w-12 h-px bg-[#C9A84C]" />
           </div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-[#F5F0E8] mb-6">
-            Dinner & <span className="text-[#C9A84C] italic">Auction</span>
+            Dinner & <span className="text-[#C9A84C] italic">Charity Auction</span> — Beaumont Golf Gala
           </h1>
           <p className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
             Don&apos;t play golf? No problem. Join us for the post-tournament celebration and help support a great cause while enjoying an incredible evening.

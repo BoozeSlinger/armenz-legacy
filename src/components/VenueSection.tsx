@@ -94,7 +94,7 @@ export function VenueSection() {
             >
               <Image
                 src="/images/Tukwet.jpg"
-                alt="Tukwet Canyon"
+                alt="Morongo Golf Club at Tukwet Canyon — Beaumont Charity Golf Tournament Venue"
                 fill
                 className="object-cover transition-all duration-700 group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(212,175,55,0.3)] bg-zinc-900"
               />

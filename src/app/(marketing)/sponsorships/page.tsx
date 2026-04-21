@@ -22,7 +22,7 @@ export default function SponsorshipsPage() {
       <div className="fixed inset-0 z-[-1] pointer-events-none">
         <Image 
           src="/images/page-bg/sponsorships.png" 
-          alt="Sponsorships Background" 
+          alt="Corporate Sponsorship Background - Charity Golf Beaumont CA" 
           fill 
           className="object-cover" 
           priority 
@@ -33,7 +33,7 @@ export default function SponsorshipsPage() {
 
       <div className="relative z-10 flex flex-col">
         <Hero 
-          title={<span className="text-[#F5F0E8] drop-shadow-[0_4px_4px_rgba(0,0,0,1)]">SPONSORSHIP OPPORTUNITIES</span>} 
+          title={<span className="text-[#F5F0E8] drop-shadow-[0_4px_4px_rgba(0,0,0,1)] text-balance">CHARITY GOLF SPONSORSHIP OPPORTUNITIES</span>} 
           subtitle="Partner with us to honor a legacy and make a direct impact in our community. Explore our 10 unique sponsorship tiers below."
           showCountdown={false} 
           transparentBg={true}

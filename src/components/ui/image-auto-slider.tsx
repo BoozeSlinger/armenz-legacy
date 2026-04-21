@@ -2,9 +2,10 @@
 
 import React from 'react';
 
-export const ImageAutoSlider = ({ images }: { images: string[] }) => {
-  // Duplicate images for seamless loop
+export const ImageAutoSlider = ({ images, alts = [] }: { images: string[], alts?: string[] }) => {
+  // Duplicate images and alts for seamless loop
   const duplicatedImages = [...images, ...images, ...images, ...images];
+  const duplicatedAlts = [...alts, ...alts, ...alts, ...alts];
 
   return (
     <>
@@ -61,7 +62,7 @@ export const ImageAutoSlider = ({ images }: { images: string[] }) => {
                 >
                   <img
                     src={image}
-                    alt={`Gallery image ${index}`}
+                    alt={duplicatedAlts[index] || `Armen Z Legacy Event Image ${index % images.length}`}
                     className="w-full h-full object-cover"
                     loading="eager"
                   />

@@ -29,10 +29,14 @@ export default function TheCausePage() {
   return (
     <div className="relative min-h-screen">
       {/* Fixed Background */}
-      <div
-        className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/page-bg/home-parallax.png')" }}
-      >
+      <div className="fixed inset-0 z-[-1] pointer-events-none">
+        <Image 
+          src="/images/page-bg/home-parallax.png" 
+          alt="Armen Z Legacy Foundation Background - California Horse Racing Charity" 
+          fill 
+          className="object-cover" 
+          priority 
+        />
         <div className="absolute inset-0 bg-[#0A0A0A]/80 backdrop-blur-[2px]" />
       </div>
 
@@ -47,8 +51,7 @@ export default function TheCausePage() {
             <div className="w-12 h-px bg-[#C9A84C]" />
           </div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-[#F5F0E8] mb-6">
-            Honoring a Legacy,<br />
-            <span className="text-[#C9A84C] italic">Building a Future</span>
+            OUR CAUSE: <span className="text-[#C9A84C] italic">CALIFORNIA HORSE RACING CHARITY</span>
           </h1>
           <p className="text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed">
             This inaugural memorial golf tournament honors the life and passion of Armen Zennedjian, founder of The Derby Room, whose love of horseracing and community brought people together for decades. Presented by the 909 Market Foundation, this event transforms that passion into purpose. Proceeds from the tournament will support the important work of CARMA, providing rehabilitation and second careers for retired California-raced Thoroughbred horses, along with the Permanently Disabled Jockeys Fund (PDJF), which supports riders who have suffered career-ending injuries. Join us for a day of tournament play, on-course experiences, great food and drinks, and a celebration reception at The Derby Room, all while supporting the athletes who make the sport possible.
@@ -58,7 +61,16 @@ export default function TheCausePage() {
 
       {/* Image Slider */}
       <section className="relative z-10 w-full mb-8">
-        <ImageAutoSlider images={sliderImages} />
+        <ImageAutoSlider 
+          images={sliderImages} 
+          alts={[
+            "Armen Zennedjian at the race track",
+            "Armen Z with a prize-winning Thoroughbred",
+            "The Derby Room founding memories",
+            "Armen Z celebrating with friends at the track",
+            "Armen Zennedjian horse racing legacy"
+          ]}
+        />
       </section>
 
       {/* About Armen Section */}

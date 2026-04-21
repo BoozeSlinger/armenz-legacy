@@ -20,7 +20,7 @@ export default function ContactPage() {
       >
         <div className="absolute inset-0 bg-[#0A0A0A]/85 backdrop-blur-[2px]" />
       </div>
-      <Hero title="GET IN TOUCH" subtitle="Have questions? We're here to help." showCountdown={false} compact={true} transparentBg={true} />
+      <Hero title="CONTACT ARMENZ LEGACY — BEAUMONT CHARITY GOLF" subtitle="Have questions? We're here to help." showCountdown={false} compact={true} transparentBg={true} />
       <section className="py-24 bg-transparent text-zinc-200">
         <div className="container mx-auto px-4 md:px-8 max-w-3xl">
           <div className="bg-[#0A0A0A]/80 backdrop-blur-md p-8 md:p-12 border-2 border-white/10 shadow-2xl">

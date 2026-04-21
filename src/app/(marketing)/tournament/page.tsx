@@ -70,10 +70,14 @@ export default function TournamentPage() {
   return (
     <div className="relative min-h-screen">
       {/* Fixed Background */}
-      <div
-        className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/page-bg/home-parallax.png')" }}
-      >
+      <div className="fixed inset-0 z-[-1] pointer-events-none">
+        <Image 
+          src="/images/page-bg/home-parallax.png" 
+          alt="Tournament Details Background - Beaumont Charity Golf Scramble" 
+          fill 
+          className="object-cover" 
+          priority 
+        />
         <div className="absolute inset-0 bg-[#0A0A0A]/80 backdrop-blur-[2px]" />
       </div>
 
@@ -88,7 +92,7 @@ export default function TournamentPage() {
             <div className="w-12 h-px bg-[#C9A84C]" />
           </div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-[#F5F0E8] mb-6">
-            Tournament Details <span className="text-[#C9A84C] italic">& FAQ</span>
+            Tournament Details & FAQ <br/><span className="text-[#C9A84C] italic text-3xl md:text-5xl">Beaumont Charity Golf Scramble</span>
           </h1>
           <p className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
             June 22, 2026 at Morongo Golf Club at Tukwet Canyon. Here&apos;s everything you need to know before teeing off.

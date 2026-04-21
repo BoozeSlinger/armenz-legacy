@@ -22,7 +22,7 @@ export default function VenuePage() {
       >
         <div className="absolute inset-0 bg-[#0A0A0A]/85 backdrop-blur-[2px]" />
       </div>
-      <Hero title="THE VENUE" subtitle="Morongo Golf Club at Tukwet Canyon" showCountdown={false} compact={true} transparentBg={true} />
+      <Hero title="MORONGO GOLF CLUB — ARMENZ CLASSIC VENUE" subtitle="Morongo Golf Club at Tukwet Canyon" showCountdown={false} compact={true} transparentBg={true} />
       <section className="py-24 bg-transparent text-zinc-200">
         <div className="container mx-auto px-4 md:px-8">
            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
