@@ -5,7 +5,7 @@ import { Resend } from 'resend';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 
-const NOTIFICATION_EMAILS = ['events@thederbyroom.com', '909openmarket@gmail.com', 'armenzlegacy@gmail.com'];
+const NOTIFICATION_EMAILS = ['events@thederbyroom.com', '909openmarket@gmail.com', 'armenzlegacy@gmail.com', 'ryan@lastcall.marketing'];
 
 async function syncGolfRegistrationToSheets(data: Record<string, string>) {
   const url = process.env.APPS_SCRIPT_GOLF_URL || '';
