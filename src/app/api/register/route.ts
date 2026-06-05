@@ -5,7 +5,7 @@ import { Resend } from 'resend';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 
-const NOTIFICATION_EMAILS = ['events@thederbyroom.com', '909openmarket@gmail.com'];
+const NOTIFICATION_EMAILS = ['events@thederbyroom.com', '909openmarket@gmail.com', 'armenzlegacy@gmail.com'];
 
 async function syncGolfRegistrationToSheets(data: Record<string, string>) {
   const url = process.env.APPS_SCRIPT_GOLF_URL || '';
@@ -59,23 +59,30 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: dbError.message }, { status: 400 });
     }
 
-    // Google Sheets sync (non-blocking)
-    syncGolfRegistrationToSheets({
-      name,
-      email,
-      phone,
-      entry_type,
-      handicap,
-      shirt_size,
-      additional_players,
-      price: `$${price}`,
-      submitted_at: new Date().toISOString(),
-    }).catch((err) => console.error('Sheets sync error:', err));
+    // Google Sheets sync — must be awaited; serverless functions freeze after the
+    // response returns, killing any un-awaited fetch before it completes.
+    try {
+      await syncGolfRegistrationToSheets({
+        name,
+        email,
+        phone,
+        entry_type,
+        handicap,
+        shirt_size,
+        additional_players,
+        price: `$${price}`,
+        submitted_at: new Date().toISOString(),
+      });
+    } catch (err) {
+      console.error('Sheets sync error:', err);
+    }
 
-    // Email notification (non-blocking)
+    // Email notification — also awaited so it actually sends in production.
     const resendKey = process.env.RESEND_API_KEY;
     const entryLabel = entry_type === 'foursome' ? 'Foursome ($600)' : 'Deluxe Single ($150)';
-    if (resendKey) new Resend(resendKey).emails.send({
+    if (resendKey) {
+      try {
+        await new Resend(resendKey).emails.send({
       from: 'Armenz Legacy <onboarding@resend.dev>',
       to: NOTIFICATION_EMAILS,
       subject: `New Golf Registration — ${entryLabel}`,
@@ -92,7 +99,11 @@ export async function POST(request: Request) {
         </table>
         <p style="color:#888;font-size:12px;margin-top:16px">Submitted ${new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })} PT</p>
       `,
-    })?.catch((err: unknown) => console.error('Email send error:', err));
+        });
+      } catch (err: unknown) {
+        console.error('Email send error:', err);
+      }
+    }
 
     return NextResponse.json({ success: true, data: inserted });
   } catch (err) {
