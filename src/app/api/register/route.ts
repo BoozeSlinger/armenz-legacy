@@ -77,28 +77,28 @@ export async function POST(request: Request) {
       console.error('Sheets sync error:', err);
     }
 
-    // Email notification — also awaited so it actually sends in production.
+    // Email notification — awaited so it actually sends in production.
     const resendKey = process.env.RESEND_API_KEY;
     const entryLabel = entry_type === 'foursome' ? 'Foursome ($600)' : 'Deluxe Single ($150)';
     if (resendKey) {
       try {
         await new Resend(resendKey).emails.send({
-      from: 'Armenz Legacy <onboarding@resend.dev>',
-      to: NOTIFICATION_EMAILS,
-      subject: `New Golf Registration — ${entryLabel}`,
-      html: `
-        <h2>New Registration — Armenz Legacy Golf Tournament</h2>
-        <table style="border-collapse:collapse;width:100%;max-width:500px">
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Entry Type</td><td style="padding:8px;border:1px solid #ddd">${entryLabel}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Name</td><td style="padding:8px;border:1px solid #ddd">${name}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Email</td><td style="padding:8px;border:1px solid #ddd">${email}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Phone</td><td style="padding:8px;border:1px solid #ddd">${phone}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Handicap</td><td style="padding:8px;border:1px solid #ddd">${handicap || '—'}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Shirt Size</td><td style="padding:8px;border:1px solid #ddd">${shirt_size || '—'}</td></tr>
-          ${additional_players ? `<tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Additional Players</td><td style="padding:8px;border:1px solid #ddd;white-space:pre-wrap">${additional_players}</td></tr>` : ''}
-        </table>
-        <p style="color:#888;font-size:12px;margin-top:16px">Submitted ${new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })} PT</p>
-      `,
+          from: 'Ryan @ Armenz Legacy <ryan@lastcall.marketing>',
+          to: NOTIFICATION_EMAILS,
+          subject: `New Golf Registration — ${entryLabel}`,
+          html: `
+            <h2>New Registration — Armenz Legacy Golf Tournament</h2>
+            <table style="border-collapse:collapse;width:100%;max-width:500px">
+              <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Entry Type</td><td style="padding:8px;border:1px solid #ddd">${entryLabel}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Name</td><td style="padding:8px;border:1px solid #ddd">${name}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Email</td><td style="padding:8px;border:1px solid #ddd">${email}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Phone</td><td style="padding:8px;border:1px solid #ddd">${phone}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Handicap</td><td style="padding:8px;border:1px solid #ddd">${handicap || '—'}</td></tr>
+              <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Shirt Size</td><td style="padding:8px;border:1px solid #ddd">${shirt_size || '—'}</td></tr>
+              ${additional_players ? `<tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Additional Players</td><td style="padding:8px;border:1px solid #ddd;white-space:pre-wrap">${additional_players}</td></tr>` : ''}
+            </table>
+            <p style="color:#888;font-size:12px;margin-top:16px">Submitted ${new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })} PT</p>
+          `,
         });
       } catch (err: unknown) {
         console.error('Email send error:', err);
