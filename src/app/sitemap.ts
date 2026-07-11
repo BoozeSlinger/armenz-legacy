@@ -6,6 +6,7 @@ const BASE = "https://www.armenzlegacy.com";
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
+    "/gallery",
     "/the-cause",
     "/tournament",
     "/sponsorships",

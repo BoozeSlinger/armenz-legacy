@@ -3,111 +3,189 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect, useCallback } from "react";
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { EASE } from "@/components/motion";
 
 const routes = [
-  { href: "/", label: "Home", id: "hero" },
-  { href: "/the-cause", label: "The Cause", id: "the-cause" },
-  { href: "/sponsorships", label: "Sponsorships", id: "sponsorships" },
-  { href: "/tournament", label: "Tournament", id: "tournament" },
-  { href: "/register", label: "Register", id: "register" },
-  { href: "/donate", label: "Donate", id: "donate" },
-  { href: "/news", label: "News", id: "news" },
+  { href: "/", label: "Home" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/sponsorships", label: "Sponsors" },
+  { href: "/the-cause", label: "The Cause" },
+  { href: "/donate", label: "Donate" },
+  { href: "/news", label: "News" },
 ];
 
 export function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileMenuOpen]);
+
+  const close = useCallback(() => setMobileMenuOpen(false), []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") close(); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [close]);
 
   return (
     <header
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 pointer-events-auto",
+        "fixed top-0 z-50 w-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
         isScrolled
-          ? "bg-[#0A0A0A]/85 backdrop-blur-md shadow-lg py-2 lg:py-3 border-b border-[#C9A84C]/15"
-          : "bg-transparent py-3 lg:py-5"
+          ? "border-b border-gold/15 bg-ink/85 py-2.5 backdrop-blur-xl"
+          : "border-b border-transparent bg-gradient-to-b from-ink/70 to-transparent py-4"
       )}
     >
-      <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 shrink-0">
+      <div className="container mx-auto flex max-w-7xl items-center justify-between px-4 md:px-8">
+        <Link href="/" className="group flex items-center gap-3 shrink-0" onClick={close}>
           <Image
             src="/images/hero/logo.png"
-            alt="Armen Z Legacy Logo"
-            width={56}
-            height={56}
-            className="w-10 h-10 lg:w-14 lg:h-14 object-contain opacity-90 hover:opacity-100 transition-opacity drop-shadow-sm"
+            alt="Armen Z Legacy crest"
+            width={44}
+            height={44}
+            className="h-10 w-10 object-contain opacity-90 transition-opacity duration-300 group-hover:opacity-100"
             priority
           />
-          <span className="text-[#F5F0E8] font-serif font-bold text-base lg:text-xl tracking-wide hidden sm:block drop-shadow-md whitespace-nowrap">
-            ARMEN Z LEGACY
+          <span className="hidden flex-col leading-none sm:flex">
+            <span className="font-serif text-lg font-semibold tracking-[0.08em] text-cream">
+              ARMEN Z LEGACY
+            </span>
+            <span className="mt-1 text-[9px] font-medium uppercase tracking-[0.32em] text-gold/80">
+              Charity Golf Classic
+            </span>
           </span>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-6 lg:flex xl:gap-8" aria-label="Main navigation">
           {routes.map((route) => (
             <Link
               key={route.href}
               href={route.href}
               className={cn(
-                "text-xs xl:text-sm font-medium uppercase tracking-wider transition-colors hover:text-[#C9A84C] whitespace-nowrap",
-                pathname === route.href ? "text-[#C9A84C]" : "text-[#F5F0E8]",
-                isScrolled ? "" : "drop-shadow-md"
+                "group relative whitespace-nowrap text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors duration-300",
+                pathname === route.href ? "text-gold" : "text-cream/80 hover:text-cream"
               )}
             >
               {route.label}
+              <span
+                className={cn(
+                  "absolute -bottom-1.5 left-0 h-px bg-gold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  pathname === route.href ? "w-full" : "w-0 group-hover:w-full"
+                )}
+              />
             </Link>
           ))}
-          <Button asChild size="sm" className="bg-[#C9A84C] text-[#3B1F0A] hover:bg-[#F5F0E8] hover:text-[#1B4332] font-bold rounded-none px-5 shadow-[0_4px_14px_0_rgba(201,168,76,0.39)] hover:shadow-[0_6px_20px_rgba(201,168,76,0.23)] transition-all duration-200 text-xs uppercase tracking-wider">
-            <Link href="/register">Register Now</Link>
-          </Button>
+          <Link
+            href="/#early-access"
+            className="bg-gold px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink transition-colors duration-300 hover:bg-gold-bright active:scale-[0.985]"
+          >
+            Join 2027 List
+          </Link>
         </nav>
 
-        {/* Mobile Toggle */}
+        {/* Mobile toggle — morphing hamburger */}
         <button
-          className="lg:hidden text-[#F5F0E8] drop-shadow-md"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="-mr-2 flex h-12 w-12 items-center justify-center lg:hidden"
+          onClick={() => setMobileMenuOpen(o => !o)}
+          aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-menu"
         >
-          {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          <span className="relative block h-3 w-6">
+            <span
+              className={cn(
+                "absolute left-0 top-0 h-px w-6 bg-cream transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                mobileMenuOpen && "top-1.5 rotate-45"
+              )}
+            />
+            <span
+              className={cn(
+                "absolute left-0 bottom-0 h-px w-6 bg-cream transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                mobileMenuOpen && "bottom-1.5 -rotate-45"
+              )}
+            />
+          </span>
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-[#0A0A0A]/95 backdrop-blur-2xl shadow-2xl py-10 flex flex-col items-center gap-6 lg:hidden border-t border-[#C9A84C]/20 animate-in fade-in slide-in-from-top-4 duration-300">
-          {routes.map((route) => (
-            <Link
-              key={route.href}
-              href={route.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className={cn(
-                "text-xl font-serif font-bold uppercase tracking-[0.15em] transition-all",
-                pathname === route.href ? "text-[#C9A84C]" : "text-[#F5F0E8]"
-              )}
+      {/* Mobile menu — full-screen ink overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            id="mobile-menu"
+            key="menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35, ease: EASE }}
+            className="fixed inset-0 top-0 z-[-1] flex flex-col justify-between bg-ink/[0.97] pt-28 pb-10 backdrop-blur-2xl lg:hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
+          >
+            <nav className="flex flex-col px-8">
+              {routes.map((route, i) => (
+                <span key={route.href} className="overflow-hidden border-b border-gold/10">
+                  <motion.span
+                    className="block"
+                    initial={reduce ? false : { y: "110%" }}
+                    animate={{ y: "0%" }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.7, delay: 0.05 + i * 0.06, ease: EASE }}
+                  >
+                    <Link
+                      href={route.href}
+                      onClick={close}
+                      className={cn(
+                        "flex items-baseline justify-between py-4 font-serif text-4xl font-medium transition-colors active:text-gold-bright",
+                        pathname === route.href ? "text-gold" : "text-cream"
+                      )}
+                    >
+                      {route.label}
+                    </Link>
+                  </motion.span>
+                </span>
+              ))}
+            </nav>
+
+            <motion.div
+              initial={reduce ? false : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: EASE }}
+              className="px-8"
             >
-              {route.label}
-            </Link>
-          ))}
-          <Link href="/dinner" onClick={() => setMobileMenuOpen(false)} className="text-xl font-serif font-bold uppercase tracking-[0.15em] text-[#F5F0E8] transition-all">
-            Dinner & Auction
-          </Link>
-          <Button asChild className="mt-4 bg-[#C9A84C] text-[#0A0A0A] w-3/4 max-w-xs rounded-none py-6 text-lg font-bold hover:bg-[#F5F0E8] transition-all">
-            <Link href="/register" onClick={() => setMobileMenuOpen(false)}>Register Now</Link>
-          </Button>
-        </div>
-      )}
+              <Link
+                href="/#early-access"
+                onClick={close}
+                className="block w-full bg-gold py-5 text-center text-xs font-semibold uppercase tracking-[0.25em] text-ink transition-colors active:bg-gold-bright"
+              >
+                Join The 2027 List
+              </Link>
+              <p className="mt-6 text-center text-[10px] uppercase tracking-[0.3em] text-cream/40">
+                Morongo Golf Club at Tukwet Canyon
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

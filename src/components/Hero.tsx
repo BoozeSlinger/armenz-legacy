@@ -1,128 +1,111 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Countdown } from "@/components/Countdown";
+import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { Cta } from "@/components/Cta";
+import { EASE } from "@/components/motion";
 
+interface HeroCta { href: string; label: string; }
 interface HeroProps {
   title?: React.ReactNode;
   subtitle?: string;
-  showCountdown?: boolean;
+  eyebrow?: string;
+  showCountdown?: boolean; // retained for API compat — countdown retired post-event
   compact?: boolean;
   transparentBg?: boolean;
-  showLogo?: boolean;
+  showLogo?: boolean; // retained for API compat — crest lives in the navbar now
   showButtons?: boolean;
+  primaryCta?: HeroCta;
+  secondaryCta?: HeroCta;
 }
 
-export function Hero({ 
+/**
+ * Editorial page header for inner pages — left-aligned, serif display,
+ * rises out of a clipped mask. The homepage uses HomeHero instead.
+ */
+export function Hero({
   title = (
     <>
-      <span className="block text-[#C9A84C] mb-2 leading-tight">Honoring a Legacy</span>
-      <span className="block text-[#F5F0E8] leading-tight">Driving for a Cause</span>
+      Honoring a legacy, <em className="italic text-gold-bright">driving</em> for a cause.
     </>
-  ), 
-  subtitle = "Join us June 22nd to honor Armen's legacy and give back to the athletes — human and equine — who give everything to the sport.",
-  showCountdown = true,
+  ),
+  subtitle = "The inaugural Armenz Legacy Classic brought the community together for CARMA's retired racehorses and the Permanently Disabled Jockeys Fund.",
+  eyebrow,
   compact = false,
   transparentBg = false,
-  showLogo = true,
-  showButtons = true
+  showButtons = true,
+  primaryCta = { href: "/#early-access", label: "Join The 2027 List" },
+  secondaryCta = { href: "/gallery", label: "View The Gallery" },
 }: HeroProps) {
+  const reduce = useReducedMotion();
+
   return (
-    <section className={cn(
-      "relative w-full flex items-center justify-center pt-28 pb-16 overflow-hidden",
-      compact ? "min-h-[70vh] md:min-h-[75vh]" : "min-h-[90vh]",
-      transparentBg ? "bg-transparent" : "bg-[#0A0A0A]"
-    )}>
-      {/* Background Image with animated scale - only show if not transparentBg */}
+    <section
+      className={cn(
+        "relative flex w-full items-end overflow-hidden",
+        compact ? "min-h-[52vh] pt-36 pb-14 md:min-h-[58vh] md:pb-16" : "min-h-[72vh] pt-40 pb-16 md:pb-20",
+        transparentBg ? "bg-transparent" : "bg-ink"
+      )}
+    >
       {!transparentBg && (
-        <>
-          <motion.div 
-            initial={{ scale: 1.05, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.4 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="absolute inset-0 bg-center bg-cover pointer-events-none"
-            style={{ backgroundImage: "url('/images/hero/hero-bg.jpg')" }}
-          />
-          {/* Texture overlay */}
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')] opacity-20 mix-blend-multiply pointer-events-none" />
-          <div className="absolute inset-0 bg-linear-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-black/30 pointer-events-none" />
-        </>
+        <div className="glow-gold-faint absolute inset-0" aria-hidden />
       )}
 
-      <div className={cn("container relative px-4 md:px-8 flex flex-col items-center text-center", compact ? "mt-0" : "mt-2")}>
-        
-        {/* Enormously enlarged logo with transparent PNG */}
-        {showLogo && (
-          <motion.div 
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            whileHover={{ scale: 1.05, rotate: -1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-72 h-72 sm:w-96 sm:h-96 md:w-md md:h-112 relative mb-2 drop-shadow-2xl"
+      <div className="container relative z-10 mx-auto max-w-7xl px-4 md:px-8">
+        {eyebrow && (
+          <motion.p
+            initial={reduce ? false : { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+            className="mb-5 text-[11px] font-semibold uppercase tracking-[0.3em] text-gold-bright/90"
           >
-            <Image 
-              src="/images/hero/logo.png" 
-              alt="Armen Z Legacy Memorial Golf Tournament Logo — Beaumont CA" 
-              fill
-              className="object-contain"
-              priority
-            />
-          </motion.div>
+            {eyebrow}
+          </motion.p>
         )}
 
-        <motion.h1 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold italic tracking-[0.15em] mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] max-w-4xl"
-        >
-          {title}
-        </motion.h1>
-        
-        <motion.p 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-base sm:text-lg md:text-xl text-[#C9A84C] max-w-2xl font-medium whitespace-pre-line leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] mb-4"
-        >
-          {subtitle}
-        </motion.p>
-        
-        {showCountdown && (
-          <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="mt-2"
+        <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
+          <motion.h1
+            initial={reduce ? false : { y: "108%" }}
+            animate={{ y: "0%" }}
+            transition={{ duration: 1.1, delay: 0.2, ease: EASE }}
+            className="max-w-4xl font-serif text-[clamp(2.5rem,6vw,4.75rem)] font-medium leading-[1.04] tracking-[-0.015em] text-cream"
           >
-            <Countdown />
-          </motion.div>
+            {title}
+          </motion.h1>
+        </span>
+
+        {subtitle && (
+          <motion.p
+            initial={reduce ? false : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.5, ease: EASE }}
+            className="mt-6 max-w-xl text-base leading-relaxed text-cream/75 md:text-lg"
+          >
+            {subtitle}
+          </motion.p>
         )}
-        
+
         {showButtons && (
-          <motion.div 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-8 w-full max-w-sm mx-auto sm:max-w-none justify-center"
+          <motion.div
+            initial={reduce ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.7, ease: EASE }}
+            className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
           >
-            <Button asChild size="lg" className="group relative overflow-hidden bg-[#C9A84C] text-[#0A0A0A] hover:bg-[#F5F0E8] font-bold px-8 py-6 rounded-none shadow-[0_4px_20px_0_rgba(201,168,76,0.3)] hover:shadow-[0_8px_30px_rgba(201,168,76,0.4)] transition-all duration-300">
-              <Link href="/register">
-                <span className="relative z-10 tracking-wide text-sm sm:text-base uppercase">Secure Your Spot</span>
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="group relative border-2 border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#0A0A0A] font-bold px-8 py-6 rounded-none bg-transparent backdrop-blur-sm transition-all duration-300">
-              <Link href="/sponsorships">
-                <span className="relative z-10 tracking-wide text-sm sm:text-base uppercase">Sponsor Now</span>
-              </Link>
-            </Button>
+            <Cta href={primaryCta.href}>{primaryCta.label}</Cta>
+            <Cta href={secondaryCta.href} variant="ghost">{secondaryCta.label}</Cta>
           </motion.div>
         )}
       </div>
+
+      {/* Base hairline */}
+      <motion.div
+        aria-hidden
+        className="absolute bottom-0 left-0 right-0 h-px origin-left bg-gold/25"
+        initial={reduce ? false : { scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 1.4, delay: 0.6, ease: EASE }}
+      />
     </section>
   );
 }

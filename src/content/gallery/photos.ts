@@ -1,0 +1,123 @@
+// Generated from the Cloudinary "golf" media library (cloud: dqj3xyvey).
+// golf → players · golf/sponsors → sponsors · golf/other → course
+// To remove a photo, delete its entry. To add one, copy public_id/version/width/height
+// from Cloudinary into a new entry — page counts and filters update automatically.
+
+export type GalleryCategory = "players" | "sponsors" | "course";
+
+export interface GalleryPhoto {
+  /** Cloudinary public_id */
+  id: string;
+  /** Cloudinary version (cache-busting) */
+  v: number;
+  w: number;
+  h: number;
+  category: GalleryCategory;
+  alt: string;
+}
+
+export const CATEGORY_LABELS: Record<GalleryCategory, string> = {
+  players: "Players & Foursomes",
+  sponsors: "Sponsors",
+  course: "Course & Lifestyle",
+};
+
+export const galleryPhotos: GalleryPhoto[] = [
+  { id: "Copy_of_DSC_0033_cwvbkv", v: 1783372932, w: 6000, h: 4000, category: "players", alt: "Foursome poses on the fairway at Morongo Golf Club at Tukwet Canyon — Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0038_rsoiti", v: 1783372950, w: 6000, h: 4000, category: "players", alt: "Players tee off at the Armenz Legacy charity golf tournament in Beaumont, CA" },
+  { id: "Copy_of_DSC_0039_bc4l8g", v: 1783372947, w: 6000, h: 4000, category: "players", alt: "Golfers share a moment on the course at Legacy on the Greens 2026" },
+  { id: "Copy_of_DSC_0040_wphtbs", v: 1783372949, w: 6000, h: 4000, category: "players", alt: "A foursome lines up their shot at Tukwet Canyon during the Armen Zennedjian Classic" },
+  { id: "Copy_of_DSC_0042_qxsnc3", v: 1783372956, w: 6000, h: 4000, category: "players", alt: "Players on the green at the 2026 Armenz Legacy charity scramble" },
+  { id: "Copy_of_DSC_0044_bph4vc", v: 1783373154, w: 6000, h: 4000, category: "players", alt: "Foursome poses on the fairway at Morongo Golf Club at Tukwet Canyon — Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0046_w8jvat", v: 1783372967, w: 6000, h: 4000, category: "players", alt: "Players tee off at the Armenz Legacy charity golf tournament in Beaumont, CA" },
+  { id: "Copy_of_DSC_0048_gccewv", v: 1783372966, w: 6000, h: 4000, category: "players", alt: "Golfers share a moment on the course at Legacy on the Greens 2026" },
+  { id: "Copy_of_DSC_0049_fxnx0e", v: 1783373157, w: 6000, h: 4000, category: "players", alt: "A foursome lines up their shot at Tukwet Canyon during the Armen Zennedjian Classic" },
+  { id: "Copy_of_DSC_0053_hxbm8z", v: 1783373128, w: 6000, h: 4000, category: "players", alt: "Players on the green at the 2026 Armenz Legacy charity scramble" },
+  { id: "Copy_of_DSC_0054_ehrtxs", v: 1783372963, w: 6000, h: 4000, category: "players", alt: "Foursome poses on the fairway at Morongo Golf Club at Tukwet Canyon — Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0055_mzhfkp", v: 1783372970, w: 6000, h: 4000, category: "players", alt: "Players tee off at the Armenz Legacy charity golf tournament in Beaumont, CA" },
+  { id: "Copy_of_DSC_0056_qoybtc", v: 1783373157, w: 6000, h: 4000, category: "players", alt: "Golfers share a moment on the course at Legacy on the Greens 2026" },
+  { id: "Copy_of_DSC_0058_nwrkmh", v: 1783372969, w: 6000, h: 4000, category: "players", alt: "A foursome lines up their shot at Tukwet Canyon during the Armen Zennedjian Classic" },
+  { id: "Copy_of_DSC_0063_oybhsl", v: 1783372982, w: 6000, h: 4000, category: "players", alt: "Players on the green at the 2026 Armenz Legacy charity scramble" },
+  { id: "Copy_of_DSC_0065_1_rcnqi8", v: 1783372989, w: 6000, h: 4000, category: "players", alt: "Foursome poses on the fairway at Morongo Golf Club at Tukwet Canyon — Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0075_xmxlo6", v: 1783372993, w: 6000, h: 4000, category: "players", alt: "Players tee off at the Armenz Legacy charity golf tournament in Beaumont, CA" },
+  { id: "Copy_of_DSC_0082_-_Copy_-_Copy_yh4zvm", v: 1783373004, w: 6000, h: 4000, category: "players", alt: "Golfers share a moment on the course at Legacy on the Greens 2026" },
+  { id: "Copy_of_DSC_0090_-_Copy_2_erzlrr", v: 1783373184, w: 6000, h: 4000, category: "players", alt: "A foursome lines up their shot at Tukwet Canyon during the Armen Zennedjian Classic" },
+  { id: "Copy_of_DSC_0094_-_Copy_g3ujbm", v: 1783373020, w: 6000, h: 4000, category: "players", alt: "Players on the green at the 2026 Armenz Legacy charity scramble" },
+  { id: "Copy_of_DSC_0096_-_Copy_f6ajsi", v: 1783373024, w: 6000, h: 4000, category: "players", alt: "Foursome poses on the fairway at Morongo Golf Club at Tukwet Canyon — Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0097_-_Copy_krpqdf", v: 1783373029, w: 6000, h: 4000, category: "players", alt: "Players tee off at the Armenz Legacy charity golf tournament in Beaumont, CA" },
+  { id: "Copy_of_DSC_0102_-_Copy_s9xa2c", v: 1783373042, w: 6000, h: 4000, category: "players", alt: "Golfers share a moment on the course at Legacy on the Greens 2026" },
+  { id: "Copy_of_DSC_0103_-_Copy_yiwosn", v: 1783373038, w: 6000, h: 4000, category: "players", alt: "A foursome lines up their shot at Tukwet Canyon during the Armen Zennedjian Classic" },
+  { id: "Copy_of_DSC_0105_-_Copy_hejzqo", v: 1783373046, w: 6000, h: 4000, category: "players", alt: "Players on the green at the 2026 Armenz Legacy charity scramble" },
+  { id: "Copy_of_DSC_0106_iwfqsz", v: 1783373060, w: 6000, h: 4000, category: "players", alt: "Foursome poses on the fairway at Morongo Golf Club at Tukwet Canyon — Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0110_-_Copy_zykcos", v: 1783373047, w: 6000, h: 4000, category: "players", alt: "Players tee off at the Armenz Legacy charity golf tournament in Beaumont, CA" },
+  { id: "Copy_of_DSC_0115_yjv4vj", v: 1783373192, w: 6000, h: 4000, category: "players", alt: "Golfers share a moment on the course at Legacy on the Greens 2026" },
+  { id: "Copy_of_DSC_0116_exsivx", v: 1783373197, w: 6000, h: 4000, category: "players", alt: "A foursome lines up their shot at Tukwet Canyon during the Armen Zennedjian Classic" },
+  { id: "Copy_of_DSC_0119_vhbccb", v: 1783373071, w: 6000, h: 4000, category: "players", alt: "Players on the green at the 2026 Armenz Legacy charity scramble" },
+  { id: "Copy_of_DSC_0120_azrhem", v: 1783373194, w: 6000, h: 4000, category: "players", alt: "Foursome poses on the fairway at Morongo Golf Club at Tukwet Canyon — Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0122_dksqb9", v: 1783373064, w: 6000, h: 4000, category: "players", alt: "Players tee off at the Armenz Legacy charity golf tournament in Beaumont, CA" },
+  { id: "Copy_of_DSC_0123_qozlhj", v: 1783373204, w: 6000, h: 4000, category: "players", alt: "Golfers share a moment on the course at Legacy on the Greens 2026" },
+  { id: "Copy_of_DSC_0130_qkuryg", v: 1783373202, w: 6000, h: 4000, category: "players", alt: "A foursome lines up their shot at Tukwet Canyon during the Armen Zennedjian Classic" },
+  { id: "IMG_9519_ixdyp5", v: 1783373208, w: 3024, h: 4032, category: "players", alt: "Players on the green at the 2026 Armenz Legacy charity scramble" },
+  { id: "IMG_9528_klo2q4", v: 1783373097, w: 5304, h: 7072, category: "players", alt: "Foursome poses on the fairway at Morongo Golf Club at Tukwet Canyon — Armenz Legacy Classic 2026" },
+  { id: "IMG_9541_i4cess", v: 1783373117, w: 6048, h: 8064, category: "players", alt: "Players tee off at the Armenz Legacy charity golf tournament in Beaumont, CA" },
+  { id: "IMG_9542_ix2sks", v: 1783372895, w: 6048, h: 8064, category: "players", alt: "Golfers share a moment on the course at Legacy on the Greens 2026" },
+  { id: "IMG_9559_flbtmp", v: 1783373218, w: 3024, h: 4032, category: "players", alt: "A foursome lines up their shot at Tukwet Canyon during the Armen Zennedjian Classic" },
+  { id: "IMG_9587_qmn9yi", v: 1783373221, w: 3024, h: 4032, category: "players", alt: "Players on the green at the 2026 Armenz Legacy charity scramble" },
+  { id: "Copy_of_DSC_0043_ovmdqf", v: 1783373152, w: 6000, h: 4000, category: "sponsors", alt: "Sponsor tent and signage on the course at the Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0050_syybrq", v: 1783372967, w: 6000, h: 4000, category: "sponsors", alt: "Sponsor activation at Morongo Golf Club during the Armenz Legacy charity golf tournament" },
+  { id: "Copy_of_DSC_0064_cdzpgh", v: 1783372996, w: 6000, h: 4000, category: "sponsors", alt: "On-course sponsor booth welcomes players at Legacy on the Greens 2026" },
+  { id: "Copy_of_DSC_0067_ajqdbc", v: 1783372990, w: 6000, h: 4000, category: "sponsors", alt: "Tournament sponsor signage at Tukwet Canyon — Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0068_toc2gt", v: 1783373133, w: 6000, h: 4000, category: "sponsors", alt: "Sponsor tent and signage on the course at the Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0071_ym6sqs", v: 1783372985, w: 6000, h: 4000, category: "sponsors", alt: "Sponsor activation at Morongo Golf Club during the Armenz Legacy charity golf tournament" },
+  { id: "Copy_of_DSC_0072_kxbbli", v: 1783373160, w: 6000, h: 4000, category: "sponsors", alt: "On-course sponsor booth welcomes players at Legacy on the Greens 2026" },
+  { id: "Copy_of_DSC_0074_gahq6l", v: 1783373182, w: 6000, h: 4000, category: "sponsors", alt: "Tournament sponsor signage at Tukwet Canyon — Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0078_iflgcj", v: 1783373000, w: 6000, h: 4000, category: "sponsors", alt: "Sponsor tent and signage on the course at the Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0079_lbbw1d", v: 1783373168, w: 6000, h: 4000, category: "sponsors", alt: "Sponsor activation at Morongo Golf Club during the Armenz Legacy charity golf tournament" },
+  { id: "Copy_of_DSC_0081_-_Copy_sbe1mb", v: 1783373003, w: 6000, h: 4000, category: "sponsors", alt: "On-course sponsor booth welcomes players at Legacy on the Greens 2026" },
+  { id: "Copy_of_DSC_0084_-_Copy_-_Copy_cuyftk", v: 1783373006, w: 6000, h: 4000, category: "sponsors", alt: "Tournament sponsor signage at Tukwet Canyon — Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0085_-_Copy_-_Copy_pbuj3q", v: 1783373184, w: 6000, h: 4000, category: "sponsors", alt: "Sponsor tent and signage on the course at the Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0087_-_Copy_-_Copy_hb4pyi", v: 1783373138, w: 6000, h: 4000, category: "sponsors", alt: "Sponsor activation at Morongo Golf Club during the Armenz Legacy charity golf tournament" },
+  { id: "Copy_of_DSC_0088_-_Copy_-_Copy_j7f7sn", v: 1783373018, w: 6000, h: 4000, category: "sponsors", alt: "On-course sponsor booth welcomes players at Legacy on the Greens 2026" },
+  { id: "Copy_of_DSC_0089_-_Copy_-_Copy_gkbtwz", v: 1783373179, w: 6000, h: 4000, category: "sponsors", alt: "Tournament sponsor signage at Tukwet Canyon — Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0092_-_Copy_-_Copy_gsfdnj", v: 1783373019, w: 6000, h: 4000, category: "sponsors", alt: "Sponsor tent and signage on the course at the Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0093_-_Copy_-_Copy_ekbxo4", v: 1783373018, w: 6000, h: 4000, category: "sponsors", alt: "Sponsor activation at Morongo Golf Club during the Armenz Legacy charity golf tournament" },
+  { id: "Copy_of_DSC_0098_-_Copy_a1naom", v: 1783373032, w: 6000, h: 4000, category: "sponsors", alt: "On-course sponsor booth welcomes players at Legacy on the Greens 2026" },
+  { id: "Copy_of_DSC_0101_-_Copy_zzm0hw", v: 1783373044, w: 6000, h: 4000, category: "sponsors", alt: "Tournament sponsor signage at Tukwet Canyon — Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0104_-_Copy_in4b9j", v: 1783373186, w: 6000, h: 4000, category: "sponsors", alt: "Sponsor tent and signage on the course at the Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0108_-_Copy_mofdst", v: 1783373044, w: 6000, h: 4000, category: "sponsors", alt: "Sponsor activation at Morongo Golf Club during the Armenz Legacy charity golf tournament" },
+  { id: "Copy_of_DSC_0112_rx9447", v: 1783373060, w: 6000, h: 4000, category: "sponsors", alt: "On-course sponsor booth welcomes players at Legacy on the Greens 2026" },
+  { id: "Copy_of_DSC_0113_exnaby", v: 1783373063, w: 6000, h: 4000, category: "sponsors", alt: "Tournament sponsor signage at Tukwet Canyon — Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0117_dnvybb", v: 1783373136, w: 6000, h: 4000, category: "sponsors", alt: "Sponsor tent and signage on the course at the Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0118_ksbwrz", v: 1783373201, w: 6000, h: 4000, category: "sponsors", alt: "Sponsor activation at Morongo Golf Club during the Armenz Legacy charity golf tournament" },
+  { id: "Copy_of_DSC_0132_sh19ei", v: 1783373059, w: 6000, h: 4000, category: "sponsors", alt: "On-course sponsor booth welcomes players at Legacy on the Greens 2026" },
+  { id: "Copy_of_DSC_0133_elwv5h", v: 1783373077, w: 6000, h: 4000, category: "sponsors", alt: "Tournament sponsor signage at Tukwet Canyon — Armenz Legacy Classic 2026" },
+  { id: "IMG_9535_mgbt21", v: 1783373085, w: 6048, h: 8064, category: "sponsors", alt: "Sponsor tent and signage on the course at the Armenz Legacy Classic 2026" },
+  { id: "IMG_9566_toejqs", v: 1783373116, w: 6048, h: 8064, category: "sponsors", alt: "Sponsor activation at Morongo Golf Club during the Armenz Legacy charity golf tournament" },
+  { id: "Copy_of_DSC_0029_bicz8i", v: 1783372916, w: 6000, h: 4000, category: "course", alt: "Fairways of Morongo Golf Club at Tukwet Canyon during the Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0031_bf8tbn", v: 1783372919, w: 6000, h: 4000, category: "course", alt: "Course scenery at the 2026 Armenz Legacy charity golf tournament in Beaumont, CA" },
+  { id: "Copy_of_DSC_0032_joq6hl", v: 1783372929, w: 6000, h: 4000, category: "course", alt: "A quiet moment on the greens at Legacy on the Greens 2026" },
+  { id: "Copy_of_DSC_0034_ewo4jy", v: 1783372937, w: 6000, h: 4000, category: "course", alt: "Tournament-day atmosphere at Morongo Golf Club at Tukwet Canyon" },
+  { id: "Copy_of_DSC_0036_hncg7c", v: 1783372933, w: 6000, h: 4000, category: "course", alt: "Fairways of Morongo Golf Club at Tukwet Canyon during the Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0037_js6itw", v: 1783372938, w: 6000, h: 4000, category: "course", alt: "Course scenery at the 2026 Armenz Legacy charity golf tournament in Beaumont, CA" },
+  { id: "Copy_of_DSC_0045_mjk2kk", v: 1783372950, w: 6000, h: 4000, category: "course", alt: "A quiet moment on the greens at Legacy on the Greens 2026" },
+  { id: "Copy_of_DSC_0060_kilsm7", v: 1783372976, w: 6000, h: 4000, category: "course", alt: "Tournament-day atmosphere at Morongo Golf Club at Tukwet Canyon" },
+  { id: "Copy_of_DSC_0128_gnqhzp", v: 1783373138, w: 6000, h: 4000, category: "course", alt: "Fairways of Morongo Golf Club at Tukwet Canyon during the Armenz Legacy Classic 2026" },
+  { id: "Copy_of_DSC_0136_cmuwd8", v: 1783373202, w: 6000, h: 4000, category: "course", alt: "Course scenery at the 2026 Armenz Legacy charity golf tournament in Beaumont, CA" },
+  { id: "Copy_of_DSC_0144_q4fpse", v: 1783373208, w: 6000, h: 4000, category: "course", alt: "A quiet moment on the greens at Legacy on the Greens 2026" },
+  { id: "IMG_9486_bb8zob", v: 1783372909, w: 4244, h: 5658, category: "course", alt: "Tournament-day atmosphere at Morongo Golf Club at Tukwet Canyon" },
+  { id: "IMG_9487_ihg5ag", v: 1783373077, w: 4244, h: 5658, category: "course", alt: "Fairways of Morongo Golf Club at Tukwet Canyon during the Armenz Legacy Classic 2026" },
+  { id: "IMG_9520_k9vxoi", v: 1783373071, w: 3024, h: 4032, category: "course", alt: "Course scenery at the 2026 Armenz Legacy charity golf tournament in Beaumont, CA" },
+  { id: "IMG_9524_bd4iik", v: 1783372902, w: 3024, h: 4032, category: "course", alt: "A quiet moment on the greens at Legacy on the Greens 2026" },
+  { id: "IMG_9531_bjvlvs", v: 1783373072, w: 3248, h: 4330, category: "course", alt: "Tournament-day atmosphere at Morongo Golf Club at Tukwet Canyon" },
+  { id: "IMG_9534_en5dez", v: 1783372919, w: 4142, h: 5524, category: "course", alt: "Fairways of Morongo Golf Club at Tukwet Canyon during the Armenz Legacy Classic 2026" },
+  { id: "IMG_9536_okrupj", v: 1783373096, w: 6048, h: 8064, category: "course", alt: "Course scenery at the 2026 Armenz Legacy charity golf tournament in Beaumont, CA" },
+  { id: "IMG_9540_qz7mjd", v: 1783372925, w: 6048, h: 8064, category: "course", alt: "A quiet moment on the greens at Legacy on the Greens 2026" },
+  { id: "IMG_9555_xthyqg", v: 1783373097, w: 4698, h: 6264, category: "course", alt: "Tournament-day atmosphere at Morongo Golf Club at Tukwet Canyon" },
+  { id: "IMG_9556_cvzvmp", v: 1783373104, w: 4698, h: 6264, category: "course", alt: "Fairways of Morongo Golf Club at Tukwet Canyon during the Armenz Legacy Classic 2026" },
+  { id: "IMG_9557_ogxm25", v: 1783373114, w: 4246, h: 5660, category: "course", alt: "Course scenery at the 2026 Armenz Legacy charity golf tournament in Beaumont, CA" },
+  { id: "IMG_9567_muzko9", v: 1783373109, w: 6048, h: 8064, category: "course", alt: "A quiet moment on the greens at Legacy on the Greens 2026" },
+  { id: "IMG_9568_lckwdf", v: 1783373115, w: 6048, h: 8064, category: "course", alt: "Tournament-day atmosphere at Morongo Golf Club at Tukwet Canyon" },
+  { id: "IMG_9570_yhvfkb", v: 1783373124, w: 6048, h: 8064, category: "course", alt: "Fairways of Morongo Golf Club at Tukwet Canyon during the Armenz Legacy Classic 2026" },
+  { id: "IMG_9572_uwrp3m", v: 1783373115, w: 3024, h: 4032, category: "course", alt: "Course scenery at the 2026 Armenz Legacy charity golf tournament in Beaumont, CA" },
+  { id: "IMG_9601_seosyy", v: 1783373127, w: 6048, h: 8064, category: "course", alt: "A quiet moment on the greens at Legacy on the Greens 2026" },
+];

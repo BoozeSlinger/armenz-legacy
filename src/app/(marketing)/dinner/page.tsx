@@ -1,8 +1,7 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { EventbriteWidget } from "@/components/EventbriteWidget";
-import Image from "next/image";
-
+import { Hero } from "@/components/Hero";
+import { Cta } from "@/components/Cta";
+import { Reveal, MaskLines, HairlineGrow } from "@/components/motion";
 
 export const metadata = {
   title: "Dinner & Charity Auction Tickets — Beaumont CA, June 22, 2026",
@@ -16,134 +15,98 @@ export const metadata = {
   alternates: { canonical: "/dinner" },
 };
 
+const included = [
+  { title: "Catered Dinner", detail: "Full-service dinner at the clubhouse banquet" },
+  { title: "Silent Auction", detail: "Bid on exclusive items, experiences, and memorabilia" },
+  { title: "Raffle Drawings", detail: "Multiple chances to win prizes throughout the evening" },
+  { title: "Awards Ceremony", detail: "Celebrate the day's winners and the impact we're making" },
+  { title: "Drinks & Socializing", detail: "Enjoy the evening with fellow supporters of the legacy" },
+];
+
 export default function DinnerPage() {
   return (
-    <div className="relative min-h-screen">
-      {/* Fixed Background */}
-      <div className="fixed inset-0 z-[-1] pointer-events-none">
-        <Image 
-          src="/images/page-bg/home-parallax.png" 
-          alt="Dinner & Charity Auction Background - Beaumont Golf Event" 
-          fill 
-          className="object-cover" 
-          priority 
-        />
-        <div className="absolute inset-0 bg-[#0A0A0A]/80 backdrop-blur-[2px]" />
-      </div>
+    <div className="relative min-h-screen bg-ink">
+      <Hero
+        compact
+        eyebrow="Join the Celebration"
+        title={
+          <>
+            Dinner & charity <em className="italic text-gold-bright">auction</em>.
+          </>
+        }
+        subtitle="Don't play golf? No problem. Join us for the post-tournament celebration and support a great cause over an incredible evening."
+        showButtons={false}
+      />
 
-      {/* Hero */}
-      <section className="relative pt-36 pb-16 overflow-hidden">
-        <div className="container mx-auto px-4 md:px-8 max-w-5xl text-center">
-          <div className="inline-flex items-center justify-center space-x-4 mb-8">
-            <div className="w-12 h-px bg-[#C9A84C]" />
-            <span className="text-[#C9A84C] font-semibold tracking-[0.2em] uppercase text-sm">
-              Join the Celebration
-            </span>
-            <div className="w-12 h-px bg-[#C9A84C]" />
-          </div>
-          <h1 className="text-4xl md:text-6xl font-serif font-bold text-[#F5F0E8] mb-6">
-            Dinner & <span className="text-[#C9A84C] italic">Charity Auction</span> — Beaumont Golf Gala
-          </h1>
-          <p className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            Don&apos;t play golf? No problem. Join us for the post-tournament celebration and help support a great cause while enjoying an incredible evening.
-          </p>
-        </div>
-      </section>
-
-      {/* Ticket Info */}
-      <section className="py-16 relative z-10">
-        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* What's Included */}
-            <div className="bg-zinc-900/60 backdrop-blur-xl border border-[#C9A84C]/20 p-8 md:p-10 shadow-2xl">
-              <h2 className="text-2xl font-serif font-bold text-[#F5F0E8] mb-6">
-                What&apos;s Included
+      {/* What's included + ticket */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-6xl px-4 md:px-8">
+          <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-7">
+              <h2 className="font-serif text-3xl font-medium text-cream md:text-4xl">
+                What&apos;s <em className="italic text-gold-bright">included</em>
               </h2>
-              <ul className="space-y-4 text-zinc-300">
-                <li className="flex items-start gap-3">
-                  <span className="text-[#C9A84C] font-bold mt-0.5">&#10003;</span>
-                  <div>
-                    <p className="text-[#F5F0E8] font-bold">Catered Dinner</p>
-                    <p className="text-sm text-zinc-500">Full-service dinner at the clubhouse banquet</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#C9A84C] font-bold mt-0.5">&#10003;</span>
-                  <div>
-                    <p className="text-[#F5F0E8] font-bold">Silent Auction</p>
-                    <p className="text-sm text-zinc-500">Bid on exclusive items, experiences, and memorabilia</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#C9A84C] font-bold mt-0.5">&#10003;</span>
-                  <div>
-                    <p className="text-[#F5F0E8] font-bold">Raffle Drawings</p>
-                    <p className="text-sm text-zinc-500">Multiple chances to win prizes throughout the evening</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#C9A84C] font-bold mt-0.5">&#10003;</span>
-                  <div>
-                    <p className="text-[#F5F0E8] font-bold">Awards Ceremony</p>
-                    <p className="text-sm text-zinc-500">Celebrate the day&apos;s winners and the impact we&apos;re making together</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#C9A84C] font-bold mt-0.5">&#10003;</span>
-                  <div>
-                    <p className="text-[#F5F0E8] font-bold">Drinks & Socializing</p>
-                    <p className="text-sm text-zinc-500">Enjoy the afternoon with fellow supporters of the legacy</p>
-                  </div>
-                </li>
-              </ul>
+              <HairlineGrow className="mt-8" />
+              <div>
+                {included.map((item, i) => (
+                  <Reveal key={item.title} delay={(i % 5) * 0.06}>
+                    <div className="flex items-baseline gap-5 border-b border-gold/12 py-6">
+                      <span className="font-engraved shrink-0 text-sm text-gold/70">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <div>
+                        <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-cream">
+                          {item.title}
+                        </p>
+                        <p className="mt-1 text-sm font-light text-cream/55">{item.detail}</p>
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
             </div>
 
-            {/* Ticket Card */}
-            <div className="bg-zinc-900/60 backdrop-blur-xl border-2 border-[#C9A84C] p-8 md:p-10 shadow-2xl relative">
-              <div className="absolute -top-1 -left-1 w-10 h-10 border-t-2 border-l-2 border-[#C9A84C]" />
-              <div className="absolute -bottom-1 -right-1 w-10 h-10 border-b-2 border-r-2 border-[#C9A84C]" />
-
-              <div className="text-center mb-8">
-                <span className="text-[#C9A84C] text-sm uppercase tracking-widest font-bold">
-                  Non-Golfer
-                </span>
-                <h3 className="text-2xl font-serif font-bold text-[#F5F0E8] mt-2">
-                  Dinner & Auction Ticket
-                </h3>
-                <div className="text-4xl font-bold text-[#F5F0E8] mt-4">$75 Dinner</div>
-                <p className="text-zinc-500 text-sm mt-2">More TBA</p>
-              </div>
-
-              <div className="border-t border-zinc-800/50 pt-6">
-                <p className="text-zinc-400 text-sm text-center leading-relaxed mb-6">
-                  Perfect for spouses, friends, family members, or anyone who wants to support the cause and enjoy the celebration without hitting the links.
-                </p>
-                <div className="text-center">
-                  <p className="text-[#C9A84C] font-bold text-sm uppercase tracking-wider">
-                    Immediately Following Play (~4:00 PM)
+            <div className="lg:col-span-5">
+              <Reveal delay={0.15} y={32}>
+                <div className="border border-gold/25 p-8 md:p-10">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-gold/80">
+                    Non-Golfer Ticket
                   </p>
-                  <p className="text-zinc-500 text-xs mt-1">
-                    At the Morongo Golf Club Clubhouse
-                  </p>
+                  <h3 className="mt-4 font-serif text-2xl font-medium text-cream">
+                    Dinner & Auction Seat
+                  </h3>
+                  <p className="font-engraved mt-6 text-5xl text-cream">$75</p>
+                  <p className="mt-2 text-sm font-light text-cream/45">Dinner · More TBA</p>
+                  <div className="mt-8 border-t border-gold/15 pt-6">
+                    <p className="text-sm font-light leading-relaxed text-cream/60">
+                      Perfect for spouses, friends, family, or anyone who wants to support
+                      the cause and enjoy the celebration without hitting the links.
+                    </p>
+                    <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-bright/90">
+                      Immediately Following Play (~4:00 PM)
+                    </p>
+                    <p className="mt-1 text-xs font-light text-cream/45">
+                      At the Morongo Golf Club Clubhouse
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Registration Form */}
-      <section className="py-16 relative z-10">
-        <div className="container mx-auto px-4 md:px-8 max-w-3xl">
-          <div className="bg-zinc-900/60 backdrop-blur-xl border border-[#C9A84C]/20 p-8 md:p-12 shadow-2xl">
-            <h2 className="text-2xl md:text-3xl font-serif font-bold text-[#F5F0E8] mb-2 text-center">
-              Reserve Your Seat
+      {/* Reserve seat — widget */}
+      <section className="border-t border-gold/10 bg-ink-2 py-16 md:py-24">
+        <div className="container mx-auto max-w-3xl px-4 md:px-8">
+          <div className="border border-gold/20 p-8 md:p-12">
+            <h2 className="text-center font-serif text-3xl font-medium text-cream md:text-4xl">
+              Reserve your <em className="italic text-gold-bright">seat</em>
             </h2>
-            <p className="text-zinc-400 text-center mb-10">
+            <p className="mx-auto mt-4 mb-10 max-w-md text-center text-base font-light leading-relaxed text-cream/60">
               Complete your ticket purchase below to secure your dinner and auction seat.
             </p>
-
-            <EventbriteWidget 
+            <EventbriteWidget
               eventId="1983383494423"
               containerId="eventbrite-widget-container-1983383494423-dinner"
             />
@@ -152,19 +115,23 @@ export default function DinnerPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 relative z-10">
-        <div className="container mx-auto px-4 md:px-8 max-w-3xl text-center">
-          <p className="text-zinc-400 text-lg mb-6">
-            Want to play golf too?
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="outline" className="border-2 border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#0A0A0A] font-bold px-8 py-6 rounded-none bg-transparent backdrop-blur-sm uppercase tracking-widest transition-all duration-300">
-              <Link href="/register">Register to Play ($150)</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="border-2 border-zinc-700 text-zinc-400 hover:border-[#C9A84C] hover:text-[#C9A84C] font-bold px-8 py-6 rounded-none bg-transparent backdrop-blur-sm uppercase tracking-widest transition-all duration-300">
-              <Link href="/donate">Make a Donation</Link>
-            </Button>
-          </div>
+      <section className="py-20 md:py-28">
+        <div className="container mx-auto max-w-3xl px-4 md:px-8 text-center">
+          <h2 className="font-serif text-3xl font-medium text-cream md:text-4xl">
+            <MaskLines
+              lines={[
+                <span key="l">
+                  Want in on the 2027 <em className="italic text-gold-bright">Classic</em>?
+                </span>,
+              ]}
+            />
+          </h2>
+          <Reveal delay={0.15}>
+            <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Cta href="/#early-access">Join The 2027 List</Cta>
+              <Cta href="/donate" variant="ghost">Make a Donation</Cta>
+            </div>
+          </Reveal>
         </div>
       </section>
     </div>

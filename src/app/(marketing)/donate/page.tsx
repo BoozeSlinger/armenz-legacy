@@ -1,6 +1,6 @@
 import { EventbriteWidget } from "@/components/EventbriteWidget";
-import Image from "next/image";
-
+import { Hero } from "@/components/Hero";
+import { Reveal } from "@/components/motion";
 
 export const metadata = {
   title: "Donate — Horse Racing Charity Events California (CARMA & PDJF)",
@@ -16,77 +16,59 @@ export const metadata = {
 
 export default function DonatePage() {
   return (
-    <div className="relative min-h-screen">
-      {/* Fixed Background */}
-      <div className="fixed inset-0 z-[-1] pointer-events-none">
-        <Image 
-          src="/images/page-bg/home-parallax.png" 
-          alt="Donate to California Horse Racing Charity Background" 
-          fill 
-          className="object-cover" 
-          priority 
-        />
-        <div className="absolute inset-0 bg-[#0A0A0A]/80 backdrop-blur-[2px]" />
-      </div>
+    <div className="relative min-h-screen bg-ink">
+      <Hero
+        compact
+        eyebrow="Support the Legacy"
+        title={
+          <>
+            You don&apos;t have to play to make a <em className="italic text-gold-bright">difference</em>.
+          </>
+        }
+        subtitle="Every contribution, no matter the size, goes directly to supporting retired Thoroughbreds and injured jockeys."
+        showButtons={false}
+      />
 
-      {/* Hero */}
-      <section className="relative pt-36 pb-16 overflow-hidden">
-        <div className="container mx-auto px-4 md:px-8 max-w-4xl text-center">
-          <div className="inline-flex items-center justify-center space-x-4 mb-8">
-            <div className="w-12 h-px bg-[#C9A84C]" />
-            <span className="text-[#C9A84C] font-semibold tracking-[0.2em] uppercase text-sm">
-              Support the Legacy
-            </span>
-            <div className="w-12 h-px bg-[#C9A84C]" />
-          </div>
-          <h1 className="text-4xl md:text-6xl font-serif font-bold text-[#F5F0E8] mb-6">
-            DONATE TO <span className="text-[#C9A84C] italic">CALIFORNIA HORSE RACING CHARITY</span>
-          </h1>
-          <p className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            You don&apos;t have to play golf to make a difference. Every contribution, no matter the size, goes directly to supporting retired Thoroughbreds and injured jockeys.
-          </p>
-        </div>
-      </section>
+      {/* Donation widget */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-3xl px-4 md:px-8">
+          <div className="border border-gold/20 p-8 md:p-12">
+            <h2 className="text-center font-serif text-3xl font-medium text-cream md:text-4xl">
+              Complete your <em className="italic text-gold-bright">donation</em>
+            </h2>
+            <p className="mx-auto mt-4 mb-10 max-w-md text-center text-base font-light leading-relaxed text-cream/60">
+              Use the secure Eventbrite checkout below to complete your contribution.
+            </p>
 
-      {/* Donation Form */}
-      <section className="py-16 relative z-10">
-        <div className="container mx-auto px-4 md:px-8 max-w-3xl">
-          <div className="bg-zinc-900/60 backdrop-blur-xl border border-[#C9A84C]/20 p-8 md:p-12 shadow-2xl relative">
-            <div className="absolute -top-1 -left-1 w-10 h-10 border-t-2 border-l-2 border-[#C9A84C]" />
-            <div className="absolute -bottom-1 -right-1 w-10 h-10 border-b-2 border-r-2 border-[#C9A84C]" />
+            <EventbriteWidget
+              eventId="1983383494423"
+              containerId="eventbrite-widget-container-1983383494423-donate"
+            />
 
-            <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-serif font-bold text-[#F5F0E8] mb-2 text-center">
-                Complete Your Donation
-              </h2>
-              <p className="text-zinc-400 text-center mb-10">
-                Please use the secure Eventbrite checkout below to complete your contribution.
-              </p>
-              
-              <EventbriteWidget 
-                eventId="1983383494423"
-                containerId="eventbrite-widget-container-1983383494423-donate"
-              />
-              
-              <p className="text-zinc-500 text-xs text-center mt-8">
-                Your donation is tax deductible - this tournament is run through <strong className="text-zinc-400">909 Market Foundation</strong>, a 501(c)(3) charitable organization. EIN: 92-0881763.
-              </p>
-            </div>
+            <p className="mx-auto mt-8 max-w-lg text-center text-xs font-light leading-relaxed text-cream/40">
+              Your donation is tax-deductible. This tournament runs through the{" "}
+              <span className="text-cream/60">909 Market Foundation</span>, a 501(c)(3)
+              charitable organization. EIN: 92-0881763.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Thank You Note */}
-      <section className="py-16 relative z-10">
-        <div className="container mx-auto px-4 md:px-8 max-w-3xl text-center">
-          <div className="border-y border-zinc-800/50 py-10">
-            <p className="text-[#F5F0E8] font-serif text-2xl md:text-3xl italic leading-relaxed">
-              &ldquo;Thank you for keeping Armen&apos;s spirit alive. Your generosity gives second chances to the horses and riders who give everything to the sport we love.&rdquo;
-            </p>
-            <p className="text-[#C9A84C] text-sm uppercase tracking-widest font-bold mt-6">
-              The Armen Z Legacy Family
-            </p>
-          </div>
+      {/* Thank-you note */}
+      <section className="pb-24 md:pb-32">
+        <div className="container mx-auto max-w-3xl px-4 md:px-8 text-center">
+          <Reveal>
+            <blockquote className="border-y border-gold/15 py-12">
+              <p className="mx-auto max-w-2xl font-serif text-2xl font-medium italic leading-[1.4] text-cream/90 md:text-3xl">
+                &ldquo;Thank you for keeping Armen&apos;s spirit alive. Your generosity
+                gives second chances to the horses and riders who give everything to the
+                sport we love.&rdquo;
+              </p>
+              <footer className="mt-7 text-[11px] font-semibold uppercase tracking-[0.25em] text-gold-bright/90">
+                The Armen Z Legacy Family
+              </footer>
+            </blockquote>
+          </Reveal>
         </div>
       </section>
     </div>

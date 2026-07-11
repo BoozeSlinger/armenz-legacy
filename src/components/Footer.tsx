@@ -1,58 +1,143 @@
 import Link from "next/link";
 import Image from "next/image";
 
+const links = [
+  { href: "/gallery", label: "2026 Gallery" },
+  { href: "/sponsorships", label: "2026 Sponsors" },
+  { href: "/the-cause", label: "The Cause" },
+  { href: "/donate", label: "Donate" },
+  { href: "/news", label: "News" },
+  { href: "/#contact", label: "Contact" },
+];
+
 export function Footer() {
   return (
-    <footer className="bg-[#0a0a0a] text-[#F5F0E8] py-10 lg:py-12 relative z-20">
-      <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-        <div className="lg:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
-          <Link href="/" className="inline-block relative w-24 h-24 mb-4 opacity-90 hover:opacity-100 transition-opacity">
-            <Image 
-              src="/images/hero/logo.png" 
-              alt="Armen Z Legacy Logo" 
+    <footer className="relative z-20 border-t border-gold/15 bg-[#070907] text-cream">
+      {/* 2027 CTA band */}
+      <div className="border-b border-gold/15">
+        <div className="container mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 py-10 sm:flex-row sm:items-center md:px-8">
+          <div>
+            <p className="font-serif text-2xl font-medium text-cream md:text-3xl">
+              Ready to play in <em className="italic text-gold-bright">2027</em>?
+            </p>
+            <p className="mt-1.5 text-sm font-light text-cream/55">
+              Join the early-access list. Spots go fast.
+            </p>
+          </div>
+          <Link
+            href="/#early-access"
+            className="shrink-0 bg-gold px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink transition-colors duration-300 hover:bg-gold-bright active:scale-[0.985]"
+          >
+            Join The 2027 List
+          </Link>
+        </div>
+      </div>
+
+      {/* Main footer */}
+      <div className="container mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 py-16 md:grid-cols-12 md:px-8">
+        {/* Brand */}
+        <div className="flex flex-col gap-5 md:col-span-5">
+          <Link href="/" className="relative inline-block h-16 w-16 opacity-90 transition-opacity hover:opacity-100">
+            <Image
+              src="/images/hero/logo.png"
+              alt="Armen Z Legacy crest"
               fill
-              className="object-contain drop-shadow-sm"
+              sizes="64px"
+              className="object-contain"
             />
           </Link>
-          <h3 className="font-serif text-lg font-bold text-[#d4af37] mb-4">Armen Z Legacy</h3>
-          <p className="font-sans text-sm text-neutral-400 leading-relaxed max-w-sm">
-            Join us on the greens to honor the legacy of Armen Z. All proceeds benefit CARMA and the Permanently Disabled Jockeys Fund. Let&apos;s make an impact together.
+          <p className="font-serif text-xl font-medium text-cream">
+            Armen Z Legacy
+            <span className="mt-1 block text-[10px] font-sans font-semibold uppercase tracking-[0.3em] text-gold/80">
+              Charity Golf Classic
+            </span>
+          </p>
+          <p className="max-w-xs text-sm font-light leading-relaxed text-cream/50">
+            The inaugural Classic honored Armen&apos;s legacy at Tukwet Canyon, with all
+            proceeds benefiting{" "}
+            <a href="https://www.carma4horses.org" target="_blank" rel="noopener noreferrer" className="link-rule text-gold-bright/90">
+              CARMA
+            </a>{" "}
+            and the{" "}
+            <a href="https://pdjf.org" target="_blank" rel="noopener noreferrer" className="link-rule text-gold-bright/90">
+              PDJF
+            </a>.
           </p>
         </div>
-        
-        <div className="lg:col-span-3 text-center md:text-left">
-          <h4 className="font-serif text-lg font-bold text-[#d4af37] mb-4">Quick Links</h4>
-          <ul className="space-y-3 font-sans text-sm text-neutral-400">
-            <li><Link href="/the-cause" className="hover:text-white transition-colors duration-300">The Cause</Link></li>
-            <li><Link href="/sponsorships" className="hover:text-white transition-colors duration-300">Sponsorships</Link></li>
-            <li><Link href="/tournament" className="hover:text-white transition-colors duration-300">Tournament Details</Link></li>
-            <li><Link href="/register" className="hover:text-white transition-colors duration-300">Register</Link></li>
-            <li><Link href="/donate" className="hover:text-white transition-colors duration-300">Donate</Link></li>
-            <li><Link href="/dinner" className="hover:text-white transition-colors duration-300">Dinner & Auction</Link></li>
-            <li><Link href="/contact" className="hover:text-white transition-colors duration-300">Contact Us</Link></li>
+
+        {/* Links */}
+        <div className="md:col-span-3">
+          <h4 className="mb-6 text-[10px] font-semibold uppercase tracking-[0.3em] text-cream/40">
+            Navigate
+          </h4>
+          <ul className="space-y-3.5">
+            {links.map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  className="text-sm font-light text-cream/65 transition-colors duration-300 hover:text-gold-bright"
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
-        <div className="lg:col-span-4 text-center md:text-left">
-          <h4 className="font-serif text-lg font-bold text-[#d4af37] mb-4">Event Details</h4>
-          <ul className="space-y-3 font-sans text-sm text-neutral-400">
-            <li><strong className="font-bold text-neutral-300">Date:</strong> June 22, 2026</li>
-            <li><strong className="font-bold text-neutral-300">Time:</strong> 8:00 AM PST</li>
-            <li><strong className="font-bold text-neutral-300">Location:</strong> Morongo Golf Club</li>
-            <li><strong className="font-bold text-neutral-300">Address:</strong> 36211 Champion Dr, <br/>Beaumont, CA 92223</li>
+        {/* Event info */}
+        <div className="md:col-span-4">
+          <h4 className="mb-6 text-[10px] font-semibold uppercase tracking-[0.3em] text-cream/40">
+            The Classic
+          </h4>
+          <ul className="space-y-5 text-sm font-light text-cream/55">
+            <li>
+              <span className="block font-serif text-base italic text-cream/85">2026 · The Inaugural</span>
+              <span className="mt-1 block leading-relaxed">
+                June 22, 2026 · Morongo Golf Club at Tukwet Canyon, Beaumont, CA
+              </span>
+            </li>
+            <li>
+              <span className="block font-serif text-base italic text-cream/85">2027 · The Return</span>
+              <span className="mt-1 block leading-relaxed">
+                Details announced soon.{" "}
+                <Link href="/#early-access" className="link-rule text-gold-bright/90">
+                  Join the list
+                </Link>{" "}
+                to hear first.
+              </span>
+            </li>
+            <li className="pt-1">
+              <a href="mailto:armenzlegacy@gmail.com" className="link-rule text-gold-bright/90">
+                armenzlegacy@gmail.com
+              </a>
+            </li>
           </ul>
         </div>
       </div>
-      
-      <div className="container mx-auto px-4 md:px-8 mt-12 pt-6 border-t border-white/10">
-        <div className="flex flex-col text-center gap-4 text-xs text-neutral-500 font-sans">
-          <p className="max-w-2xl mx-auto mb-2">
-            Your donation is tax-deductible. This tournament is operated through the <strong className="text-neutral-400">909 Market Foundation</strong>, a 501(c)(3) charitable organization (EIN: 92-0881763).
+
+      {/* Bottom bar */}
+      <div className="border-t border-cream/8">
+        <div className="container mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs font-light text-cream/35 md:flex-row md:px-8">
+          <p className="max-w-lg text-center md:text-left">
+            Tax-deductible donations processed through the{" "}
+            <span className="text-cream/55">909 Market Foundation</span>, a 501(c)(3)
+            non-profit (EIN: 92-0881763).
           </p>
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 w-full">
-            <p>&copy; 2026 Armen Z Legacy. A charity golf tournament.</p>
+          <div className="flex shrink-0 flex-col items-center gap-2 md:flex-row md:gap-6">
+            <p>© {new Date().getFullYear()} Armen Z Legacy</p>
+            <Link href="/guide" className="transition-colors duration-300 hover:text-gold-bright">
+              Design Guide
+            </Link>
             <p>
-              Website crafted by <a href="https://lastcall.marketing" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-[#d4af37] transition-colors duration-300">Last Call Marketing</a>
+              Built by{" "}
+              <a
+                href="https://lastcall.marketing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors duration-300 hover:text-gold-bright"
+              >
+                Last Call Marketing
+              </a>
             </p>
           </div>
         </div>

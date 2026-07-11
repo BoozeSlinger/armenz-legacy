@@ -1,65 +1,142 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { Reveal, MaskLines, HairlineGrow, Parallax } from "@/components/motion";
+
+const charities = [
+  {
+    num: "I",
+    name: "CARMA",
+    title: "California Retired Thoroughbreds",
+    desc: "Rehabilitation, retraining, and retirement for California-raced Thoroughbreds, so they thrive in second careers off the track.",
+    url: "https://www.carma4horses.org",
+  },
+  {
+    num: "II",
+    name: "PDJF",
+    title: "Permanently Disabled Jockeys Fund",
+    desc: "Financial assistance and long-term care for former jockeys who suffered catastrophic, career-ending injuries in competition.",
+    url: "https://pdjf.org",
+  },
+];
 
 export function CauseSection() {
   return (
-    <section className="py-24 md:py-32 bg-[#0a0a0a] text-zinc-300 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#C9A84C]/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#1B4332]/10 rounded-full blur-[120px] pointer-events-none" />
+    <section className="relative z-10 py-24 md:py-36">
+      <div className="container mx-auto max-w-6xl px-4 md:px-8">
+        <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-12 lg:gap-20">
+          {/* Portrait — framed like a clubhouse photograph */}
+          <div className="lg:col-span-5">
+            <Parallax range={26}>
+              <Reveal y={36}>
+                <figure>
+                  <div className="relative border border-gold/25 p-2.5 md:p-3">
+                    <div className="relative aspect-[4/5] overflow-hidden">
+                      <Image
+                        src="/images/armen/screenshot-1.png"
+                        alt="Armen Zennedjian, founder of The Derby Room, smiling beneath a cowboy hat"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 40vw"
+                        className="scale-[1.24] object-cover object-[center_28%] sepia-[0.25] saturate-[0.85]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" aria-hidden />
+                    </div>
+                  </div>
+                  <figcaption className="mt-4 flex items-baseline justify-between gap-4">
+                    <span className="font-serif text-lg italic text-cream/85">Armen Zennedjian</span>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-cream/40">
+                      Founder, The Derby Room
+                    </span>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            </Parallax>
+          </div>
 
-      <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10 flex flex-col items-center text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="text-[#d4af37] tracking-[0.3em] text-xs uppercase font-bold block mb-6">THE CAUSE</span>
-        </motion.div>
+          {/* Story */}
+          <div className="lg:col-span-7">
+            <h2 className="font-serif text-5xl font-medium leading-[1.04] tracking-[-0.015em] text-cream md:text-6xl">
+              <MaskLines
+                lines={[
+                  <>Every swing supports</>,
+                  <>a <em className="italic text-gold-bright">second chance</em>.</>,
+                ]}
+              />
+            </h2>
 
-        <motion.h2
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-[#F5F0E8] leading-tight mb-8"
-        >
-          Every Swing Supports a <br/> <span className="italic text-[#d4af37] font-serif">Second Chance</span>
-        </motion.h2>
+            <Reveal delay={0.2}>
+              <div className="mt-8 max-w-xl space-y-5 text-base font-light leading-relaxed text-cream/70 md:text-lg">
+                <p>
+                  This memorial tournament honors the life and enduring passion of{" "}
+                  <span className="font-normal text-cream">Armen Zennedjian</span>, founder of
+                  The Derby Room, whose dedication to horseracing and hospitality brought
+                  people together for decades.
+                </p>
+                <p className="text-[15px] text-cream/55 md:text-base">
+                  Presented by the <span className="text-cream/80">909 Market Foundation</span>,
+                  all proceeds flow directly to two charities at the heart of Armen&apos;s world:
+                  rehabilitation for retired California Thoroughbreds, and lifelong care for
+                  permanently injured jockeys.
+                </p>
+              </div>
+            </Reveal>
 
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-neutral-400 leading-relaxed text-balance max-w-3xl mx-auto mb-16 text-lg md:text-xl font-medium space-y-6"
-        >
-          <p>
-            This inaugural memorial golf tournament honors the life and passion of Armen Zennedjian, founder of The Derby Room, whose love of horseracing and community brought people together for decades.
-          </p>
-          <p>
-            Presented by the 909 Market Foundation, this event transforms that passion into purpose. Proceeds from the tournament will support the important work of <strong className="text-zinc-200">CARMA</strong>, providing rehabilitation and second careers for retired California-raced Thoroughbred horses, along with the <strong className="text-zinc-200">Permanently Disabled Jockeys Fund</strong>, which supports riders who have suffered career-ending injuries.
-          </p>
-          <p>
-            Join us for a day of tournament play, on-course experiences, great food and drinks, and a celebration reception at The Derby Room, all while supporting the athletes who make the sport possible.
-          </p>
-        </motion.div>
+            <HairlineGrow className="mt-12" delay={0.15} />
 
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <Link 
-            href="/the-cause" 
-            className="inline-block border border-[#d4af37]/30 text-[#d4af37] uppercase tracking-widest text-sm font-bold px-8 py-4 transition-all duration-300 hover:bg-[#d4af37] hover:text-black"
-          >
-            Read The Full Story
-          </Link>
-        </motion.div>
+            {/* Beneficiaries ledger */}
+            <div className="grid grid-cols-1 sm:grid-cols-2">
+              {charities.map((charity, i) => (
+                <Reveal
+                  key={charity.name}
+                  delay={0.15 + i * 0.15}
+                  className={`flex flex-col justify-between py-10 ${
+                    i === 0
+                      ? "border-b border-gold/15 sm:border-b-0 sm:border-r sm:pr-10"
+                      : "sm:pl-10"
+                  }`}
+                >
+                  <div>
+                    <span className="font-engraved text-xs tracking-[0.3em] text-gold/80">
+                      {charity.num}
+                    </span>
+                    <h3 className="mt-3 font-serif text-3xl font-medium text-cream md:text-4xl">
+                      {charity.name}
+                    </h3>
+                    <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/40">
+                      {charity.title}
+                    </p>
+                    <p className="mt-5 text-sm font-light leading-relaxed text-cream/60">
+                      {charity.desc}
+                    </p>
+                  </div>
+                  <a
+                    href={charity.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-rule mt-7 inline-flex w-fit items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-bright"
+                  >
+                    Visit {charity.name}
+                    <ArrowUpRight size={13} strokeWidth={1.75} />
+                  </a>
+                </Reveal>
+              ))}
+            </div>
+
+            <HairlineGrow delay={0.1} />
+
+            <Reveal delay={0.25}>
+              <Link
+                href="/the-cause"
+                className="link-rule mt-9 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream/80 hover:text-cream"
+              >
+                Read Armen&apos;s Full Story
+                <ArrowRight size={13} strokeWidth={1.75} />
+              </Link>
+            </Reveal>
+          </div>
+        </div>
       </div>
     </section>
   );

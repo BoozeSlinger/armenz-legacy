@@ -1,6 +1,6 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { Hero } from "@/components/Hero";
+import { Cta } from "@/components/Cta";
+import { Reveal, MaskLines, HairlineGrow } from "@/components/motion";
 
 export const metadata = {
   title: "Tournament Details & FAQ — Beaumont CA Charity Golf Scramble",
@@ -17,231 +17,193 @@ export const metadata = {
 
 const schedule = [
   { time: "7:30 AM", event: "Gates Open", desc: "Arrive early to check in and warm up on the driving range." },
-  { time: "8:00 AM", event: "Registration & Breakfast", desc: "Enjoy complimentary breakfast burritos and Bloody Marys provided by The Derby Room." },
+  { time: "8:00 AM", event: "Registration & Breakfast", desc: "Complimentary breakfast burritos and Bloody Marys from The Derby Room." },
   { time: "9:30 AM", event: "Opening Remarks", desc: "A brief welcome and tribute to the legacy of Armen Zennedjian." },
   { time: "10:00 AM", event: "Shotgun Start", desc: "All teams tee off simultaneously across the course." },
   { time: "4:00 PM", event: "Play Concludes", desc: "Foursomes finish up and head to the clubhouse." },
-  { time: "Immediately Following", event: "Dinner, Auction, & Awards", desc: "Immediately following play." },
+  { time: "Following", event: "Dinner, Auction & Awards", desc: "Immediately following play at the clubhouse." },
 ];
 
 const contests = [
   { name: "Longest Drive", desc: "Test your power on a designated par-5 fairway." },
   { name: "Closest to the Pin", desc: "Precision counts on select par-3 holes." },
   { name: "Putting Contest", desc: "Sink your putt for a chance at bonus prizes." },
-  { name: "Mulligans", desc: "Purchase extra chances to re-hit your shot (available at registration)." },
+  { name: "Mulligans", desc: "Purchase extra chances to re-hit your shot at registration." },
+];
+
+const info = [
+  { title: "Dress Code", lines: ["Collared shirts required", "No denim or cargo shorts", "No athletic wear", "Spikeless golf shoes required"] },
+  { title: "Club Rentals", lines: ["Rental sets from the pro shop", "First-come, first-served", "Contact the pro shop when you register"] },
+  { title: "Weather Policy", lines: ["Rain or shine", "Play suspended only for lightning", "Modified format if unplayable"] },
 ];
 
 const faqs = [
-  {
-    question: "What is a Scramble format?",
-    answer: "In a Scramble, all four players tee off, then the team selects the best shot. All players hit from that spot, and so on until the ball is holed. It's the most fun and beginner-friendly format in golf.",
-  },
-  {
-    question: "What is the dress code?",
-    answer: "Tukwet Canyon enforces a strict dress code. Collared shirts are required for all players. No denim, cargo shorts, or athletic wear is permitted on the course. Spikeless golf shoes are required.",
-  },
-  {
-    question: "Do I need to bring my own clubs?",
-    answer: "If you need to rent clubs, please contact the Morongo Golf Club pro shop directly at the time of your registration. Rental sets are available on a first-come, first-served basis.",
-  },
-  {
-    question: "What happens if it rains?",
-    answer: "The tournament will be played rain or shine. In the event of severe weather (lightning, etc.), the course marshal will suspend play. If the course becomes unplayable, a modified format or rescheduled date will be communicated to all registered players.",
-  },
-  {
-    question: "Is breakfast and dinner included?",
-    answer: "Yes! Every registered player receives a complimentary breakfast provided by The Derby Room before the round. Lunch will be served on the course during play, while Dinner is the formal post-tournament meal.",
-  },
-  {
-    question: "Can I attend the dinner and auction without playing golf?",
-    answer: "Yes! We offer Dinner & Auction tickets for non-golfers who want to join the post-tournament celebration. Visit our Dinner & Auction page for details.",
-  },
-  {
-    question: "How do I register my full foursome?",
-    answer: "You can register all four players at once through our registration page. If you don't have a full foursome, register as an individual and we'll pair you with other players.",
-  },
-  {
-    question: "Are donations tax-deductible?",
-    answer: "Yes. This tournament is run through 909 Market Foundation, a 501(c)(3) charitable organization (EIN: 92-0881763). All contributions are tax-deductible to the fullest extent allowed by law.",
-  },
+  { q: "What is a scramble format?", a: "In a scramble, all four players tee off, then the team selects the best shot. All players hit from that spot until the ball is holed. It's the most fun and beginner-friendly format in golf." },
+  { q: "What is the dress code?", a: "Tukwet Canyon enforces a strict dress code. Collared shirts are required for all players. No denim, cargo shorts, or athletic wear on the course. Spikeless golf shoes required." },
+  { q: "Do I need to bring my own clubs?", a: "If you need to rent clubs, contact the Morongo Golf Club pro shop directly when you register. Rental sets are available first-come, first-served." },
+  { q: "What happens if it rains?", a: "The tournament plays rain or shine. In severe weather (lightning), the course marshal will suspend play. If the course becomes unplayable, a modified format or rescheduled date will be communicated to all players." },
+  { q: "Is breakfast and dinner included?", a: "Yes. Every registered player receives a complimentary breakfast from The Derby Room before the round. Lunch is served on the course, and dinner is the formal post-tournament meal." },
+  { q: "Can I attend the dinner without playing golf?", a: "Yes. We offer Dinner & Auction tickets for non-golfers who want to join the post-tournament celebration. Visit our Dinner & Auction page for details." },
+  { q: "How do I register my full foursome?", a: "You can register all four players at once. If you don't have a full foursome, register as an individual and we'll pair you with other players." },
+  { q: "Are donations tax-deductible?", a: "Yes. This tournament runs through the 909 Market Foundation, a 501(c)(3) charitable organization (EIN: 92-0881763). All contributions are tax-deductible to the fullest extent allowed by law." },
 ];
 
 export default function TournamentPage() {
   return (
-    <div className="relative min-h-screen">
-      {/* Fixed Background */}
-      <div className="fixed inset-0 z-[-1] pointer-events-none">
-        <Image 
-          src="/images/page-bg/home-parallax.png" 
-          alt="Tournament Details Background - Beaumont Charity Golf Scramble" 
-          fill 
-          className="object-cover" 
-          priority 
-        />
-        <div className="absolute inset-0 bg-[#0A0A0A]/80 backdrop-blur-[2px]" />
-      </div>
+    <div className="relative min-h-screen bg-ink">
+      <Hero
+        compact
+        eyebrow="Everything You Need to Know"
+        title={
+          <>
+            Tournament details & <em className="italic text-gold-bright">FAQ</em>.
+          </>
+        }
+        subtitle="June 22, 2026 at Morongo Golf Club at Tukwet Canyon. Here's everything you need to know before teeing off."
+        showButtons={false}
+      />
 
-      {/* Hero */}
-      <section className="relative pt-36 pb-16 overflow-hidden">
-        <div className="container mx-auto px-4 md:px-8 max-w-5xl text-center">
-          <div className="inline-flex items-center justify-center space-x-4 mb-8">
-            <div className="w-12 h-px bg-[#C9A84C]" />
-            <span className="text-[#C9A84C] font-semibold tracking-[0.2em] uppercase text-sm">
-              Everything You Need to Know
-            </span>
-            <div className="w-12 h-px bg-[#C9A84C]" />
-          </div>
-          <h1 className="text-4xl md:text-6xl font-serif font-bold text-[#F5F0E8] mb-6">
-            Tournament Details & FAQ <br/><span className="text-[#C9A84C] italic text-3xl md:text-5xl">Beaumont Charity Golf Scramble</span>
-          </h1>
-          <p className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            June 22, 2026 at Morongo Golf Club at Tukwet Canyon. Here&apos;s everything you need to know before teeing off.
-          </p>
-        </div>
-      </section>
-
-      {/* Full Schedule */}
-      <section className="py-16 relative z-10">
-        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
-          <div className="bg-zinc-900/60 backdrop-blur-xl border border-[#C9A84C]/20 p-8 md:p-12 shadow-2xl relative">
-            <div className="absolute -top-1 -left-1 w-10 h-10 border-t-2 border-l-2 border-[#C9A84C]" />
-            <div className="absolute -bottom-1 -right-1 w-10 h-10 border-b-2 border-r-2 border-[#C9A84C]" />
-
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#F5F0E8] mb-10">
-              Full Day Schedule
-            </h2>
-
-            <div className="space-y-0">
-              {schedule.map((item, i) => (
-                <div key={i} className="flex gap-6 py-6 border-b border-zinc-800/50 last:border-b-0">
-                  <span className="text-[#C9A84C] font-black text-sm tabular-nums whitespace-nowrap pt-1 min-w-[80px]">
+      {/* Schedule */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-4xl px-4 md:px-8">
+          <h2 className="font-serif text-4xl font-medium leading-[1.05] text-cream md:text-5xl">
+            <MaskLines lines={[<span key="l">The full <em className="italic text-gold-bright">day</em></span>]} />
+          </h2>
+          <HairlineGrow className="mt-8" />
+          <div>
+            {schedule.map((item, i) => (
+              <Reveal key={i} delay={(i % 6) * 0.05}>
+                <div className="grid grid-cols-1 gap-2 border-b border-gold/12 py-6 sm:grid-cols-12 sm:gap-6">
+                  <span className="font-engraved text-sm tracking-[0.14em] text-gold-bright sm:col-span-3">
                     {item.time}
                   </span>
-                  <div className="space-y-1">
-                    <p className="text-[#F5F0E8] font-bold uppercase tracking-wide text-sm">
+                  <div className="sm:col-span-9">
+                    <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-cream">
                       {item.event}
                     </p>
-                    <p className="text-zinc-500 text-sm italic">
-                      {item.desc}
-                    </p>
+                    <p className="mt-1 text-sm font-light text-cream/55">{item.desc}</p>
                   </div>
                 </div>
-              ))}
-            </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Format & Contests */}
-      <section className="py-16 relative z-10">
-        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Format */}
-            <div className="bg-zinc-900/60 backdrop-blur-xl border border-[#C9A84C]/20 p-8 md:p-10 shadow-2xl">
-              <h3 className="text-[#C9A84C] text-sm uppercase tracking-widest font-black mb-3">Tournament Format</h3>
-              <h2 className="text-3xl font-serif font-bold text-[#F5F0E8] mb-6 italic">
+      {/* Format & contests */}
+      <section className="border-y border-gold/10 bg-ink-2 py-16 md:py-24">
+        <div className="container mx-auto max-w-6xl px-4 md:px-8">
+          <div className="grid grid-cols-1 gap-14 md:grid-cols-2 md:gap-16">
+            <Reveal>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-gold/80">
+                Tournament Format
+              </p>
+              <h3 className="mt-4 font-serif text-3xl font-medium italic text-cream md:text-4xl">
                 4-Person Scramble
-              </h2>
-              <div className="space-y-4 text-zinc-300 leading-relaxed">
+              </h3>
+              <div className="mt-6 space-y-4 text-base font-light leading-relaxed text-cream/65">
                 <p>
-                  The Scramble is the most popular and accessible team format in charity golf. All four players tee off, the team picks the best drive, and everyone plays from that spot.
+                  The scramble is the most popular and accessible team format in charity
+                  golf. All four players tee off, the team picks the best drive, and
+                  everyone plays from that spot.
                 </p>
                 <p>
-                  This continues until the ball is holed. It&apos;s fast, it&apos;s fun, and it means every player, regardless of skill level, contributes to their team&apos;s score.
+                  It continues until the ball is holed. Fast, fun, and every player,
+                  regardless of skill, contributes to the team&apos;s score.
                 </p>
               </div>
-            </div>
+            </Reveal>
 
-            {/* On-Course Contests */}
-            <div className="bg-zinc-900/60 backdrop-blur-xl border border-[#C9A84C]/20 p-8 md:p-10 shadow-2xl">
-              <h3 className="text-[#C9A84C] text-sm uppercase tracking-widest font-black mb-3">On-Course Contests</h3>
-              <h2 className="text-3xl font-serif font-bold text-[#F5F0E8] mb-6 italic">
-                Win Big on the Course
-              </h2>
-              <div className="space-y-4">
-                {contests.map((contest, i) => (
-                  <div key={i} className="border-l-2 border-[#C9A84C]/40 pl-4">
-                    <p className="text-[#F5F0E8] font-bold text-sm uppercase tracking-wide">{contest.name}</p>
-                    <p className="text-zinc-500 text-sm">{contest.desc}</p>
+            <Reveal delay={0.15}>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-gold/80">
+                On-Course Contests
+              </p>
+              <h3 className="mt-4 font-serif text-3xl font-medium italic text-cream md:text-4xl">
+                Win big on the course
+              </h3>
+              <div className="mt-6">
+                {contests.map((contest) => (
+                  <div key={contest.name} className="border-b border-gold/12 py-4">
+                    <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-cream">
+                      {contest.name}
+                    </p>
+                    <p className="mt-1 text-sm font-light text-cream/55">{contest.desc}</p>
                   </div>
                 ))}
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Dress Code & Important Info */}
-      <section className="py-16 relative z-10">
-        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-zinc-900/60 backdrop-blur-xl border border-[#C9A84C]/20 p-8 shadow-2xl text-center">
-              <h3 className="text-[#C9A84C] text-sm uppercase tracking-widest font-black mb-4">Dress Code</h3>
-              <div className="text-zinc-300 text-sm space-y-2">
-                <p className="text-[#F5F0E8] font-bold">Collared shirts required</p>
-                <p>No denim or cargo shorts</p>
-                <p>No athletic wear</p>
-                <p>Spikeless golf shoes required</p>
-                <p className="text-zinc-500 italic text-xs mt-4">Strictly enforced by the clubhouse</p>
-              </div>
-            </div>
-
-            <div className="bg-zinc-900/60 backdrop-blur-xl border border-[#C9A84C]/20 p-8 shadow-2xl text-center">
-              <h3 className="text-[#C9A84C] text-sm uppercase tracking-widest font-black mb-4">Club Rentals</h3>
-              <div className="text-zinc-300 text-sm space-y-2">
-                <p>Rental sets available from the Morongo Golf Club pro shop</p>
-                <p className="text-[#F5F0E8] font-bold mt-2">First-come, first-served</p>
-                <p className="text-zinc-500 italic text-xs mt-4">Contact the pro shop when you register to reserve</p>
-              </div>
-            </div>
-
-            <div className="bg-zinc-900/60 backdrop-blur-xl border border-[#C9A84C]/20 p-8 shadow-2xl text-center">
-              <h3 className="text-[#C9A84C] text-sm uppercase tracking-widest font-black mb-4">Weather Policy</h3>
-              <div className="text-zinc-300 text-sm space-y-2">
-                <p>Tournament is <strong className="text-[#F5F0E8]">rain or shine</strong></p>
-                <p>Play suspended only for severe weather (lightning)</p>
-                <p className="text-zinc-500 italic text-xs mt-4">Modified format or reschedule if unplayable</p>
-              </div>
-            </div>
+      {/* Key info */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-6xl px-4 md:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3">
+            {info.map((block, i) => (
+              <Reveal
+                key={block.title}
+                delay={i * 0.1}
+                className={`py-8 md:px-10 md:first:pl-0 ${i !== 2 ? "md:border-r md:border-gold/12" : ""} ${i !== 0 ? "border-t border-gold/12 md:border-t-0" : ""}`}
+              >
+                <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-bright">
+                  {block.title}
+                </h3>
+                <ul className="mt-4 space-y-2">
+                  {block.lines.map((line) => (
+                    <li key={line} className="text-sm font-light text-cream/60">
+                      {line}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-16 relative z-10">
-        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#F5F0E8] mb-10 text-center">
-            Frequently Asked Questions
+      <section className="border-t border-gold/10 py-16 md:py-24">
+        <div className="container mx-auto max-w-4xl px-4 md:px-8">
+          <h2 className="mb-10 font-serif text-4xl font-medium leading-[1.05] text-cream md:text-5xl">
+            <MaskLines lines={[<span key="l">Frequently <em className="italic text-gold-bright">asked</em></span>]} />
           </h2>
-
-          <div className="space-y-6">
+          <div>
             {faqs.map((faq, i) => (
-              <div key={i} className="bg-zinc-900/40 backdrop-blur-sm border border-zinc-800/50 p-6 md:p-8">
-                <h3 className="text-[#F5F0E8] font-bold text-lg mb-3">{faq.question}</h3>
-                <p className="text-zinc-400 leading-relaxed">{faq.answer}</p>
-              </div>
+              <Reveal key={i} delay={(i % 4) * 0.06}>
+                <details className="group border-b border-gold/12 py-6">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-medium text-cream transition-colors duration-300 hover:text-gold-bright">
+                    {faq.q}
+                    <span className="font-engraved shrink-0 text-xl text-gold/60 transition-transform duration-300 group-open:rotate-45">
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-4 max-w-2xl text-base font-light leading-relaxed text-cream/60">
+                    {faq.a}
+                  </p>
+                </details>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 relative z-10">
-        <div className="container mx-auto px-4 md:px-8 max-w-3xl text-center">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#F5F0E8] mb-6">
-            Ready to Tee Off?
+      <section className="py-20 md:py-28">
+        <div className="container mx-auto max-w-3xl px-4 md:px-8 text-center">
+          <h2 className="font-serif text-3xl font-medium text-cream md:text-4xl">
+            <MaskLines lines={[<span key="l">Ready for <em className="italic text-gold-bright">2027</em>?</span>]} />
           </h2>
-          <p className="text-zinc-400 text-lg mb-10 max-w-xl mx-auto">
-            Secure your spot in Legacy on the Greens: The Armen Zennedjian Classic. Every registration supports a cause worth fighting for.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-[#C9A84C] text-[#0A0A0A] hover:bg-[#F5F0E8] font-bold px-8 py-6 rounded-none uppercase tracking-widest transition-all duration-300 shadow-[0_10px_30px_-10px_rgba(201,168,76,0.3)]">
-              <Link href="/register">Register Now</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="border-2 border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#0A0A0A] font-bold px-8 py-6 rounded-none bg-transparent backdrop-blur-sm uppercase tracking-widest transition-all duration-300">
-              <Link href="/sponsorships">View Sponsorships</Link>
-            </Button>
-          </div>
+          <Reveal delay={0.15}>
+            <p className="mx-auto mt-5 max-w-xl text-base font-light leading-relaxed text-cream/60">
+              The inaugural Classic is in the books. Join the early-access list for first
+              pick of 2027 foursomes.
+            </p>
+            <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Cta href="/#early-access">Join The 2027 List</Cta>
+              <Cta href="/gallery" variant="ghost">View The 2026 Gallery</Cta>
+            </div>
+          </Reveal>
         </div>
       </section>
     </div>

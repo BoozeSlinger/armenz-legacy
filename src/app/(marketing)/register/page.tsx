@@ -1,11 +1,11 @@
 import { Hero } from "@/components/Hero";
-import { RegisterForm } from "@/components/RegisterForm";
-import Image from "next/image";
+import { Cta } from "@/components/Cta";
+import { Reveal, MaskLines } from "@/components/motion";
 
 export const metadata = {
-  title: "Register — Beaumont CA Charity Golf Scramble at Morongo Golf Club",
+  title: "2026 Registration Has Closed — Join the 2027 List",
   description:
-    "Register your foursome for the Armenz Legacy charity golf scramble at Morongo Golf Club at Tukwet Canyon in Beaumont, CA. Inland Empire charity golf — June 22, 2026.",
+    "The inaugural Armenz Legacy charity golf tournament was played June 22, 2026 at Morongo Golf Club at Tukwet Canyon. Join the early-access list for first pick of 2027 foursomes and sponsorships.",
   keywords: [
     "Beaumont CA golf tournaments",
     "Morongo Golf Club events",
@@ -17,42 +17,45 @@ export const metadata = {
 
 export default function RegisterPage() {
   return (
-    <div className="relative min-h-screen">
-      {/* Fixed Background Image with Overlay */}
-      <div className="fixed inset-0 z-[-1] pointer-events-none">
-        <Image 
-          src="/images/page-bg/register.png" 
-          alt="Tournament Registration Background - Morongo Golf Club at Tukwet Canyon" 
-          fill 
-          className="object-cover" 
-          priority 
-        />
-        <div className="absolute inset-0 bg-[#0A0A0A]/85" />
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')] opacity-30 mix-blend-multiply" />
-      </div>
+    <div className="relative min-h-screen bg-ink">
+      <Hero
+        compact
+        eyebrow="June 22, 2026 · Played & Complete"
+        title={
+          <>
+            2026 registration has <em className="italic text-gold-bright">closed</em>.
+          </>
+        }
+        subtitle="The inaugural Classic was unforgettable. Thank you to every player who teed it up for the cause. 2027 is next."
+        showButtons={false}
+      />
 
-      <div className="relative z-10 flex flex-col">
-        <Hero 
-          title="TOURNAMENT REGISTRATION — BEAUMONT, CA" 
-          subtitle="Secure your spot on the greens." 
-          showCountdown={false} 
-          transparentBg={true}
-          compact={true}
-        />
-        <section className="py-24 text-zinc-300">
-          <div className="container mx-auto px-4 md:px-8 max-w-4xl">
-            <div className="mb-12 text-center">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#F5F0E8] mb-4 drop-shadow-md">Join Us On June 22, 2026</h2>
-              <p className="text-lg font-medium opacity-90 max-w-2xl mx-auto leading-relaxed drop-shadow-sm text-[#C9A84C]">
-                Experience the beautiful Morongo Golf Club at Tukwet Canyon while honoring a legacy. Your registration includes an 18-hole scramble, golf cart, premium breakfast, and VIP access following the round.
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto max-w-3xl px-4 md:px-8">
+          <div className="border border-gold/20 px-8 py-14 text-center md:px-14">
+            <h2 className="font-serif text-3xl font-medium leading-[1.1] text-cream md:text-4xl">
+              <MaskLines
+                lines={[
+                  <span key="l">
+                    Don&apos;t miss <em className="italic text-gold-bright">2027</em>.
+                  </span>,
+                ]}
+              />
+            </h2>
+            <Reveal delay={0.15}>
+              <p className="mx-auto mt-5 max-w-xl text-base font-light leading-relaxed text-cream/60">
+                Foursomes sold out for the inaugural Classic. Join the early-access list
+                and you&apos;ll get first pick when 2027 registration opens, before the
+                public.
               </p>
-            </div>
-            
-            <RegisterForm />
-            
+              <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <Cta href="/#early-access">Join The 2027 List</Cta>
+                <Cta href="/gallery" variant="ghost">Relive The 2026 Classic</Cta>
+              </div>
+            </Reveal>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { NewsPost } from "@/content/news/posts";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export function PostLayout({ post, children }: { post: NewsPost; children: ReactNode }) {
   const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
@@ -16,10 +17,7 @@ export function PostLayout({ post, children }: { post: NewsPost; children: React
     description: post.description,
     datePublished: post.date,
     dateModified: post.date,
-    author: {
-      "@type": "Organization",
-      name: post.author,
-    },
+    author: { "@type": "Organization", name: post.author },
     publisher: {
       "@type": "Organization",
       name: "Armenz Legacy Charity Golf Tournament",
@@ -36,52 +34,52 @@ export function PostLayout({ post, children }: { post: NewsPost; children: React
   };
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen bg-ink">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div
-        className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/page-bg/home-parallax.png')" }}
-      >
-        <div className="absolute inset-0 bg-[#0A0A0A]/85 backdrop-blur-[2px]" />
-      </div>
+      <div className="glow-gold-faint absolute inset-x-0 top-0 h-[50vh]" aria-hidden />
 
-      <article className="relative z-10 pt-32 pb-24 md:pt-40 md:pb-32">
-        <div className="container mx-auto px-4 md:px-8 max-w-3xl">
+      <article className="relative z-10 pt-36 pb-24 md:pt-44 md:pb-32">
+        <div className="container mx-auto max-w-3xl px-4 md:px-8">
           <Link
             href="/news"
-            className="text-[#C9A84C] text-xs uppercase tracking-widest font-bold hover:text-[#F5F0E8] transition-colors"
+            className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-bright/90 transition-colors hover:text-gold-bright"
           >
-            ← All News
+            <ArrowLeft size={13} strokeWidth={1.75} />
+            All News
           </Link>
 
-          <header className="mt-6 mb-12 border-b border-[#C9A84C]/20 pb-8">
-            <p className="text-[#C9A84C] text-xs uppercase tracking-widest font-bold mb-4">
-              <time dateTime={post.date}>{formattedDate}</time> · {post.author}
+          <header className="mt-8 mb-12 border-b border-gold/15 pb-10">
+            <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-bright/90">
+              <time dateTime={post.date}>{formattedDate}</time>
+              <span className="mx-2.5 text-cream/25">/</span>
+              <span className="text-cream/45">{post.author}</span>
             </p>
-            <h1 className="text-3xl md:text-5xl font-serif font-bold italic text-[#F5F0E8] leading-tight drop-shadow-md">
+            <h1 className="font-serif text-4xl font-medium leading-[1.08] tracking-[-0.015em] text-cream md:text-5xl">
               {post.title}
             </h1>
           </header>
 
-          <div className="prose-news text-[#F5F0E8] text-lg leading-relaxed space-y-6">
+          <div className="prose-news space-y-6 text-lg font-light leading-relaxed text-cream/80">
             {children}
           </div>
 
-          <footer className="mt-16 pt-8 border-t border-[#C9A84C]/20 flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+          <footer className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-gold/15 pt-10 sm:flex-row sm:items-center">
             <Link
-              href="/register"
-              className="text-[#C9A84C] font-bold uppercase tracking-widest text-sm hover:text-[#F5F0E8]"
+              href="/#early-access"
+              className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-bright transition-colors hover:text-cream"
             >
-              Register a Team →
+              Join The 2027 List
+              <ArrowRight size={13} strokeWidth={1.75} />
             </Link>
             <Link
-              href="/sponsorships"
-              className="text-[#C9A84C] font-bold uppercase tracking-widest text-sm hover:text-[#F5F0E8]"
+              href="/gallery"
+              className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-cream/70 transition-colors hover:text-gold-bright"
             >
-              Become a Sponsor →
+              View The 2026 Gallery
+              <ArrowRight size={13} strokeWidth={1.75} />
             </Link>
           </footer>
         </div>
