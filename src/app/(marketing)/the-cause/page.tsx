@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ArmenPortrait } from "@/components/ArmenPortrait";
 import { Hero } from "@/components/Hero";
 import { Cta } from "@/components/Cta";
 import { Reveal, MaskLines, HairlineGrow, Parallax } from "@/components/motion";
@@ -66,26 +66,10 @@ export default function TheCausePage() {
             <div className="lg:col-span-5">
               <Parallax range={26}>
                 <Reveal y={36}>
-                  <figure>
-                    <div className="relative border border-gold/25 p-2.5 md:p-3">
-                      <div className="relative aspect-[4/5] overflow-hidden">
-                        <Image
-                          src="/images/armen/screenshot-1.png"
-                          alt="Armen Zennedjian, founder of The Derby Room"
-                          fill
-                          sizes="(max-width: 1024px) 100vw, 40vw"
-                          className="scale-[1.24] object-cover object-[center_28%] sepia-[0.25] saturate-[0.85]"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" aria-hidden />
-                      </div>
-                    </div>
-                    <figcaption className="mt-4 flex items-baseline justify-between gap-4">
-                      <span className="font-serif text-lg italic text-cream/85">Armen Zennedjian</span>
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-cream/40">
-                        1957 &ndash; A Life Remembered
-                      </span>
-                    </figcaption>
-                  </figure>
+                  <ArmenPortrait
+                    alt="Armen Zennedjian, founder of The Derby Room"
+                    label="1957 &ndash; A Life Remembered"
+                  />
                 </Reveal>
               </Parallax>
             </div>
