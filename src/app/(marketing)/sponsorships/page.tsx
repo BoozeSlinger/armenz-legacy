@@ -173,7 +173,7 @@ export default function SponsorshipsPage() {
                 <img
                   src="/images/Morongologo.png"
                   alt="Morongo Band of Mission Indians"
-                  className="mx-auto h-28 w-auto object-contain md:h-40"
+                  className="mx-auto h-48 w-auto object-contain mix-blend-multiply md:h-72"
                 />
               </a>
             </Reveal>

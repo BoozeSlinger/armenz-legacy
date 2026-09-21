@@ -67,15 +67,15 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="group block border border-gold/20 bg-ink p-3 transition-colors duration-500 hover:border-gold/40"
                 >
-                  <span className="flex flex-col items-center bg-[#f7f5ef] px-10 py-12 transition-colors duration-500 group-hover:bg-white md:px-16 md:py-14">
-                    <span className="mb-8 text-center text-[10px] font-semibold uppercase tracking-[0.3em] text-ink/60">
+                  <span className="flex flex-col items-center bg-[#f7f5ef] px-8 py-10 transition-colors duration-500 group-hover:bg-white md:px-12 md:py-12">
+                    <span className="mb-6 text-center text-[10px] font-semibold uppercase tracking-[0.3em] text-ink/60">
                       Triple Crown Title Sponsor
                     </span>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="/images/Morongologo.png"
                       alt="Morongo Band of Mission Indians"
-                      className="mx-auto h-28 w-auto object-contain md:h-36"
+                      className="mx-auto h-48 w-auto object-contain mix-blend-multiply md:h-72"
                     />
                   </span>
                 </a>
