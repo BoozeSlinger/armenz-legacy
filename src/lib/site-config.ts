@@ -45,3 +45,13 @@ export const nextEventText: string = (() => {
   }
   return "Date announced soon";
 })();
+
+/**
+ * Where "email us" links should go. Uses a mailto: once CONTACT_EMAIL is set,
+ * otherwise falls back to the on-site contact form. Never a hardcoded address.
+ */
+export function contactHref(subject?: string): string {
+  const email = SITE_CONFIG.contactEmail;
+  if (!email) return "/contact";
+  return subject ? `mailto:${email}?subject=${encodeURIComponent(subject)}` : `mailto:${email}`;
+}

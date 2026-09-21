@@ -5,6 +5,7 @@ import { galleryPhotos } from "@/content/gallery/photos";
 import { Reveal, MaskLines, HairlineGrow } from "@/components/motion";
 import { Cta } from "@/components/Cta";
 import { ArrowUpRight } from "lucide-react";
+import { contactHref } from "@/lib/site-config";
 
 export const metadata = {
   title: "Thank You to Our 2026 Sponsors — Armenz Legacy Classic",
@@ -50,11 +51,62 @@ const sponsorLogos: { id: string; v: number; w: number; h: number; alt: string; 
   { id: "NCB_LOGOS_ALL_znj666", v: 1783628163, w: 612, h: 432, alt: "National Commercial Builders", url: "https://www.ncb-ca.com" },
 ];
 
+/* The sponsor count is derived from the honor-roll assets above (+1 for Morongo,
+   shown as the featured tile) so it can't drift from what's on the page. */
 const sponsorPitch = [
   { stat: "200+", label: "Attendees", detail: "Inland Empire business and equestrian community" },
-  { stat: "Logo", label: "Placement", detail: "Scorecards, course signage, and player swag" },
+  { stat: String(sponsorLogos.length + 1), label: "2026 Sponsors", detail: "Businesses and brands on the inaugural honor roll" },
+  // UNVERIFIED: "10k+" has no source in the repo. Confirm with Ryan / the team or remove.
   { stat: "10k+", label: "Social Reach", detail: "Combined audience recognition across channels" },
   { stat: "100%", label: "Tax-Deductible", detail: "Both CARMA and the PDJF hold 501(c)(3) status" },
+];
+
+type SponsorLogo = (typeof sponsorLogos)[number];
+
+function LogoTile({ logo }: { logo: SponsorLogo }) {
+  const tone = logo.dark
+    ? "border border-gold/20 bg-ink-2 hover:border-gold/40"
+    : "bg-[#f7f5ef] hover:bg-white";
+  const cls = `group flex aspect-[3/2] items-center justify-center p-6 transition-colors duration-500 md:p-8 ${tone}`;
+  const img = (
+    <div className="relative h-full w-full">
+      <CldImage
+        photo={logo}
+        fill
+        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+        className="object-contain grayscale transition-[filter] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:grayscale-0 motion-reduce:grayscale-0"
+      />
+    </div>
+  );
+  return logo.url ? (
+    <a href={logo.url} target="_blank" rel="noopener noreferrer" className={cls} aria-label={`Visit ${logo.alt}`}>
+      {img}
+    </a>
+  ) : (
+    <div className={cls}>{img}</div>
+  );
+}
+
+/* 2027 tiers. PLACEHOLDER names and inclusions, taken from the April 2026
+   "Corporate Sponsorship Opportunities" post. No prices until the 2027
+   prospectus is final. */
+const tiers = [
+  {
+    name: "Tee Box",
+    blurb: "A cost-effective way to put your brand in front of every golfer in the field.",
+  },
+  {
+    name: "Hole",
+    blurb: "Signage at your designated hole, recognition in the program, and the option to staff the hole with a representative or activation.",
+  },
+  {
+    name: "Beverage Cart",
+    blurb: "High-visibility branding on mobile elements that touch every group on the course.",
+  },
+  {
+    name: "Presenting",
+    blurb: "The top-tier package. Your company name alongside the tournament title across marketing, signage, and press, with premium on-course branding.",
+  },
 ];
 
 export default function SponsorshipsPage() {
@@ -72,52 +124,28 @@ export default function SponsorshipsPage() {
         showButtons={false}
       />
 
-      {/* Triple Crown feature */}
-      <section className="py-16 md:py-24">
+      {/* Triple Crown feature (logo sits in the wall below) */}
+      <section className="pt-16 md:pt-24">
         <div className="container mx-auto max-w-6xl px-4 md:px-8">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-6">
-              <p className="mb-6 text-[10px] font-semibold uppercase tracking-[0.3em] text-gold/80">
-                Triple Crown Title Sponsor
-              </p>
-              <h2 className="font-serif text-4xl font-medium leading-[1.05] text-cream md:text-5xl">
-                <MaskLines
-                  lines={[
-                    <span key="l1">Morongo Band of</span>,
-                    <span key="l2">
-                      Mission <em className="italic text-gold-bright">Indians</em>
-                    </span>,
-                  ]}
-                />
-              </h2>
-              <Reveal delay={0.2}>
-                <p className="mt-6 max-w-md text-base font-light leading-relaxed text-cream/65">
-                  Our presenting partner made the inaugural Classic possible, from the
-                  fairways of Tukwet Canyon to the final toast at the awards dinner.
-                </p>
-              </Reveal>
-            </div>
-
-            <div className="lg:col-span-6">
-              <Reveal delay={0.15} y={36}>
-                <a
-                  href="https://tukwetcanyon.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block border border-gold/20 bg-ink-2 p-3 transition-colors duration-500 hover:border-gold/40"
-                >
-                  <span className="flex items-center justify-center bg-[#f7f5ef] px-10 py-12 transition-colors duration-500 group-hover:bg-white md:px-16 md:py-14">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/images/Morongologo.png"
-                      alt="Morongo Band of Mission Indians"
-                      className="mx-auto h-28 w-auto object-contain md:h-40"
-                    />
-                  </span>
-                </a>
-              </Reveal>
-            </div>
-          </div>
+          <p className="mb-6 text-[10px] font-semibold uppercase tracking-[0.3em] text-gold/80">
+            Triple Crown Title Sponsor
+          </p>
+          <h2 className="font-serif text-4xl font-medium leading-[1.05] text-cream md:text-5xl">
+            <MaskLines
+              lines={[
+                <span key="l1">Morongo Band of</span>,
+                <span key="l2">
+                  Mission <em className="italic text-gold-bright">Indians</em>
+                </span>,
+              ]}
+            />
+          </h2>
+          <Reveal delay={0.2}>
+            <p className="mt-6 max-w-xl text-base font-light leading-relaxed text-cream/65">
+              Our presenting partner made the inaugural Classic possible, from the
+              fairways of Tukwet Canyon to the final toast at the awards dinner.
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -136,47 +164,28 @@ export default function SponsorshipsPage() {
             </h2>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
+            {/* Featured tile: title sponsor */}
+            <Reveal className="col-span-full" y={20}>
+              <a
+                href="https://tukwetcanyon.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center bg-[#f7f5ef] px-10 py-10 transition-colors duration-500 hover:bg-white md:py-12"
+              >
+                <span className="mb-6 text-center text-[10px] font-semibold uppercase tracking-[0.3em] text-ink/70">
+                  Triple Crown Title Sponsor
+                </span>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/Morongologo.png"
+                  alt="Morongo Band of Mission Indians"
+                  className="mx-auto h-28 w-auto object-contain md:h-40"
+                />
+              </a>
+            </Reveal>
             {sponsorLogos.map((logo, i) => (
               <Reveal key={logo.id} delay={(i % 4) * 0.06} y={20}>
-                {logo.url ? (
-                  <a
-                    href={logo.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`group flex aspect-[3/2] items-center justify-center p-6 transition-colors duration-500 md:p-8 ${
-                      logo.dark
-                        ? "border border-gold/20 bg-ink-2 hover:border-gold/40"
-                        : "bg-[#f7f5ef] hover:bg-white"
-                    }`}
-                    aria-label={`Visit ${logo.alt}`}
-                  >
-                    <div className="relative h-full w-full">
-                      <CldImage
-                        photo={logo}
-                        fill
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                        className="object-contain grayscale transition-[filter] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:grayscale-0 motion-reduce:grayscale-0"
-                      />
-                    </div>
-                  </a>
-                ) : (
-                  <div
-                    className={`group flex aspect-[3/2] items-center justify-center p-6 transition-colors duration-500 md:p-8 ${
-                      logo.dark
-                        ? "border border-gold/20 bg-ink-2 hover:border-gold/40"
-                        : "bg-[#f7f5ef] hover:bg-white"
-                    }`}
-                  >
-                    <div className="relative h-full w-full">
-                      <CldImage
-                        photo={logo}
-                        fill
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                        className="object-contain grayscale transition-[filter] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:grayscale-0 motion-reduce:grayscale-0"
-                      />
-                    </div>
-                  </div>
-                )}
+                <LogoTile logo={logo} />
               </Reveal>
             ))}
           </div>
@@ -293,6 +302,49 @@ export default function SponsorshipsPage() {
               </Reveal>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 2027 tiers: placeholder names, no prices */}
+      <section className="border-t border-gold/10 bg-ink-2 py-16 md:py-24">
+        <div className="container mx-auto max-w-6xl px-4 md:px-8">
+          <div className="pb-10">
+            <h2 className="font-serif text-4xl font-medium leading-[1.05] text-cream md:text-5xl">
+              <MaskLines
+                lines={[
+                  <span key="l">
+                    2027 sponsorship <em className="italic text-gold-bright">tiers</em>.
+                  </span>,
+                ]}
+              />
+            </h2>
+            <Reveal delay={0.15}>
+              <p className="mt-5 max-w-xl text-base font-light leading-relaxed text-cream/65">
+                Tier names and inclusions are preliminary. Final packages and pricing are
+                in the prospectus.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {tiers.map((tier, i) => (
+              <Reveal key={tier.name} delay={(i % 4) * 0.07} y={20}>
+                <div className="flex h-full flex-col border border-gold/20 bg-ink p-7">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-gold/80">
+                    Tier {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-4 font-serif text-2xl font-medium italic text-cream">{tier.name}</h3>
+                  <p className="mt-3 text-sm font-light leading-relaxed text-cream/65">{tier.blurb}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.1}>
+            <div className="mt-10">
+              <Cta href={contactHref("2027 Sponsorship Prospectus Request")}>Request the prospectus</Cta>
+            </div>
+          </Reveal>
         </div>
       </section>
     </div>
