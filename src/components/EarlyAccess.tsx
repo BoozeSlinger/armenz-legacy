@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Loader2, ArrowRight, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Reveal, MaskLines } from "@/components/motion";
+import { ContactLink } from "@/components/ContactLink";
 
 const INTEREST_OPTIONS = [
   { value: "player", label: "Playing" },
@@ -80,9 +81,7 @@ export function EarlyAccess() {
                   </p>
                   <p className="mt-6 text-xs font-light text-cream/40">
                     Direct inquiries:{" "}
-                    <a href="mailto:armenzlegacy@gmail.com" className="link-rule text-gold-bright/90">
-                      armenzlegacy@gmail.com
-                    </a>
+                    <ContactLink className="link-rule text-gold-bright/90" />
                   </p>
                 </Reveal>
               </div>

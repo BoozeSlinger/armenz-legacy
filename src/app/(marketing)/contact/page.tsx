@@ -1,5 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { Reveal } from "@/components/motion";
+import { SITE_CONFIG } from "@/lib/site-config";
 
 export const metadata = {
   title: "Contact — Armenz Legacy Classic, Beaumont CA",
@@ -65,12 +66,14 @@ export default function ContactPage() {
               >
                 Send Message
               </button>
-              <p className="text-center text-xs font-light text-cream/40">
-                Or email us directly at{" "}
-                <a href="mailto:armenzlegacy@gmail.com" className="link-rule text-gold-bright/90">
-                  armenzlegacy@gmail.com
-                </a>
-              </p>
+              {SITE_CONFIG.contactEmail && (
+                <p className="text-center text-xs font-light text-cream/40">
+                  Or email us directly at{" "}
+                  <a href={`mailto:${SITE_CONFIG.contactEmail}`} className="link-rule text-gold-bright/90">
+                    {SITE_CONFIG.contactEmail}
+                  </a>
+                </p>
+              )}
             </form>
           </Reveal>
         </div>

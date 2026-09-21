@@ -1,6 +1,7 @@
 "use client";
 
 import { Reveal, MaskLines, HairlineGrow } from "@/components/motion";
+import { ContactLink } from "@/components/ContactLink";
 
 export function SponsorPreview2027() {
   return (
@@ -29,12 +30,7 @@ export function SponsorPreview2027() {
         <Reveal delay={0.15}>
           <div className="flex flex-col items-start justify-between gap-3 pt-8 text-xs font-light text-cream/40 sm:flex-row sm:items-center">
             <p>Custom activations and bespoke corporate packages available upon inquiry.</p>
-            <a
-              href="mailto:armenzlegacy@gmail.com"
-              className="link-rule text-gold-bright/90"
-            >
-              armenzlegacy@gmail.com
-            </a>
+            <ContactLink className="link-rule text-gold-bright/90" />
           </div>
         </Reveal>
       </div>

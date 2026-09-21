@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { donationsOpen, nextEventText } from "@/lib/site-config";
+import { SITE_CONFIG, donationsOpen, nextEventText } from "@/lib/site-config";
 
 const links = [
   { href: "/gallery", label: "2026 Gallery" },
@@ -107,11 +107,13 @@ export function Footer() {
                 to hear first.
               </span>
             </li>
-            <li className="pt-1">
-              <a href="mailto:armenzlegacy@gmail.com" className="link-rule text-gold-bright/90">
-                armenzlegacy@gmail.com
-              </a>
-            </li>
+            {SITE_CONFIG.contactEmail && (
+              <li className="pt-1">
+                <a href={`mailto:${SITE_CONFIG.contactEmail}`} className="link-rule text-gold-bright/90">
+                  {SITE_CONFIG.contactEmail}
+                </a>
+              </li>
+            )}
           </ul>
         </div>
       </div>
