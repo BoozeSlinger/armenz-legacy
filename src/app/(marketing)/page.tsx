@@ -30,7 +30,7 @@ export default function Home() {
       <CauseSection />
 
       {/* ── ACT VI: THE 2026 PARTNERS ── */}
-      <section id="sponsors" className="relative z-10 bg-ink-2 py-24 md:py-32">
+      <section id="sponsors" className="relative z-10 bg-ink-2 py-14 md:py-20">
         <div className="container mx-auto max-w-6xl px-4 md:px-8">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-6">

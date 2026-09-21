@@ -46,7 +46,7 @@ export function EarlyAccess() {
   };
 
   return (
-    <section id="early-access" className="relative z-10 scroll-mt-24 bg-ink-2 py-24 md:py-36">
+    <section id="early-access" className="relative z-10 scroll-mt-24 bg-ink-2 py-14 md:py-20">
       <div className="glow-gold-faint absolute inset-0" aria-hidden />
       <div className="container relative mx-auto max-w-6xl px-4 md:px-8">
         {/* Registry frame */}

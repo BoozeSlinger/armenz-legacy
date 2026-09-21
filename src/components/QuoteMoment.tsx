@@ -15,7 +15,7 @@ export function QuoteMoment() {
   const markY = useTransform(scrollYProgress, [0, 1], ["18%", "-18%"]);
 
   return (
-    <section ref={ref} className="relative z-10 overflow-hidden py-28 md:py-40">
+    <section ref={ref} className="relative z-10 overflow-hidden py-16 md:py-24">
       {/* Drifting quotation watermark */}
       <motion.span
         aria-hidden

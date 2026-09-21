@@ -5,7 +5,7 @@ import { ContactLink } from "@/components/ContactLink";
 
 export function SponsorPreview2027() {
   return (
-    <section className="relative z-10 py-24 md:py-36">
+    <section className="relative z-10 py-14 md:py-20">
       <div className="container mx-auto max-w-6xl px-4 md:px-8">
         {/* Header */}
         <div className="pb-12">

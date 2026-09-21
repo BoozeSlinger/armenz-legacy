@@ -16,7 +16,7 @@ const teaserPhotos = [
 
 export function GalleryTeaser() {
   return (
-    <section className="relative z-10 overflow-hidden py-24 md:py-36">
+    <section className="relative z-10 overflow-hidden py-14 md:py-20">
       <div className="container mx-auto mb-14 max-w-7xl px-4 md:px-8">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <h2 className="font-serif text-5xl font-medium leading-[1.02] tracking-[-0.015em] text-cream md:text-6xl lg:text-7xl">

@@ -24,7 +24,7 @@ const charities = [
 
 export function CauseSection() {
   return (
-    <section className="relative z-10 py-24 md:py-36">
+    <section className="relative z-10 py-14 md:py-20">
       <div className="container mx-auto max-w-6xl px-4 md:px-8">
         <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-12 lg:gap-20">
           {/* Portrait — framed like a clubhouse photograph */}
