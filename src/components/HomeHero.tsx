@@ -24,7 +24,7 @@ export function HomeHero() {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
-    <section ref={ref} className="relative flex min-h-[100dvh] items-end overflow-hidden">
+    <section id="home-hero" ref={ref} className="relative flex min-h-[100dvh] items-end overflow-hidden">
       {/* Photography */}
       <motion.div style={{ y: reduce ? "0%" : imgY }} className="absolute inset-0">
         <motion.div
@@ -88,7 +88,6 @@ export function HomeHero() {
           className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
         >
           <Cta href="/#early-access">Join The 2027 List</Cta>
-          <Cta href="/gallery" variant="ghost">View The Gallery</Cta>
         </motion.div>
       </motion.div>
 

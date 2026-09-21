@@ -8,12 +8,12 @@ const links = [
   { href: "/the-cause", label: "The Cause" },
   ...(donationsOpen ? [{ href: "/donate", label: "Donate" }] : []),
   { href: "/news", label: "News" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Footer() {
   return (
-    <footer className="relative z-20 border-t border-gold/15 bg-[#070907] text-cream">
+    <footer data-site-footer className="relative z-20 border-t border-gold/15 bg-[#070907] text-cream">
       {/* 2027 CTA band */}
       <div className="border-b border-gold/15">
         <div className="container mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 py-10 sm:flex-row sm:items-center md:px-8">

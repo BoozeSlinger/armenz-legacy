@@ -22,7 +22,7 @@ export default function ContactPage() {
             Have questions? <em className="italic text-gold-bright">We&apos;re here.</em>
           </>
         }
-        subtitle="Player registration, sponsorship packages, or supporting the cause. Send a note and we'll get back to you."
+        subtitle="Media inquiries, volunteering, sponsorship questions, or supporting the cause. We read everything and will get back to you."
         showButtons={false}
       />
 
