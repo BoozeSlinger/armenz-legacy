@@ -9,7 +9,7 @@ const charities = [
   {
     num: "I",
     name: "CARMA",
-    title: "California Retired Thoroughbreds",
+    title: "California Retirement Management Account",
     desc: "Rehabilitation, retraining, and retirement for California-raced Thoroughbreds, so they thrive in second careers off the track.",
     url: "https://www.carma4horses.org",
   },
