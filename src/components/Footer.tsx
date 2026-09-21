@@ -1,11 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import { donationsOpen } from "@/lib/site-config";
 
 const links = [
   { href: "/gallery", label: "2026 Gallery" },
   { href: "/sponsorships", label: "2026 Sponsors" },
   { href: "/the-cause", label: "The Cause" },
-  { href: "/donate", label: "Donate" },
+  ...(donationsOpen ? [{ href: "/donate", label: "Donate" }] : []),
   { href: "/news", label: "News" },
   { href: "/#contact", label: "Contact" },
 ];

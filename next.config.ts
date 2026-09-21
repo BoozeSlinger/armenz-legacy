@@ -61,6 +61,8 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/sponsors", destination: "/sponsorships", permanent: false },
+      // Dinner & auction tickets were 2026-only; the recap lives on /tournament.
+      { source: "/dinner", destination: "/tournament", statusCode: 301 },
     ];
   },
 

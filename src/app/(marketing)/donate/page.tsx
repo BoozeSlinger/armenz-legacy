@@ -1,16 +1,13 @@
-import { EventbriteWidget } from "@/components/EventbriteWidget";
+import { Cta } from "@/components/Cta";
 import { Hero } from "@/components/Hero";
 import { Reveal } from "@/components/motion";
+import { SITE_CONFIG, donationsOpen } from "@/lib/site-config";
 
 export const metadata = {
-  title: "Donate — Horse Racing Charity Events California (CARMA & PDJF)",
-  description:
-    "Make a tax-deductible donation supporting CARMA's retired racehorses and the Permanently Disabled Jockeys Fund. Every dollar honors Armen Zennedjian's legacy.",
-  keywords: [
-    "Horse racing charity events California",
-    "CARMA charity events",
-    "Permanently Disabled Jockeys Fund donation",
-  ],
+  title: "Donate — Support CARMA & PDJF",
+  description: donationsOpen
+    ? "Make a tax-deductible donation supporting CARMA's retired racehorses and the Permanently Disabled Jockeys Fund. Every dollar honors Armen Zennedjian's legacy."
+    : "Donations for CARMA's retired racehorses and the Permanently Disabled Jockeys Fund reopen with 2027 registration. Join the early-access list to hear first.",
   alternates: { canonical: "/donate" },
 };
 
@@ -29,27 +26,38 @@ export default function DonatePage() {
         showButtons={false}
       />
 
-      {/* Donation widget */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto max-w-3xl px-4 md:px-8">
-          <div className="border border-gold/20 p-8 md:p-12">
-            <h2 className="text-center font-serif text-3xl font-medium text-cream md:text-4xl">
-              Complete your <em className="italic text-gold-bright">donation</em>
-            </h2>
-            <p className="mx-auto mt-4 mb-10 max-w-md text-center text-base font-light leading-relaxed text-cream/60">
-              Use the secure Eventbrite checkout below to complete your contribution.
-            </p>
-
-            <EventbriteWidget
-              eventId="1983383494423"
-              containerId="eventbrite-widget-container-1983383494423-donate"
-            />
-
-            <p className="mx-auto mt-8 max-w-lg text-center text-xs font-light leading-relaxed text-cream/40">
-              Your donation is tax-deductible. This tournament runs through the{" "}
-              <span className="text-cream/60">909 Market Foundation</span>, a 501(c)(3)
-              charitable organization. EIN: 92-0881763.
-            </p>
+          <div className="border border-gold/20 p-8 text-center md:p-12">
+            {donationsOpen ? (
+              <>
+                <h2 className="font-serif text-3xl font-medium text-cream md:text-4xl">
+                  Make your <em className="italic text-gold-bright">donation</em>
+                </h2>
+                <p className="mx-auto mt-4 mb-10 max-w-md text-base font-light leading-relaxed text-cream/60">
+                  Donations are processed securely through the 909 Market Foundation.
+                </p>
+                <Cta href={SITE_CONFIG.donateUrl!} external>
+                  Donate Now
+                </Cta>
+                <p className="mx-auto mt-8 max-w-lg text-xs font-light leading-relaxed text-cream/40">
+                  Your donation is tax-deductible. This tournament runs through the{" "}
+                  <span className="text-cream/60">909 Market Foundation</span>, a 501(c)(3)
+                  charitable organization. EIN: 92-0881763.
+                </p>
+              </>
+            ) : (
+              <>
+                <h2 className="font-serif text-3xl font-medium text-cream md:text-4xl">
+                  Donations reopen with <em className="italic text-gold-bright">2027</em> registration
+                </h2>
+                <p className="mx-auto mt-4 mb-10 max-w-md text-base font-light leading-relaxed text-cream/60">
+                  Join the early-access list and you&apos;ll hear first when giving and
+                  registration open.
+                </p>
+                <Cta href="/#early-access">Join The 2027 List</Cta>
+              </>
+            )}
           </div>
         </div>
       </section>

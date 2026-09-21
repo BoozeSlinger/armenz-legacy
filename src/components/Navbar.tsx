@@ -7,13 +7,14 @@ import { useState, useEffect, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { EASE } from "@/components/motion";
+import { donationsOpen } from "@/lib/site-config";
 
 const routes = [
   { href: "/", label: "Home" },
   { href: "/gallery", label: "Gallery" },
   { href: "/sponsorships", label: "Sponsors" },
   { href: "/the-cause", label: "The Cause" },
-  { href: "/donate", label: "Donate" },
+  ...(donationsOpen ? [{ href: "/donate", label: "Donate" }] : []),
   { href: "/news", label: "News" },
 ];
 
