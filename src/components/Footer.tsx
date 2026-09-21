@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { donationsOpen } from "@/lib/site-config";
+import { donationsOpen, nextEventText } from "@/lib/site-config";
 
 const links = [
   { href: "/gallery", label: "2026 Gallery" },
@@ -100,7 +100,7 @@ export function Footer() {
             <li>
               <span className="block font-serif text-base italic text-cream/85">2027 · The Return</span>
               <span className="mt-1 block leading-relaxed">
-                Details announced soon.{" "}
+                {nextEventText}.{" "}
                 <Link href="/#early-access" className="link-rule text-gold-bright/90">
                   Join the list
                 </Link>{" "}

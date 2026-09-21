@@ -30,3 +30,18 @@ export const SITE_CONFIG = {
 
 /** Donations are only offered once a real donation link exists. */
 export const donationsOpen = SITE_CONFIG.donateUrl !== null;
+
+/**
+ * Display text for the next event's date. Prefers the label, then a formatted
+ * ISO date, and falls back to a single generic line until one is set.
+ */
+export const nextEventText: string = (() => {
+  if (SITE_CONFIG.nextEventLabel) return SITE_CONFIG.nextEventLabel;
+  if (SITE_CONFIG.nextEventDate) {
+    const d = new Date(`${SITE_CONFIG.nextEventDate}T12:00:00Z`);
+    if (!Number.isNaN(d.getTime())) {
+      return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+    }
+  }
+  return "Date announced soon";
+})();
