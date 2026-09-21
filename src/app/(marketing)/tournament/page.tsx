@@ -1,11 +1,12 @@
 import { Hero } from "@/components/Hero";
 import { Cta } from "@/components/Cta";
 import { Reveal, MaskLines, HairlineGrow } from "@/components/motion";
+import { SITE_CONFIG } from "@/lib/site-config";
 
 export const metadata = {
-  title: "Tournament Details & FAQ — Beaumont CA Charity Golf Scramble",
+  title: "The Day — 2026 Tournament Recap & FAQ",
   description:
-    "4-person scramble format, schedule, dress code, rules & FAQ for the Armenz Legacy charity golf tournament at Morongo Golf Club in Beaumont, CA — June 22, 2026.",
+    "Recap of the inaugural Armenz Legacy Classic on June 22, 2026 at Morongo Golf Club at Tukwet Canyon in Beaumont, CA: the schedule, the 4-person scramble format, FAQ, and what to expect in 2027.",
   keywords: [
     "Southern California golf scrambles",
     "Beaumont CA golf tournaments",
@@ -16,19 +17,19 @@ export const metadata = {
 };
 
 const schedule = [
-  { time: "7:30 AM", event: "Gates Open", desc: "Arrive early to check in and warm up on the driving range." },
+  { time: "7:30 AM", event: "Gates Open", desc: "Players arrived early to check in and warm up on the driving range." },
   { time: "8:00 AM", event: "Registration & Breakfast", desc: "Complimentary breakfast burritos and Bloody Marys from The Derby Room." },
   { time: "9:30 AM", event: "Opening Remarks", desc: "A brief welcome and tribute to the legacy of Armen Zennedjian." },
-  { time: "10:00 AM", event: "Shotgun Start", desc: "All teams tee off simultaneously across the course." },
-  { time: "4:00 PM", event: "Play Concludes", desc: "Foursomes finish up and head to the clubhouse." },
+  { time: "10:00 AM", event: "Shotgun Start", desc: "All teams teed off simultaneously across the course." },
+  { time: "4:00 PM", event: "Play Concludes", desc: "Foursomes finished up and headed to the clubhouse." },
   { time: "Following", event: "Dinner, Auction & Awards", desc: "Immediately following play at the clubhouse." },
 ];
 
 const contests = [
-  { name: "Longest Drive", desc: "Test your power on a designated par-5 fairway." },
-  { name: "Closest to the Pin", desc: "Precision counts on select par-3 holes." },
-  { name: "Putting Contest", desc: "Sink your putt for a chance at bonus prizes." },
-  { name: "Mulligans", desc: "Purchase extra chances to re-hit your shot at registration." },
+  { name: "Longest Drive", desc: "Tested on a designated par-5 fairway." },
+  { name: "Closest to the Pin", desc: "Precision counted on select par-3 holes." },
+  { name: "Putting Contest", desc: "A putt for a chance at bonus prizes." },
+  { name: "Mulligans", desc: "Extra chances to re-hit a shot were available at registration." },
 ];
 
 const info = [
@@ -39,12 +40,12 @@ const info = [
 
 const faqs = [
   { q: "What is a scramble format?", a: "In a scramble, all four players tee off, then the team selects the best shot. All players hit from that spot until the ball is holed. It's the most fun and beginner-friendly format in golf." },
-  { q: "What is the dress code?", a: "Tukwet Canyon enforces a strict dress code. Collared shirts are required for all players. No denim, cargo shorts, or athletic wear on the course. Spikeless golf shoes required." },
-  { q: "Do I need to bring my own clubs?", a: "If you need to rent clubs, contact the Morongo Golf Club pro shop directly when you register. Rental sets are available first-come, first-served." },
-  { q: "What happens if it rains?", a: "The tournament plays rain or shine. In severe weather (lightning), the course marshal will suspend play. If the course becomes unplayable, a modified format or rescheduled date will be communicated to all players." },
-  { q: "Is breakfast and dinner included?", a: "Yes. Every registered player receives a complimentary breakfast from The Derby Room before the round. Lunch is served on the course, and dinner is the formal post-tournament meal." },
-  { q: "Can I attend the dinner without playing golf?", a: "Yes. We offer Dinner & Auction tickets for non-golfers who want to join the post-tournament celebration. Visit our Dinner & Auction page for details." },
-  { q: "How do I register my full foursome?", a: "You can register all four players at once. If you don't have a full foursome, register as an individual and we'll pair you with other players." },
+  { q: "What was the dress code?", a: "Tukwet Canyon enforces a strict dress code. Collared shirts were required for all players. No denim, cargo shorts, or athletic wear on the course. Spikeless golf shoes were required." },
+  { q: "Did players need to bring their own clubs?", a: "Players who needed clubs contacted the Morongo Golf Club pro shop directly when they registered. Rental sets were first-come, first-served." },
+  { q: "What if it had rained?", a: "The tournament played rain or shine. In severe weather (lightning), the course marshal would suspend play. If the course became unplayable, a modified format or rescheduled date would be communicated to all players." },
+  { q: "Were breakfast and dinner included?", a: "Yes. Every registered player received a complimentary breakfast from The Derby Room before the round. Lunch was served on the course, and dinner was the formal post-tournament meal." },
+  { q: "Could non-golfers attend the dinner?", a: "Yes. Dinner & Auction tickets were available to non-golfers who wanted to join the post-tournament celebration." },
+  { q: "How did registration work?", a: "Players could register a full foursome at once. Those without a full foursome registered as individuals and were paired with other players." },
   { q: "Are donations tax-deductible?", a: "Yes. This tournament runs through the 909 Market Foundation, a 501(c)(3) charitable organization (EIN: 92-0881763). All contributions are tax-deductible to the fullest extent allowed by law." },
 ];
 
@@ -53,13 +54,13 @@ export default function TournamentPage() {
     <div className="relative min-h-screen bg-ink">
       <Hero
         compact
-        eyebrow="Everything You Need to Know"
+        eyebrow="June 22, 2026 · The Day"
         title={
           <>
-            Tournament details & <em className="italic text-gold-bright">FAQ</em>.
+            The <em className="italic text-gold-bright">Day</em>, recapped.
           </>
         }
-        subtitle="June 22, 2026 at Morongo Golf Club at Tukwet Canyon. Here's everything you need to know before teeing off."
+        subtitle="Morongo Golf Club at Tukwet Canyon. How the inaugural Classic unfolded, from the first tee to the awards."
         showButtons={false}
       />
 
@@ -119,7 +120,7 @@ export default function TournamentPage() {
                 On-Course Contests
               </p>
               <h3 className="mt-4 font-serif text-3xl font-medium italic text-cream md:text-4xl">
-                Win big on the course
+                Contests on the course
               </h3>
               <div className="mt-6">
                 {contests.map((contest) => (
@@ -185,6 +186,27 @@ export default function TournamentPage() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* What to expect in 2027 */}
+      <section className="border-t border-gold/10 bg-ink-2 py-16 md:py-24">
+        <div className="container mx-auto max-w-4xl px-4 md:px-8">
+          <Reveal>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-gold/80">
+              What to expect in 2027
+            </p>
+            <h3 className="mt-4 font-serif text-3xl font-medium italic text-cream md:text-4xl">
+              The next Classic
+            </h3>
+            <p className="mt-6 max-w-2xl text-base font-light leading-relaxed text-cream/65">
+              {SITE_CONFIG.nextEventLabel ? `The next Classic is planned for ${SITE_CONFIG.nextEventLabel}. ` : ""}
+              Final 2027 details, including format, pricing, registration, and
+              sponsorship, are still being finalized. The schedule, format, and FAQ above
+              are the best guide to what to expect, and any changes will go to the
+              early-access list first.
+            </p>
+          </Reveal>
         </div>
       </section>
 

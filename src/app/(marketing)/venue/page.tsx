@@ -2,9 +2,9 @@ import { Hero } from "@/components/Hero";
 import { Reveal, HairlineGrow } from "@/components/motion";
 
 export const metadata = {
-  title: "Venue — Morongo Golf Club at Tukwet Canyon, Beaumont CA",
+  title: "Venue — Morongo Golf Club at Tukwet Canyon",
   description:
-    "Tournament venue: Morongo Golf Club at Tukwet Canyon in Beaumont, CA. Premier Inland Empire golf course hosting Southern California charity golf scrambles. Directions, course details & more.",
+    "Home of the 2026 Armenz Legacy Classic: Morongo Golf Club at Tukwet Canyon in Beaumont, CA. Course details, location, and map.",
   keywords: [
     "Morongo Golf Club events",
     "Tukwet Canyon golf course",
@@ -16,8 +16,8 @@ export const metadata = {
 
 const facts = [
   { label: "Location", value: "Morongo Golf Club at Tukwet Canyon, 36211 Champion Dr, Beaumont, CA 92223" },
-  { label: "Parking", value: "Complimentary valet parking available for all sponsors and deluxe pass holders." },
-  { label: "Attire", value: "Traditional golf attire. Collared shirts required. No denim or cargo pants. Soft spikes only." },
+  { label: "Parking", value: "Complimentary valet parking was available for all sponsors and deluxe pass holders." },
+  { label: "Attire", value: "Traditional golf attire was required: collared shirts, no denim or cargo pants, soft spikes only." },
 ];
 
 export default function VenuePage() {
@@ -25,7 +25,7 @@ export default function VenuePage() {
     <div className="relative min-h-screen bg-ink">
       <Hero
         compact
-        eyebrow="The Venue"
+        eyebrow="The 2026 Venue"
         title={
           <>
             Legendary golf, breathtaking <em className="italic text-gold-bright">setting</em>.
