@@ -3,7 +3,7 @@ import { Reveal } from "@/components/motion";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 export const metadata = {
-  title: "Contact — Armenz Legacy Classic, Beaumont CA",
+  title: "Contact — Beaumont CA Charity Golf",
   description:
     "Questions about the Armenz Legacy Classic in Beaumont, CA? Contact us about player registration, sponsorship packages, or supporting CARMA & PDJF.",
   alternates: { canonical: "/contact" },

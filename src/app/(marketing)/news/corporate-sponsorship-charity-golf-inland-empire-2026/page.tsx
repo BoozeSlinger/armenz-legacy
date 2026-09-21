@@ -1,17 +1,18 @@
 import Link from "next/link";
 import { PostLayout } from "@/components/news/PostLayout";
 import { getPost } from "@/content/news/posts";
+import { OG_IMAGE } from "@/lib/site-config";
 
 const post = getPost("corporate-sponsorship-charity-golf-inland-empire-2026")!;
 
 export const metadata = {
-  title: post.title,
+  title: post.metaTitle,
   description: post.description,
-  keywords: post.keywords,
   alternates: { canonical: `/news/${post.slug}` },
   openGraph: {
-    title: post.title,
+    title: `${post.metaTitle} | Armenz Legacy`,
     description: post.description,
+    images: [OG_IMAGE],
     type: "article",
     publishedTime: post.date,
     authors: [post.author],

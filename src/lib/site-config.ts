@@ -55,3 +55,11 @@ export function contactHref(subject?: string): string {
   if (!email) return "/contact";
   return subject ? `mailto:${email}?subject=${encodeURIComponent(subject)}` : `mailto:${email}`;
 }
+
+/** Social share image: 1200x630, used for both Open Graph and Twitter cards. */
+export const OG_IMAGE = {
+  url: "/og/og-image.jpg",
+  width: 1200,
+  height: 630,
+  alt: "Armenz Legacy Classic: June 22, 2026 at Morongo Golf Club at Tukwet Canyon, Beaumont CA",
+} as const;

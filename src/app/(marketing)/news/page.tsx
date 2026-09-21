@@ -6,14 +6,9 @@ import { Reveal } from "@/components/motion";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "News & Updates — Armenz Legacy Classic",
+  title: "News & Updates",
   description:
     "Latest news, sponsor spotlights, and updates from the Armenz Legacy Classic at Morongo Golf Club in Beaumont, CA. Supporting CARMA & PDJF.",
-  keywords: [
-    "Beaumont CA golf tournaments",
-    "Inland Empire charity golf",
-    "Horse racing charity events California",
-  ],
   alternates: { canonical: "/news" },
 };
 

@@ -7,12 +7,6 @@ export const metadata = {
   title: "The Day — 2026 Tournament Recap & FAQ",
   description:
     "Recap of the inaugural Armenz Legacy Classic on June 22, 2026 at Morongo Golf Club at Tukwet Canyon in Beaumont, CA: the schedule, the 4-person scramble format, FAQ, and what to expect in 2027.",
-  keywords: [
-    "Southern California golf scrambles",
-    "Beaumont CA golf tournaments",
-    "4-person scramble Inland Empire",
-    "Morongo Golf Club events",
-  ],
   alternates: { canonical: "/tournament" },
 };
 

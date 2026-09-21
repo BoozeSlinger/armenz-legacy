@@ -4,16 +4,9 @@ import { Cta } from "@/components/Cta";
 import { Reveal, MaskLines, HairlineGrow, Parallax } from "@/components/motion";
 
 export const metadata = {
-  title: "Our Cause — Horse Racing Charity Events California (CARMA & PDJF)",
+  title: "Our Cause: Retired Racehorses & Jockeys",
   description:
     "Honoring Armen Zennedjian by supporting CARMA's retired racehorses and the Permanently Disabled Jockeys Fund. Learn about California horse racing charity events benefiting equine and jockey welfare.",
-  keywords: [
-    "Horse racing charity events California",
-    "CARMA charity events",
-    "Equestrian charity golf tournament",
-    "Permanently Disabled Jockeys Fund",
-    "Armen Zennedjian legacy",
-  ],
   alternates: { canonical: "/the-cause" },
 };
 

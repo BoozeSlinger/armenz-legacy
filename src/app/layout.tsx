@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { SITE_CONFIG, OG_IMAGE } from "@/lib/site-config";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -37,23 +38,6 @@ export const metadata: Metadata = {
   },
   description:
     "The inaugural Armenz Legacy Classic raised funds for CARMA's retired racehorses and the Permanently Disabled Jockeys Fund at Morongo Golf Club at Tukwet Canyon, Beaumont CA — June 22, 2026. View 97 photos & join the 2027 early-access list.",
-  keywords: [
-    "Armenz Legacy Classic",
-    "Armen Zennedjian memorial golf",
-    "Beaumont CA golf tournaments 2026",
-    "Inland Empire charity golf scramble",
-    "Morongo Golf Club at Tukwet Canyon events",
-    "Armenz Legacy Classic golf tournament",
-    "Southern California charity golf 2027",
-    "CARMA retired racehorses charity",
-    "Permanently Disabled Jockeys Fund golf",
-    "Horse racing charity events California",
-    "Corporate golf sponsorship Beaumont CA",
-    "Charity event sponsorships Inland Empire",
-    "golf tournament sponsor packages California",
-    "four-person scramble charity golf",
-    "909 Market Foundation golf event",
-  ],
   alternates: { canonical: "/" },
   openGraph: {
     title: "Armenz Legacy Classic | Beaumont, CA",
@@ -63,17 +47,14 @@ export const metadata: Metadata = {
     siteName: "Armenz Legacy",
     locale: "en_US",
     type: "website",
-    images: [
-      { url: "/og/og-image.png", width: 1200, height: 630, alt: "Armenz Legacy Classic — June 22, 2026 at Morongo Golf Club, Beaumont CA" },
-      { url: "/og/og-image-sq.png", width: 600, height: 600, alt: "Armenz Legacy logo" },
-    ],
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Armenz Legacy Classic | Beaumont, CA",
     description:
       "97 photos from the inaugural Classic at Morongo Golf Club. Raised real money for CARMA & PDJF. 2027 is next — join the list.",
-    images: ["/og/og-image.png"],
+    images: [{ url: OG_IMAGE.url, alt: OG_IMAGE.alt }],
   },
   robots: {
     index: true,
@@ -83,7 +64,10 @@ export const metadata: Metadata = {
   category: "sports",
 };
 
-const structuredData = [
+const ORG_ID = `${SITE_CONFIG.baseUrl}/#organization`;
+const FOUNDATION_ID = `${SITE_CONFIG.baseUrl}/#909-market-foundation`;
+
+const structuredData: Record<string, unknown>[] = [
   {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
@@ -95,7 +79,7 @@ const structuredData = [
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     sport: "Golf",
     url: "https://www.armenzlegacy.com",
-    image: ["https://www.armenzlegacy.com/og/og-image.png", "https://www.armenzlegacy.com/images/hero/logo.png"],
+    image: [`${SITE_CONFIG.baseUrl}${OG_IMAGE.url}`, `${SITE_CONFIG.baseUrl}/images/hero/logo.png`],
     location: {
       "@type": "Place",
       name: "Morongo Golf Club at Tukwet Canyon",
@@ -118,14 +102,46 @@ const structuredData = [
   },
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Armenz Legacy",
-    url: "https://www.armenzlegacy.com",
-    logo: "https://www.armenzlegacy.com/images/hero/logo.png",
-    sameAs: [],
-    description: "Charity golf tournament organization honoring Armen Zennedjian and raising funds for CARMA and the PDJF.",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": ORG_ID,
+        name: "Armenz Legacy",
+        url: SITE_CONFIG.baseUrl,
+        logo: `${SITE_CONFIG.baseUrl}/images/hero/logo.png`,
+        description: "Charity golf tournament organization honoring Armen Zennedjian and raising funds for CARMA and the PDJF. The tournament is presented by, and donations are processed through, the 909 Market Foundation.",
+        sponsor: { "@id": FOUNDATION_ID },
+      },
+      {
+        "@type": "NGO",
+        "@id": FOUNDATION_ID,
+        name: "909 Market Foundation",
+        url: "https://909marketfoundation.org",
+        description: "501(c)(3) charitable organization through which the Armenz Legacy Classic runs and its tax-deductible donations are processed.",
+        nonprofitStatus: "https://schema.org/Nonprofit501c3",
+        taxID: "92-0881763",
+      },
+    ],
   },
 ];
+
+// 2027 Event: emitted only when NEXT_EVENT_DATE is a real date in site-config.
+// `location` is deliberately omitted until the 2027 venue is confirmed.
+if (SITE_CONFIG.nextEventDate && !Number.isNaN(Date.parse(SITE_CONFIG.nextEventDate))) {
+  structuredData.push({
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    name: `${SITE_CONFIG.eventName} 2027`,
+    description: "The 2027 Armenz Legacy Classic charity golf tournament, presented by the 909 Market Foundation.",
+    startDate: SITE_CONFIG.nextEventDate,
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    sport: "Golf",
+    url: SITE_CONFIG.baseUrl,
+    image: [`${SITE_CONFIG.baseUrl}${OG_IMAGE.url}`],
+    organizer: { "@id": ORG_ID },
+  });
+}
 
 export default function RootLayout({
   children,

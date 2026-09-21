@@ -1,6 +1,8 @@
 export type NewsPost = {
   slug: string;
   title: string;
+  /** <= 42 chars: the root title template appends " | Armenz Legacy" to stay under 60. */
+  metaTitle: string;
   description: string;
   date: string;
   author: string;
@@ -10,6 +12,7 @@ export type NewsPost = {
 export const posts: NewsPost[] = [
   {
     slug: "beaumont-ca-charity-golf-tournament-june-2026",
+    metaTitle: "Beaumont CA Charity Golf, June 22, 2026",
     title:
       "Beaumont CA Charity Golf Tournament: Armenz Legacy Classic at Morongo Golf Club, June 22, 2026",
     description:
@@ -25,6 +28,7 @@ export const posts: NewsPost[] = [
   },
   {
     slug: "corporate-sponsorship-charity-golf-inland-empire-2026",
+    metaTitle: "Corporate Sponsorship Opportunities",
     title:
       "Corporate Sponsorship Opportunities: The Armenz Legacy Classic in Beaumont, CA",
     description:

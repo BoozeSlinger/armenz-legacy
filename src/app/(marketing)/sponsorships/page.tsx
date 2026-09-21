@@ -8,15 +8,9 @@ import { ArrowUpRight } from "lucide-react";
 import { contactHref } from "@/lib/site-config";
 
 export const metadata = {
-  title: "Thank You to Our 2026 Sponsors — Armenz Legacy Classic",
+  title: "Thank You to Our 2026 Sponsors",
   description:
     "Gratitude to the sponsors who powered the inaugural Armenz Legacy Classic at Morongo Golf Club in Beaumont, CA — led by Triple Crown sponsor the Morongo Band of Mission Indians. 2027 sponsorships open soon.",
-  keywords: [
-    "Armenz Legacy 2026 sponsors",
-    "Charity event sponsorships Inland Empire",
-    "Golf tournament sponsor packages California",
-    "Morongo Golf Club sponsorship",
-  ],
   alternates: { canonical: "/sponsorships" },
 };
 
