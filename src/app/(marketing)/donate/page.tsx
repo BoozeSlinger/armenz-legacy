@@ -40,7 +40,7 @@ export default function DonatePage() {
                 <Cta href={SITE_CONFIG.donateUrl!} external>
                   Donate Now
                 </Cta>
-                <p className="mx-auto mt-8 max-w-lg text-xs font-light leading-relaxed text-cream/40">
+                <p className="mx-auto mt-8 max-w-lg text-xs font-light leading-relaxed text-cream/55">
                   Your donation is tax-deductible. This tournament runs through the{" "}
                   <span className="text-cream/60">909 Market Foundation</span>, a 501(c)(3)
                   charitable organization. EIN: 92-0881763.

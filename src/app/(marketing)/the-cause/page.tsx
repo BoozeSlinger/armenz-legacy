@@ -167,7 +167,7 @@ export default function TheCausePage() {
                 <h3 className="mt-3 font-serif text-3xl font-medium text-cream md:text-4xl">
                   {b.name}
                 </h3>
-                <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/40">
+                <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/55">
                   {b.sub}
                 </p>
                 <div className="mt-6 space-y-4 text-sm font-light leading-relaxed text-cream/60 md:text-[15px]">

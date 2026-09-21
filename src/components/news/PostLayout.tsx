@@ -54,8 +54,8 @@ export function PostLayout({ post, children }: { post: NewsPost; children: React
           <header className="mt-8 mb-12 border-b border-gold/15 pb-10">
             <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-bright/90">
               <time dateTime={post.date}>{formattedDate}</time>
-              <span className="mx-2.5 text-cream/25">/</span>
-              <span className="text-cream/45">{post.author}</span>
+              <span className="mx-2.5 text-cream/55">/</span>
+              <span className="text-cream/55">{post.author}</span>
             </p>
             <h1 className="font-serif text-4xl font-medium leading-[1.08] tracking-[-0.015em] text-cream md:text-5xl">
               {post.title}

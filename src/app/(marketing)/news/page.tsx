@@ -52,8 +52,8 @@ export default function NewsIndexPage() {
                     >
                       <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-bright/90">
                         <time dateTime={post.date}>{formatted}</time>
-                        <span className="mx-2.5 text-cream/25">/</span>
-                        <span className="text-cream/45">{post.author}</span>
+                        <span className="mx-2.5 text-cream/55">/</span>
+                        <span className="text-cream/55">{post.author}</span>
                       </p>
                       <h2 className="max-w-3xl font-serif text-3xl font-medium leading-[1.1] text-cream transition-colors duration-500 group-hover:text-gold-bright md:text-4xl">
                         {post.title}

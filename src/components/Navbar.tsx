@@ -180,7 +180,7 @@ export function Navbar() {
               >
                 Join The 2027 List
               </Link>
-              <p className="mt-6 text-center text-[10px] uppercase tracking-[0.3em] text-cream/40">
+              <p className="mt-6 text-center text-[10px] uppercase tracking-[0.3em] text-cream/55">
                 Morongo Golf Club at Tukwet Canyon
               </p>
             </motion.div>

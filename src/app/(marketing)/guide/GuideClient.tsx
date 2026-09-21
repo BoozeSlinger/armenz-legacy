@@ -202,7 +202,7 @@ export function GuideClient() {
               {principles.map((p, i) => (
                 <Reveal key={p.n} delay={i * 0.08}>
                   <div className="grid grid-cols-1 gap-4 border-t border-gold/12 py-9 last:border-b sm:grid-cols-12 sm:gap-8">
-                    <span className="font-engraved text-sm tracking-[0.2em] text-gold/70 sm:col-span-2">
+                    <span className="font-engraved text-sm tracking-[0.2em] text-gold/80 sm:col-span-2">
                       {p.n}
                     </span>
                     <div className="sm:col-span-10">

@@ -88,7 +88,7 @@ export function CauseSection() {
                     <h3 className="mt-3 font-serif text-3xl font-medium text-cream md:text-4xl">
                       {charity.name}
                     </h3>
-                    <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/40">
+                    <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/55">
                       {charity.title}
                     </p>
                     <p className="mt-5 text-sm font-light leading-relaxed text-cream/60">

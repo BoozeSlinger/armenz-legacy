@@ -28,7 +28,7 @@ export function SponsorPreview2027() {
         <HairlineGrow />
 
         <Reveal delay={0.15}>
-          <div className="flex flex-col items-start justify-between gap-3 pt-8 text-xs font-light text-cream/40 sm:flex-row sm:items-center">
+          <div className="flex flex-col items-start justify-between gap-3 pt-8 text-xs font-light text-cream/55 sm:flex-row sm:items-center">
             <p>Custom activations and bespoke corporate packages available upon inquiry.</p>
             <ContactLink className="link-rule text-gold-bright/90" />
           </div>

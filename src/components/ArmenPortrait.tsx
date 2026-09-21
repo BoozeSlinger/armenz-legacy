@@ -47,7 +47,7 @@ export function ArmenPortrait({ alt, label }: { alt: string; label: string }) {
       </div>
       <figcaption className="mt-4 flex items-baseline justify-between gap-4">
         <span className="font-serif text-lg italic text-cream/85">Armen Zennedjian</span>
-        <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-cream/40">{label}</span>
+        <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-cream/55">{label}</span>
       </figcaption>
     </figure>
   );

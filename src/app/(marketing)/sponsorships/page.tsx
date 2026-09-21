@@ -284,7 +284,7 @@ export default function SponsorshipsPage() {
                     <h3 className="mt-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-cream/90">
                       {item.label}
                     </h3>
-                    <p className="mt-1.5 text-sm font-light leading-relaxed text-cream/50">
+                    <p className="mt-1.5 text-sm font-light leading-relaxed text-cream/55">
                       {item.detail}
                     </p>
                   </Reveal>
@@ -295,7 +295,7 @@ export default function SponsorshipsPage() {
               <Reveal delay={0.15}>
                 <div className="mt-10 flex flex-col items-start gap-4">
                   <Cta href="/#early-access">Get 2027 Sponsorship Access</Cta>
-                  <p className="text-sm font-light text-cream/45">
+                  <p className="text-sm font-light text-cream/55">
                     Tiers sold out in 2026. The early-access list hears first.
                   </p>
                 </div>

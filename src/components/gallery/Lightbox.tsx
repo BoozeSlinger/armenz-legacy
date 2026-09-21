@@ -125,7 +125,7 @@ export function Lightbox({ photos, index, onClose, onNavigate }: LightboxProps) 
           >
             {CATEGORY_LABELS[photo.category]}
           </motion.span>
-          <span className="text-[#F5F0E8]/50 text-xs md:text-sm font-medium tabular-nums whitespace-nowrap">
+          <span className="text-[#F5F0E8]/60 text-xs md:text-sm font-medium tabular-nums whitespace-nowrap">
             <span className="text-[#F5F0E8]/80 font-semibold">{index + 1}</span>
             <span className="mx-1">/</span>
             {total}
@@ -211,7 +211,7 @@ export function Lightbox({ photos, index, onClose, onNavigate }: LightboxProps) 
         className="shrink-0 px-4 pt-2 pb-3 md:px-8 text-center"
         onClick={(e) => e.stopPropagation()}
       >
-        <p className="text-[#F5F0E8]/50 text-xs md:text-sm italic font-serif max-w-2xl mx-auto text-balance">
+        <p className="text-[#F5F0E8]/60 text-xs md:text-sm italic font-serif max-w-2xl mx-auto text-balance">
           {photo.alt}
         </p>
         {/* Mobile nav */}

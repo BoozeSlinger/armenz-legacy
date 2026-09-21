@@ -14,7 +14,7 @@ const INTEREST_OPTIONS = [
 ] as const;
 
 const inputClass =
-  "w-full bg-transparent border-0 border-b border-cream/20 focus:border-gold focus:outline-none px-0 h-12 text-cream placeholder:text-cream/25 font-light text-base transition-colors duration-300";
+  "w-full bg-transparent border-0 border-b border-cream/20 focus:border-gold focus:outline-none px-0 h-12 text-cream placeholder:text-cream/55 font-light text-base transition-colors duration-300";
 
 export function EarlyAccess() {
   const [name, setName] = useState("");
@@ -79,7 +79,7 @@ export function EarlyAccess() {
                     The inaugural field reached capacity quickly. The early registry is
                     invited first to select starting times and partnership tiers.
                   </p>
-                  <p className="mt-6 text-xs font-light text-cream/40">
+                  <p className="mt-6 text-xs font-light text-cream/55">
                     Direct inquiries:{" "}
                     <ContactLink className="link-rule text-gold-bright/90" />
                   </p>
@@ -102,7 +102,7 @@ export function EarlyAccess() {
                     <div className="space-y-2">
                       <label
                         htmlFor="ea-name"
-                        className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/50"
+                        className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/55"
                       >
                         Full Name *
                       </label>
@@ -120,7 +120,7 @@ export function EarlyAccess() {
                     <div className="space-y-2">
                       <label
                         htmlFor="ea-email"
-                        className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/50"
+                        className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/55"
                       >
                         Email Address *
                       </label>
@@ -139,7 +139,7 @@ export function EarlyAccess() {
                   </div>
 
                   <fieldset>
-                    <legend className="mb-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/50">
+                    <legend className="mb-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/55">
                       Primary Interest
                     </legend>
                     <div className="grid grid-cols-3 gap-3" role="radiogroup">
@@ -152,7 +152,7 @@ export function EarlyAccess() {
                               "cursor-pointer select-none border py-3.5 text-center text-[11px] font-semibold uppercase tracking-[0.16em] transition-all duration-400",
                               active
                                 ? "border-gold bg-gold/[0.08] text-gold-bright"
-                                : "border-cream/15 text-cream/50 hover:border-cream/35 hover:text-cream/75"
+                                : "border-cream/15 text-cream/55 hover:border-cream/35 hover:text-cream/75"
                             )}
                           >
                             <input

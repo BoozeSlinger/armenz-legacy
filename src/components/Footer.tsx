@@ -53,7 +53,7 @@ export function Footer() {
               Charity Golf Classic
             </span>
           </p>
-          <p className="max-w-xs text-sm font-light leading-relaxed text-cream/50">
+          <p className="max-w-xs text-sm font-light leading-relaxed text-cream/55">
             The inaugural Classic honored Armen&apos;s legacy at Tukwet Canyon, with all
             proceeds benefiting{" "}
             <a href="https://www.carma4horses.org" target="_blank" rel="noopener noreferrer" className="link-rule text-gold-bright/90">
@@ -68,7 +68,7 @@ export function Footer() {
 
         {/* Links */}
         <div className="md:col-span-3">
-          <h4 className="mb-6 text-[10px] font-semibold uppercase tracking-[0.3em] text-cream/40">
+          <h4 className="mb-6 text-[10px] font-semibold uppercase tracking-[0.3em] text-cream/55">
             Navigate
           </h4>
           <ul className="space-y-3.5">
@@ -87,7 +87,7 @@ export function Footer() {
 
         {/* Event info */}
         <div className="md:col-span-4">
-          <h4 className="mb-6 text-[10px] font-semibold uppercase tracking-[0.3em] text-cream/40">
+          <h4 className="mb-6 text-[10px] font-semibold uppercase tracking-[0.3em] text-cream/55">
             The Classic
           </h4>
           <ul className="space-y-5 text-sm font-light text-cream/55">
@@ -120,7 +120,7 @@ export function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-cream/8">
-        <div className="container mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs font-light text-cream/35 md:flex-row md:px-8">
+        <div className="container mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs font-light text-cream/55 md:flex-row md:px-8">
           <p className="max-w-lg text-center md:text-left">
             Tax-deductible donations processed through the{" "}
             <span className="text-cream/55">909 Market Foundation</span>, a 501(c)(3)

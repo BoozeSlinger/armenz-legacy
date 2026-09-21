@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 const inputClass =
-  "h-12 w-full border-0 border-b border-cream/20 bg-transparent px-0 text-base font-light text-cream transition-colors duration-300 placeholder:text-cream/25 focus:border-gold focus:outline-none";
+  "h-12 w-full border-0 border-b border-cream/20 bg-transparent px-0 text-base font-light text-cream transition-colors duration-300 placeholder:text-cream/55 focus:border-gold focus:outline-none";
 
 export default function ContactPage() {
   return (
@@ -36,29 +36,29 @@ export default function ContactPage() {
 
               <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <label htmlFor="firstName" className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/50">
+                  <label htmlFor="firstName" className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/55">
                     First Name *
                   </label>
                   <input id="firstName" name="firstName" required autoComplete="given-name" placeholder="First name" className={inputClass} />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="lastName" className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/50">
+                  <label htmlFor="lastName" className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/55">
                     Last Name *
                   </label>
                   <input id="lastName" name="lastName" required autoComplete="family-name" placeholder="Last name" className={inputClass} />
                 </div>
               </div>
               <div className="space-y-2">
-                <label htmlFor="email" className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/50">
+                <label htmlFor="email" className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/55">
                   Email Address *
                 </label>
                 <input id="email" name="email" type="email" required autoComplete="email" placeholder="you@example.com" className={inputClass} />
               </div>
               <div className="space-y-2">
-                <label htmlFor="message" className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/50">
+                <label htmlFor="message" className="text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/55">
                   Message *
                 </label>
-                <textarea id="message" name="message" required placeholder="How can we help?" className="min-h-[140px] w-full border-0 border-b border-cream/20 bg-transparent px-0 py-2 text-base font-light text-cream transition-colors duration-300 placeholder:text-cream/25 focus:border-gold focus:outline-none" />
+                <textarea id="message" name="message" required placeholder="How can we help?" className="min-h-[140px] w-full border-0 border-b border-cream/20 bg-transparent px-0 py-2 text-base font-light text-cream transition-colors duration-300 placeholder:text-cream/55 focus:border-gold focus:outline-none" />
               </div>
               <button
                 type="submit"
@@ -67,7 +67,7 @@ export default function ContactPage() {
                 Send Message
               </button>
               {SITE_CONFIG.contactEmail && (
-                <p className="text-center text-xs font-light text-cream/40">
+                <p className="text-center text-xs font-light text-cream/55">
                   Or email us directly at{" "}
                   <a href={`mailto:${SITE_CONFIG.contactEmail}`} className="link-rule text-gold-bright/90">
                     {SITE_CONFIG.contactEmail}

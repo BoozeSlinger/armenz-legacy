@@ -112,7 +112,7 @@ export function ImpactSection() {
                 <h3 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-cream/90">
                   {stat.label}
                 </h3>
-                <p className="mt-1.5 text-sm font-light leading-relaxed text-cream/50">
+                <p className="mt-1.5 text-sm font-light leading-relaxed text-cream/55">
                   {stat.detail}
                 </p>
               </div>

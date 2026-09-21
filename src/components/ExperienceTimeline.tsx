@@ -83,7 +83,7 @@ export function ExperienceTimeline() {
                   <p className="mt-3 max-w-md text-[15px] font-light leading-relaxed text-cream/60">
                     {ch.body}
                   </p>
-                  <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.25em] text-cream/35">
+                  <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.25em] text-cream/55">
                     {ch.detail}
                   </p>
                 </StaggerItem>
