@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "lastmod": "node scripts/generate-lastmod.mjs",
+    "prebuild": "node scripts/generate-lastmod.mjs --if-git"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
