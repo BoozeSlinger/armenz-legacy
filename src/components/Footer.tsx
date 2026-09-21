@@ -41,14 +41,14 @@ export function Footer() {
           <Link href="/" className="relative inline-block h-16 w-16 opacity-90 transition-opacity hover:opacity-100">
             <Image
               src="/images/hero/logo.png"
-              alt="Armen Z Legacy crest"
+              alt="Armenz Legacy crest"
               fill
               sizes="64px"
               className="object-contain"
             />
           </Link>
           <p className="font-serif text-xl font-medium text-cream">
-            Armen Z Legacy
+            Armenz Legacy
             <span className="mt-1 block text-[10px] font-sans font-semibold uppercase tracking-[0.3em] text-gold/80">
               Charity Golf Classic
             </span>
@@ -125,7 +125,7 @@ export function Footer() {
             non-profit (EIN: 92-0881763).
           </p>
           <div className="flex shrink-0 flex-col items-center gap-2 md:flex-row md:gap-6">
-            <p>© {new Date().getFullYear()} Armen Z Legacy</p>
+            <p>© {new Date().getFullYear()} Armenz Legacy</p>
             <p>
               Built by{" "}
               <a

@@ -23,8 +23,7 @@ export default function Post() {
     <PostLayout post={post}>
       <p>
         For Inland Empire businesses looking to align their brand with a meaningful
-        cause, the inaugural Armenz Legacy Charity Golf Tournament — Legacy on the
-        Greens: The Armen Zennedjian Classic — offers something rare: high-visibility
+        cause, the inaugural Armenz Legacy Classic — Legacy on the Greens — offers something rare: high-visibility
         sponsorship of a first-year event with a built-in audience of regional
         decision-makers, horse racing supporters, and community leaders. The
         tournament tees off June 22, 2026 at Morongo Golf Club at Tukwet Canyon in
@@ -173,7 +172,7 @@ export default function Post() {
         Build a Legacy with Us
       </h2>
       <p>
-        The Armenz Legacy Charity Golf Tournament was created to honor a life and
+        The Armenz Legacy Classic was created to honor a life and
         serve a community. Your sponsorship makes that possible — and positions your
         company as a founding partner in what we believe will become one of the most
         respected charity golf events in California.

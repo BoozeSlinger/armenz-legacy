@@ -22,8 +22,8 @@ export default function Post() {
   return (
     <PostLayout post={post}>
       <p>
-        On Monday, June 22, 2026, the inaugural Armenz Legacy Charity Golf Tournament
-        — Legacy on the Greens: The Armen Zennedjian Classic — tees off at Morongo
+        On Monday, June 22, 2026, the inaugural Armenz Legacy Classic
+        — Legacy on the Greens — tees off at Morongo
         Golf Club at Tukwet Canyon in Beaumont, California. This 4-person scramble
         brings together golfers, horsemen, and community members from across the
         Inland Empire and Southern California for a day of competition with a
@@ -143,7 +143,7 @@ export default function Post() {
         Save the Date
       </h2>
       <ul className="list-none pl-0 space-y-1 text-zinc-200">
-        <li><strong className="text-[#F5F0E8]">What:</strong> Armenz Legacy Charity Golf Tournament — The Armen Zennedjian Classic</li>
+        <li><strong className="text-[#F5F0E8]">What:</strong> Armenz Legacy Classic — Legacy on the Greens</li>
         <li><strong className="text-[#F5F0E8]">When:</strong> Monday, June 22, 2026</li>
         <li><strong className="text-[#F5F0E8]">Where:</strong> Morongo Golf Club at Tukwet Canyon, Beaumont, CA</li>
         <li><strong className="text-[#F5F0E8]">Format:</strong> 4-person scramble</li>

@@ -6,9 +6,9 @@ import { Reveal } from "@/components/motion";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "News & Updates — Armenz Legacy Charity Golf Tournament",
+  title: "News & Updates — Armenz Legacy Classic",
   description:
-    "Latest news, sponsor spotlights, and updates from the Armenz Legacy Charity Golf Tournament at Morongo Golf Club in Beaumont, CA. Supporting CARMA & PDJF.",
+    "Latest news, sponsor spotlights, and updates from the Armenz Legacy Classic at Morongo Golf Club in Beaumont, CA. Supporting CARMA & PDJF.",
   keywords: [
     "Beaumont CA golf tournaments",
     "Inland Empire charity golf",
@@ -30,7 +30,7 @@ export default function NewsIndexPage() {
             From the <em className="italic text-gold-bright">tournament</em>.
           </>
         }
-        subtitle="Sponsor spotlights, charity stories, and updates from the Armenz Legacy Charity Golf Tournament in Beaumont, CA."
+        subtitle="Sponsor spotlights, charity stories, and updates from the Armenz Legacy Classic in Beaumont, CA."
         showButtons={false}
       />
 

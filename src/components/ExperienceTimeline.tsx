@@ -14,7 +14,7 @@ const chapters = [
   {
     time: "9:00 AM",
     title: "Shotgun Start",
-    body: "A full field, 18 holes, one mission. The inaugural Legacy on the Greens was officially underway.",
+    body: "A full field, 18 holes, one mission. The inaugural Armenz Legacy Classic was officially underway.",
     detail: "Four-Person Scramble Format",
   },
   {

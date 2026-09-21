@@ -85,7 +85,7 @@ export function Preloader() {
             className="mt-12 flex flex-col items-center gap-4"
           >
             <span className="font-engraved text-[11px] font-semibold uppercase tracking-[0.42em] text-cream/70">
-              Armen Z Legacy
+              Armenz Legacy
             </span>
             <span className="block h-px w-10 overflow-hidden bg-gold/25">
               <span className="az-loader-bar block h-full w-full bg-gold" />

@@ -32,18 +32,18 @@ const cinzel = Cinzel({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.armenzlegacy.com"),
   title: {
-    default: "Armenz Legacy Charity Golf Tournament | Beaumont, CA",
-    template: "%s | Armenz Legacy Charity Golf Tournament",
+    default: "Armenz Legacy Classic | Beaumont, CA",
+    template: "%s | Armenz Legacy",
   },
   description:
-    "The inaugural Armenz Legacy Charity Golf Tournament raised funds for CARMA's retired racehorses and the Permanently Disabled Jockeys Fund at Morongo Golf Club at Tukwet Canyon, Beaumont CA — June 22, 2026. View 97 photos & join the 2027 early-access list.",
+    "The inaugural Armenz Legacy Classic raised funds for CARMA's retired racehorses and the Permanently Disabled Jockeys Fund at Morongo Golf Club at Tukwet Canyon, Beaumont CA — June 22, 2026. View 97 photos & join the 2027 early-access list.",
   keywords: [
-    "Armenz Legacy Charity Golf Tournament",
+    "Armenz Legacy Classic",
     "Armen Zennedjian memorial golf",
     "Beaumont CA golf tournaments 2026",
     "Inland Empire charity golf scramble",
     "Morongo Golf Club at Tukwet Canyon events",
-    "Legacy on the Greens golf tournament",
+    "Armenz Legacy Classic golf tournament",
     "Southern California charity golf 2027",
     "CARMA retired racehorses charity",
     "Permanently Disabled Jockeys Fund golf",
@@ -56,21 +56,21 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Armenz Legacy Charity Golf Tournament | Beaumont, CA",
+    title: "Armenz Legacy Classic | Beaumont, CA",
     description:
       "The inaugural charity golf scramble at Morongo Golf Club at Tukwet Canyon benefited CARMA and the Permanently Disabled Jockeys Fund. Relive 2026 — and join the 2027 early-access list.",
     url: "https://www.armenzlegacy.com",
-    siteName: "Armenz Legacy Charity Golf Tournament",
+    siteName: "Armenz Legacy",
     locale: "en_US",
     type: "website",
     images: [
-      { url: "/og/og-image.png", width: 1200, height: 630, alt: "Armenz Legacy Charity Golf Tournament — June 22, 2026 at Morongo Golf Club, Beaumont CA" },
-      { url: "/og/og-image-sq.png", width: 600, height: 600, alt: "Armenz Legacy Golf Tournament Logo" },
+      { url: "/og/og-image.png", width: 1200, height: 630, alt: "Armenz Legacy Classic — June 22, 2026 at Morongo Golf Club, Beaumont CA" },
+      { url: "/og/og-image-sq.png", width: 600, height: 600, alt: "Armenz Legacy logo" },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Armenz Legacy Charity Golf Tournament | Beaumont, CA",
+    title: "Armenz Legacy Classic | Beaumont, CA",
     description:
       "97 photos from the inaugural Classic at Morongo Golf Club. Raised real money for CARMA & PDJF. 2027 is next — join the list.",
     images: ["/og/og-image.png"],
@@ -87,7 +87,7 @@ const structuredData = [
   {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
-    name: "Armenz Legacy Charity Golf Tournament — Legacy on the Greens: The Armen Zennedjian Classic",
+    name: "Armenz Legacy Classic — Legacy on the Greens",
     description: "Inaugural four-person scramble charity golf tournament in Beaumont, CA benefiting CARMA (retired racehorses) and the Permanently Disabled Jockeys Fund (PDJF).",
     startDate: "2026-06-22T08:00-07:00",
     endDate: "2026-06-22T21:00-07:00",

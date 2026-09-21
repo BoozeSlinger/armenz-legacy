@@ -14,20 +14,20 @@ const bgPhoto = {
 };
 
 export const metadata = {
-  title: "2026 Photo Gallery — Legacy on the Greens at Morongo Golf Club",
+  title: "2026 Photo Gallery — Armenz Legacy Classic at Morongo Golf Club",
   description:
     "Relive the inaugural Armenz Legacy Classic: photos of players, sponsors, and the course at Morongo Golf Club at Tukwet Canyon in Beaumont, CA — June 22, 2026. Benefiting CARMA and the PDJF.",
   keywords: [
     "Armenz Legacy golf tournament photos",
     "Beaumont CA charity golf gallery",
     "Morongo Golf Club Tukwet Canyon event photos",
-    "Legacy on the Greens 2026",
+    "Armenz Legacy Classic 2026",
   ],
   alternates: { canonical: "/gallery" },
   openGraph: {
     title: "2026 Photo Gallery — Armenz Legacy Classic",
     description:
-      "Players, sponsors, and the course at Tukwet Canyon. Relive the inaugural Armenz Legacy charity golf tournament.",
+      "Players, sponsors, and the course at Tukwet Canyon. Relive the inaugural Armenz Legacy Classic.",
     images: [{ url: cldUrl(bgPhoto, 1200), width: 1200, height: 800 }],
   },
 };
@@ -54,7 +54,7 @@ export default async function GalleryPage({
             The 2026 <em className="italic text-gold-bright">gallery</em>.
           </>
         }
-        subtitle={`${galleryPhotos.length} moments from the inaugural Legacy on the Greens. The players, the partners, and the course that made it unforgettable.`}
+        subtitle={`${galleryPhotos.length} moments from the inaugural Armenz Legacy Classic. The players, the partners, and the course that made it unforgettable.`}
         showButtons={false}
       />
 

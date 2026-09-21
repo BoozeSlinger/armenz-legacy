@@ -57,7 +57,7 @@ export function Navbar() {
         <Link href="/" className="group flex items-center gap-3 shrink-0" onClick={close}>
           <Image
             src="/images/hero/logo.png"
-            alt="Armen Z Legacy crest"
+            alt="Armenz Legacy crest"
             width={44}
             height={44}
             className="h-10 w-10 object-contain opacity-90 transition-opacity duration-300 group-hover:opacity-100"

@@ -19,7 +19,7 @@ const typefaces = [
     name: "Playfair Display",
     role: "Display",
     note: "A high-contrast transitional serif with a graceful italic. Carries every headline with an old-money, engraved-invitation weight. Italics do the emphasis work.",
-    sample: "Legacy on the Greens",
+    sample: "Armenz Legacy Classic",
     cls: "font-serif text-5xl md:text-6xl font-medium text-cream",
     italic: true,
   },

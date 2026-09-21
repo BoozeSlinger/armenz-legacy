@@ -116,7 +116,7 @@ export default function Home() {
               className="mt-12 space-y-8 text-left"
             >
               <input type="hidden" name="_cc" value="derbyroomcelebrates@gmail.com" />
-              <input type="hidden" name="subject" value="New Contact Inquiry: Armen Z Legacy" />
+              <input type="hidden" name="subject" value="New Contact Inquiry: Armenz Legacy" />
 
               <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
                 <div className="space-y-2">

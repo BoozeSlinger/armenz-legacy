@@ -87,7 +87,7 @@ export async function POST(request: Request) {
           to: NOTIFICATION_EMAILS,
           subject: `New Golf Registration — ${entryLabel}`,
           html: `
-            <h2>New Registration — Armenz Legacy Golf Tournament</h2>
+            <h2>New Registration — Armenz Legacy Classic</h2>
             <table style="border-collapse:collapse;width:100%;max-width:500px">
               <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Entry Type</td><td style="padding:8px;border:1px solid #ddd">${entryLabel}</td></tr>
               <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Name</td><td style="padding:8px;border:1px solid #ddd">${name}</td></tr>

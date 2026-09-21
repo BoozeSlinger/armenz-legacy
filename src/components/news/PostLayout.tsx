@@ -20,7 +20,7 @@ export function PostLayout({ post, children }: { post: NewsPost; children: React
     author: { "@type": "Organization", name: post.author },
     publisher: {
       "@type": "Organization",
-      name: "Armenz Legacy Charity Golf Tournament",
+      name: "Armenz Legacy",
       logo: {
         "@type": "ImageObject",
         url: "https://www.armenzlegacy.com/images/hero/logo.png",

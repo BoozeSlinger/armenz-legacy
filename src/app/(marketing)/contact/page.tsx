@@ -2,9 +2,9 @@ import { Hero } from "@/components/Hero";
 import { Reveal } from "@/components/motion";
 
 export const metadata = {
-  title: "Contact — Armenz Legacy Charity Golf Tournament, Beaumont CA",
+  title: "Contact — Armenz Legacy Classic, Beaumont CA",
   description:
-    "Questions about the Armenz Legacy charity golf tournament in Beaumont, CA? Contact us about player registration, sponsorship packages, or supporting CARMA & PDJF.",
+    "Questions about the Armenz Legacy Classic in Beaumont, CA? Contact us about player registration, sponsorship packages, or supporting CARMA & PDJF.",
   alternates: { canonical: "/contact" },
 };
 
@@ -31,7 +31,7 @@ export default function ContactPage() {
           <Reveal>
             <form action="https://formspree.io/f/xbjnzzop" method="POST" className="space-y-8">
               <input type="hidden" name="_cc" value="derbyroomcelebrates@gmail.com" />
-              <input type="hidden" name="subject" value="New Contact Inquiry: Armen Z Legacy" />
+              <input type="hidden" name="subject" value="New Contact Inquiry: Armenz Legacy" />
 
               <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
                 <div className="space-y-2">

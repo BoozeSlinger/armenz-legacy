@@ -9,7 +9,7 @@ import { ArrowUpRight } from "lucide-react";
 export const metadata = {
   title: "Thank You to Our 2026 Sponsors — Armenz Legacy Classic",
   description:
-    "Gratitude to the sponsors who powered the inaugural Armenz Legacy charity golf tournament at Morongo Golf Club in Beaumont, CA — led by Triple Crown sponsor the Morongo Band of Mission Indians. 2027 sponsorships open soon.",
+    "Gratitude to the sponsors who powered the inaugural Armenz Legacy Classic at Morongo Golf Club in Beaumont, CA — led by Triple Crown sponsor the Morongo Band of Mission Indians. 2027 sponsorships open soon.",
   keywords: [
     "Armenz Legacy 2026 sponsors",
     "Charity event sponsorships Inland Empire",
@@ -68,7 +68,7 @@ export default function SponsorshipsPage() {
             Thank you to our 2026 <em className="italic text-gold-bright">sponsors</em>.
           </>
         }
-        subtitle="The inaugural Legacy on the Greens happened because these partners showed up for the cause. This page is our thank-you, and your invitation for 2027."
+        subtitle="The inaugural Armenz Legacy Classic happened because these partners showed up for the cause. This page is our thank-you, and your invitation for 2027."
         showButtons={false}
       />
 

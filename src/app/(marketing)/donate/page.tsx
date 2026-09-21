@@ -73,7 +73,7 @@ export default function DonatePage() {
                 sport we love.&rdquo;
               </p>
               <footer className="mt-7 text-[11px] font-semibold uppercase tracking-[0.25em] text-gold-bright/90">
-                The Armen Z Legacy Family
+                The Armenz Legacy Family
               </footer>
             </blockquote>
           </Reveal>

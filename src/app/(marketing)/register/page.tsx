@@ -5,7 +5,7 @@ import { Reveal, MaskLines } from "@/components/motion";
 export const metadata = {
   title: "2026 Registration Has Closed — Join the 2027 List",
   description:
-    "The inaugural Armenz Legacy charity golf tournament was played June 22, 2026 at Morongo Golf Club at Tukwet Canyon. Join the early-access list for first pick of 2027 foursomes and sponsorships.",
+    "The inaugural Armenz Legacy Classic was played June 22, 2026 at Morongo Golf Club at Tukwet Canyon. Join the early-access list for first pick of 2027 foursomes and sponsorships.",
   keywords: [
     "Beaumont CA golf tournaments",
     "Morongo Golf Club events",
