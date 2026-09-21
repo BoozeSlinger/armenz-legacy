@@ -126,9 +126,6 @@ export function Footer() {
           </p>
           <div className="flex shrink-0 flex-col items-center gap-2 md:flex-row md:gap-6">
             <p>© {new Date().getFullYear()} Armen Z Legacy</p>
-            <Link href="/guide" className="transition-colors duration-300 hover:text-gold-bright">
-              Design Guide
-            </Link>
             <p>
               Built by{" "}
               <a

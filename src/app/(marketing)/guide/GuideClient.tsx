@@ -16,9 +16,9 @@ const swatches = [
 /* ── Type specimens ── */
 const typefaces = [
   {
-    name: "Cormorant",
+    name: "Playfair Display",
     role: "Display",
-    note: "A high-contrast Garamond-lineage serif. Carries every headline with an old-money, engraved-invitation weight. Italics do the emphasis work.",
+    note: "A high-contrast transitional serif with a graceful italic. Carries every headline with an old-money, engraved-invitation weight. Italics do the emphasis work.",
     sample: "Legacy on the Greens",
     cls: "font-serif text-5xl md:text-6xl font-medium text-cream",
     italic: true,
@@ -27,7 +27,7 @@ const typefaces = [
     name: "Cinzel",
     role: "Engraved",
     note: "Roman capitals modeled on classical inscription. Reserved for numerals, timestamps, and small monumental marks.",
-    sample: "VII · 09:00 · $6.3M",
+    sample: "VII · 09:00 · 2027",
     cls: "font-engraved text-3xl md:text-4xl text-gold-bright tracking-[0.1em]",
     italic: false,
   },

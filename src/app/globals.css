@@ -158,7 +158,7 @@
 }
 
 @layer utilities {
-  /* Display serif defaults — Cormorant needs slightly tighter tracking at scale */
+  /* Display serif defaults (Playfair Display) — slightly tighter tracking at scale */
   .font-display {
     font-family: var(--font-display-serif);
     letter-spacing: -0.015em;
