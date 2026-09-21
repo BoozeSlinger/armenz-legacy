@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import type { NewsPost } from "@/content/news/posts";
+import { recapHref, type NewsPost } from "@/content/news/posts";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export function PostLayout({ post, children }: { post: NewsPost; children: ReactNode }) {
@@ -50,6 +50,17 @@ export function PostLayout({ post, children }: { post: NewsPost; children: React
             <ArrowLeft size={13} strokeWidth={1.75} />
             All News
           </Link>
+
+          {post.archived && (
+            <aside role="note" className="mt-8 border border-gold/30 bg-gold/[0.06] px-5 py-4 text-sm font-light leading-relaxed text-cream/80">
+              <span className="mr-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-gold-bright">Archived</span>
+              Pre-event post from April 2026, written before the Classic took place.{" "}
+              <Link href={recapHref} className="link-rule text-gold-bright">
+                See the 2026 recap
+              </Link>
+              .
+            </aside>
+          )}
 
           <header className="mt-8 mb-12 border-b border-gold/15 pb-10">
             <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-bright/90">

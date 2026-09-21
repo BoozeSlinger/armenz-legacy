@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { posts } from "@/content/news/posts";
+import { publishedPosts } from "@/content/news/posts";
 import { SITE_CONFIG } from "@/lib/site-config";
 import lastmod from "@/lib/lastmod.json";
 
@@ -40,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
+  const postEntries: MetadataRoute.Sitemap = publishedPosts.map((post) => ({
     url: `${BASE}/news/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: "yearly",

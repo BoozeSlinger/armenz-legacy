@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { posts } from "@/content/news/posts";
+import { publishedPosts } from "@/content/news/posts";
 import { Hero } from "@/components/Hero";
 import { Reveal } from "@/components/motion";
 import { ArrowRight } from "lucide-react";
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function NewsIndexPage() {
-  const sorted = [...posts].sort((a, b) => b.date.localeCompare(a.date));
+  const sorted = [...publishedPosts].sort((a, b) => b.date.localeCompare(a.date));
 
   return (
     <div className="relative min-h-screen bg-ink">
@@ -49,6 +49,11 @@ export default function NewsIndexPage() {
                         <time dateTime={post.date}>{formatted}</time>
                         <span className="mx-2.5 text-cream/55">/</span>
                         <span className="text-cream/55">{post.author}</span>
+                        {post.archived && (
+                          <span className="ml-3 border border-gold/30 px-2 py-0.5 text-[10px] tracking-[0.18em] text-cream/70">
+                            Archived
+                          </span>
+                        )}
                       </p>
                       <h2 className="max-w-3xl font-serif text-3xl font-medium leading-[1.1] text-cream transition-colors duration-500 group-hover:text-gold-bright md:text-4xl">
                         {post.title}
